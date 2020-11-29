@@ -56,13 +56,15 @@ namespace QLVT_PT_DevExpressPJ.subforms
         private void btnThemDDH_Click(object sender, EventArgs e)
         {
             string conflictErr = string.Empty;
-            if(checkConflictedMaDDH(this.txtbMaSoDDH.Text.Trim(), out conflictErr))
+            string finalMaSoDDH;
+            if(checkConflictedMaDDH(this.txtbMaSoDDH.Text.Trim(), out conflictErr, out finalMaSoDDH))
             {
                 MessageBox.Show(conflictErr, "Lỗi cơ sở dữ liệu", MessageBoxButtons.OK);
                 return;
             }
             if (MessageBox.Show("Thêm đơn đặt hàng này?", "Xác nhận thêm dữ liệu", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
+                this.txtbMaSoDDH.Text = finalMaSoDDH;
                 dhBDS.EndEdit();
                 this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.datHangTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().DatHang);
@@ -108,10 +110,16 @@ namespace QLVT_PT_DevExpressPJ.subforms
         #region additional funtions
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////  Additional funtions  //////////////////////////////////////////////////////////////////////////////////
-        private bool checkConflictedMaDDH(string maSoDDHMoi, out string conflictErr)
+        private bool checkConflictedMaDDH(string maSoDDHMoi, out string conflictErr, out string finalMSDDH)
         {
             try
             {
+                int maDDHNumber;
+                int.TryParse(maSoDDHMoi.Substring(4), out maDDHNumber);
+                if (maDDHNumber < 10)
+                {
+                    maSoDDHMoi = "MDDH0" + maDDHNumber;
+                }
                 String cmd = "exec SP_LAYMADDH '" + maSoDDHMoi + "'";
                 SqlCommand sqlcmd = new SqlCommand(cmd, Program.conn);
                 if (Program.conn.State == ConnectionState.Closed)
@@ -122,16 +130,19 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 if ((int)sqlcmd.ExecuteScalar() == 1)
                 {
                     conflictErr = "Mã số đơn đặt hàng đã tồn tại ở chi nhánh này!";
+                    finalMSDDH = maSoDDHMoi;
                     return true;
                 }
                 else if ((int)sqlcmd.ExecuteScalar() == 2)
                 {
                     conflictErr = "Mã số đơn đặt hàng đã tồn tại ở chi nhánh khác!";
+                    finalMSDDH = maSoDDHMoi;
                     return true;
                 }
                 else if ((int)sqlcmd.ExecuteScalar() == 0)
                 {
                     conflictErr = string.Empty;
+                    finalMSDDH = maSoDDHMoi;
                     return false;
                 }
             }
@@ -140,6 +151,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 MessageBox.Show(this, "Lỗi: " + e.Message, "Có lỗi xảy ra", MessageBoxButtons.OK);
             }
             conflictErr = string.Empty;
+            finalMSDDH = maSoDDHMoi;
             return false;
         }
 
@@ -147,7 +159,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
         {
             if (this.txtbMaSoDDH.Text.Trim() == "" || this.dateEdNgayDat.Text.Trim() == "" ||
                this.txtbNhaCC.Text.Trim() == "" || this.txtbMaKho.Text.Trim() == "" ||
-               !this.txtbMaSoDDH.Text.Trim().All(char.IsLetterOrDigit))
+               !Regex.IsMatch(this.txtbMaSoDDH.Text, "^MDDH\\d+$"))
             {
                 this.btnThemDDH.Enabled = false;
             }
@@ -164,11 +176,15 @@ namespace QLVT_PT_DevExpressPJ.subforms
             if (Regex.IsMatch(value, "^MDDH\\d+$"))
             {
                 int soDDHMoi; int.TryParse(value.Substring(4), out soDDHMoi);
-                string err;
+                string err, msddh;
                 soDDHMoi += 1;
-                while (checkConflictedMaDDH(("MDDH" + soDDHMoi), out err))
+                while (checkConflictedMaDDH(("MDDH" + soDDHMoi), out err, out msddh))
                 {
                     soDDHMoi += 1;
+                }
+                if (soDDHMoi < 10)
+                {
+                    return "MDDH0" + (soDDHMoi);
                 }
                 return "MDDH" + (soDDHMoi);
             }

@@ -179,11 +179,11 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 int soPXMoi; int.TryParse(value.Substring(2), out soPXMoi);
                 string err;
                 soPXMoi += 1;
-                while (checkConflictedMaPX((soPXMoi < 10? "PX0" + soPXMoi : "PX" + soPXMoi), out err))
+                while (checkConflictedMaPX((soPXMoi < 10 ? "PX0" + soPXMoi : "PX" + soPXMoi), out err))
                 {
                     soPXMoi += 1;
                 }
-                if(soPXMoi < 10)
+                if (soPXMoi < 10)
                 {
                     return "PX0" + (soPXMoi);
                 }

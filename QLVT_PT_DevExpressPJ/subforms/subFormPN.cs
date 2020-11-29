@@ -173,8 +173,8 @@ namespace QLVT_PT_DevExpressPJ.subforms
         private void checkEmptyAndValid()
         {           
             if (this.txtbMaPN.Text.Trim() == "" || this.dateEdNgayLap.Text == "" || this.txtbMaSoDDH.Text.Trim() == "" ||
-                this.txtbMaKho.Text.Trim() == "" || !this.txtbMaPN.Text.Trim().All(char.IsLetterOrDigit) ||
-                !Regex.IsMatch(this.txtbMaPN.Text.Trim(), "^PN\\d+$") || this.dateEdNgayLap.DateTime > DateTime.Today)
+                this.txtbMaKho.Text.Trim() == "" ||!Regex.IsMatch(this.txtbMaPN.Text, "^PN\\d+$") || 
+                this.dateEdNgayLap.DateTime > DateTime.Today)
             {
                 this.btnThemPN.Enabled = false;
             }
