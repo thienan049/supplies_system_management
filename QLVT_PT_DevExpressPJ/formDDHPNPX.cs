@@ -15,6 +15,7 @@ namespace QLVT_PT_DevExpressPJ
     {
         int currentPositionDH = -1;
         int currentPositionPN = -1;
+        int currentPositionPX = -1;
         //bool isLoadedPN = false;
         bool isLoadedPX = false;
 
@@ -90,6 +91,38 @@ namespace QLVT_PT_DevExpressPJ
                 this.grBxPX.Visible = false;
                 this.grBxDDH.Dock = DockStyle.Fill;
             }
+        }
+
+        private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(this.grBxDDH.Visible == true)
+            {
+                this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.datHangTableAdapter.Fill(this.qlvtDS.DatHang);
+                this.ctddhTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.ctddhTableAdapter.Fill(this.qlvtDS.CTDDH);
+            }
+
+            if(this.grBxPN.Visible == true)
+            {
+                this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.phieuNhapTableAdapter.Fill(this.qlvtDS.PhieuNhap);
+                this.ctpnTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.ctpnTableAdapter.Fill(this.qlvtDS.CTPN);
+            }
+
+            if(this.grBxPX.Visible == true)
+            {
+                this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.phieuXuatTableAdapter.Fill(this.qlvtDS.PhieuXuat);
+                this.ctpxTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.ctpxTableAdapter.Fill(this.qlvtDS.CTPX);
+            }
+        }
+
+        private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
         #endregion
 
@@ -354,6 +387,127 @@ namespace QLVT_PT_DevExpressPJ
         }
         #endregion
 
+        #region phieu xuat
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////  Phiếu xuất  //////////////////////////////////////////////////////////////////////////////////
+        private void pxContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            this.pxContextMenu.Close();
+            if (pxContextMenu.Items.IndexOf(e.ClickedItem) == 0)
+            {
+                subFormPX sfPX = new subFormPX();
+                sfPX.Owner = Program.formChinh;
+                sfPX.ShowDialog();
+            }
+            else if (pxContextMenu.Items.IndexOf(e.ClickedItem) == 1)
+            {
+                this.currentPositionPX = pxBDS.Position;
+                subFormCTPX sfCTPX = new subFormCTPX();
+                sfCTPX.Owner = Program.formChinh;
+                sfCTPX.ShowDialog();
+            }
+            else if (pxContextMenu.Items.IndexOf(e.ClickedItem) == 2)
+            {
+                xoaPhieuXuat();
+            }
+        }
+
+        private void pxContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if (this.pxBDS.Count == 0)
+            {
+                this.pnContextMenu.Items[2].Visible = false;
+            }
+            else
+            {
+                this.pnContextMenu.Items[2].Visible = true;
+            }
+        }
+
+        private void xoaPhieuXuat()
+        {
+            if (ctpxBDS_PX.Count > 0)
+            {
+                MessageBox.Show("Phiếu xuất đã kê khai chi tiết, không thể xóa!", "Lỗi xóa dữ liệu", MessageBoxButtons.OK);
+                return;
+            }
+            if (MessageBox.Show("Bạn muốn xóa phiếu xuất này?", "Xác nhận xóa dữ liệu", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                string mapx = string.Empty;
+                try
+                {
+                    mapx = ((DataRowView)pxBDS[pxBDS.Position])["MAPX"].ToString();
+                    pxBDS.RemoveCurrent();
+                    this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.phieuXuatTableAdapter.Update(this.qlvtDS.PhieuXuat);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi xóa dữ liệu", MessageBoxButtons.OK);
+                    this.phieuXuatTableAdapter.Fill(this.qlvtDS.PhieuXuat);
+                    pxBDS.Position = pxBDS.Find("MAPX", mapx);
+                    return;
+                }
+            }
+        }
+        #endregion
+
+        #region chi tiet phieu xuat
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////  Chi tiết phiếu xuất  //////////////////////////////////////////////////////////////////////////////////
+        private void ctpxContextMenu_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
+        {
+            this.ctpxContextMenu.Close();
+            if (ctpxContextMenu.Items.IndexOf(e.ClickedItem) == 0)
+            {
+                this.currentPositionPX = pxBDS.Position;
+                subFormCTPX sfCTPX = new subFormCTPX();
+                sfCTPX.Owner = Program.formChinh;
+                sfCTPX.ShowDialog();
+            }
+            else if (ctpxContextMenu.Items.IndexOf(e.ClickedItem) == 1)
+            {
+                this.currentPositionPX = pxBDS.Position;
+                xoaChiTietPhieuXuat();
+            }
+        }
+
+        private void ctpxContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if (this.ctpxBDS_PX.Count == 0)
+            {
+                this.ctpxContextMenu.Items[1].Visible = false;
+            }
+            else
+            {
+                this.ctpxContextMenu.Items[1].Visible = true;
+            }
+        }
+
+        private void xoaChiTietPhieuXuat()
+        {
+            if (MessageBox.Show("Bạn muốn xóa chi tiết phiếu xuất này?", "Xác nhận xóa dữ liệu", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                string mactpx = string.Empty;
+                try
+                {
+                    mactpx = ((DataRowView)ctpxBDS_PX[ctpxBDS_PX.Position])["MAPX"].ToString();
+                    ctpxBDS_PX.RemoveCurrent();
+                    this.ctpxTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.ctpxTableAdapter.Update(this.qlvtDS.CTPX);
+                    this.reloadPX();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi xóa dữ liệu", MessageBoxButtons.OK);
+                    this.ctpxTableAdapter.Fill(this.qlvtDS.CTPX);
+                    ctpxBDS_PX.Position = ctpxBDS_PX.Find("MAPX", mactpx);
+                    return;
+                }
+            }
+        }
+        #endregion
+
         #region get binding sources/dataset
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////  Get binding sources/ dataset  //////////////////////////////////////////////////////////////////////////////////
@@ -410,11 +564,21 @@ namespace QLVT_PT_DevExpressPJ
         {
             this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
             this.phieuNhapTableAdapter.Fill(this.qlvtDS.PhieuNhap);
-            if (currentPositionDH != -1)
+            if (currentPositionPN != -1)
             {
                 this.pnBDS.Position = currentPositionPN;
             }
         }
-        #endregion
+
+        public void reloadPX()
+        {
+            this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.phieuXuatTableAdapter.Fill(this.qlvtDS.PhieuXuat);
+            if (currentPositionPX != -1)
+            {
+                this.pxBDS.Position = currentPositionPX;
+            }
+        }
+        #endregion       
     }
 }

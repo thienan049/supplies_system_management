@@ -17,7 +17,11 @@ namespace QLVT_PT_DevExpressPJ.subforms
         public subFormPX()
         {
             InitializeComponent();
+            this.btnThoat.Click += new EventHandler(this.btnThoat_Click);
+            this.AcceptButton = this.btnThemPX;
+            this.CancelButton = this.btnThoat;           
         }
+
         #region form's main processing
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
@@ -59,6 +63,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             }
             if (MessageBox.Show("Thêm phiếu xuất này?", "Xác nhận thêm dữ liệu", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
+                trimValueBeforeWritting();
                 pxBDS.EndEdit();
                 this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuXuatTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().PhieuXuat);
@@ -72,43 +77,54 @@ namespace QLVT_PT_DevExpressPJ.subforms
         /////////////  Additional events  //////////////////////////////////////////////////////////////////////////////////
         private void txtbMaPX_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void dateEdNgayLap_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void dateEdNgayLap_EditValueChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbHoTenKH_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbMaKho_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void grdVwKho_ThemPX_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             this.txtbMaKho.Text = ((DataRowView)this.khoBDS[this.khoBDS.Position])["MAKHO"].ToString().Trim();
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         #endregion
 
-        #region side funtions
+        #region additional funtions
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////  Additional functions  //////////////////////////////////////////////////////////////////////////////////
         private bool checkConflictedMaPX(string maPXMoi, out string conflictErr)
         {
             try
             {
-                String cmd = "exec SP_LAYMAPX '" + maPXMoi + "'";
+                int maPXNumber;
+                int.TryParse(maPXMoi.Substring(2), out maPXNumber);
+                if (maPXNumber < 10)
+                {
+                    maPXMoi = "PX0" + maPXNumber;
+                }
+                String cmd = "exec SP_LAYMAPNPX '" + "PX', '" + maPXMoi + "'";
                 SqlCommand sqlcmd = new SqlCommand(cmd, Program.conn);
                 if (Program.conn.State == ConnectionState.Closed)
                 {
@@ -139,11 +155,12 @@ namespace QLVT_PT_DevExpressPJ.subforms
             return false;
         }
 
-        private void checkEmpty()
+        private void checkEmptyAndValid()
         {
             if (this.txtbMaPX.Text.Trim() == "" || this.dateEdNgayLap.Text == "" || this.txtbHoTenKH.Text.Trim() == "" ||
-                this.txtbMaKho.Text.Trim() == "" || !this.txtbHoTenKH.Text.Trim().All(char.IsLetter) ||
-                !Regex.IsMatch(this.txtbMaPX.Text.Trim(), "^PX\\d+$") || this.dateEdNgayLap.DateTime > DateTime.Today)
+                this.txtbMaKho.Text.Trim() == "" || !Regex.IsMatch(this.txtbMaPX.Text, "^PX\\d+$") ||
+                !Regex.IsMatch(this.txtbHoTenKH.Text, "^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ']+\\s?)+$") ||
+                 this.dateEdNgayLap.DateTime > DateTime.Today)
             {
                 this.btnThemPX.Enabled = false;
             }
@@ -162,13 +179,22 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 int soPXMoi; int.TryParse(value.Substring(2), out soPXMoi);
                 string err;
                 soPXMoi += 1;
-                while (checkConflictedMaPX(("PX" + soPXMoi), out err))
+                while (checkConflictedMaPX((soPXMoi < 10? "PX0" + soPXMoi : "PX" + soPXMoi), out err))
                 {
                     soPXMoi += 1;
+                }
+                if(soPXMoi < 10)
+                {
+                    return "PX0" + (soPXMoi);
                 }
                 return "PX" + (soPXMoi);
             }
             return string.Empty;
+        }
+
+        private void trimValueBeforeWritting()
+        {
+            this.txtbHoTenKH.Text = this.txtbHoTenKH.Text.Trim();
         }
         #endregion
     }

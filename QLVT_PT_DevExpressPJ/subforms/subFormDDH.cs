@@ -17,7 +17,11 @@ namespace QLVT_PT_DevExpressPJ.subforms
         public subFormDDH()
         {
             InitializeComponent();
+            this.btnThoat.Click += new EventHandler(this.btnThoat_Click);
+            this.AcceptButton = this.btnThemDDH;
+            this.CancelButton = this.btnThoat;
         }
+
         #region form's main processing
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
@@ -72,33 +76,38 @@ namespace QLVT_PT_DevExpressPJ.subforms
         /////////////  Additional events  //////////////////////////////////////////////////////////////////////////////////
         private void txtbMaSoDDH_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void dateEdNgayDat_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbNhaCC_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbMaKho_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void grdVwKho_ThemDDH_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             this.txtbMaKho.Text = ((DataRowView)khoBDS[khoBDS.Position])["MAKHO"].ToString().Trim();
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         #endregion
 
-        #region side funtions
+        #region additional funtions
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Side funtions  //////////////////////////////////////////////////////////////////////////////////
+        /////////////  Additional funtions  //////////////////////////////////////////////////////////////////////////////////
         private bool checkConflictedMaDDH(string maSoDDHMoi, out string conflictErr)
         {
             try
@@ -134,7 +143,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             return false;
         }
 
-        private void checkEmpty()
+        private void checkEmptyAndValid()
         {
             if (this.txtbMaSoDDH.Text.Trim() == "" || this.dateEdNgayDat.Text.Trim() == "" ||
                this.txtbNhaCC.Text.Trim() == "" || this.txtbMaKho.Text.Trim() == "" ||
@@ -166,6 +175,5 @@ namespace QLVT_PT_DevExpressPJ.subforms
             return string.Empty;
         }
         #endregion
-
     }
 }

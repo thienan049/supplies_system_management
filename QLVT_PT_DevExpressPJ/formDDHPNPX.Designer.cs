@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formDDHPNPX));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnReload = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.btnPNPXSubItem = new DevExpress.XtraBars.BarSubItem();
             this.btnPhieuNhap = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuXuat = new DevExpress.XtraBars.BarButtonItem();
@@ -129,6 +129,7 @@
             this.grCtrlPX = new DevExpress.XtraEditors.GroupControl();
             this.pxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.themPXMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.themCTPX_PXMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xoaPXMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).BeginInit();
@@ -189,8 +190,8 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barButtonItem5,
-            this.barButtonItem6,
-            this.barButtonItem7,
+            this.btnReload,
+            this.btnThoat,
             this.btnPNPXSubItem,
             this.btnPhieuNhap,
             this.btnPhieuXuat});
@@ -204,26 +205,28 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem6, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem7, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPNPXSubItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
-            // barButtonItem6
+            // btnReload
             // 
-            this.barButtonItem6.Caption = "Reload";
-            this.barButtonItem6.Id = 5;
-            this.barButtonItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
-            this.barButtonItem6.Name = "barButtonItem6";
+            this.btnReload.Caption = "Reload";
+            this.btnReload.Id = 5;
+            this.btnReload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.ImageOptions.Image")));
+            this.btnReload.Name = "btnReload";
+            this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReload_ItemClick);
             // 
-            // barButtonItem7
+            // btnThoat
             // 
-            this.barButtonItem7.Caption = "Thoát";
-            this.barButtonItem7.Id = 6;
-            this.barButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.barButtonItem7.Name = "barButtonItem7";
+            this.btnThoat.Caption = "Thoát";
+            this.btnThoat.Id = 6;
+            this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.Image")));
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
             // 
             // btnPNPXSubItem
             // 
@@ -604,7 +607,7 @@
             this.themCTPN_CTPNMenuItem,
             this.xoaPNMenuItem});
             this.pnContextMenu.Name = "pnContextMenu";
-            this.pnContextMenu.Size = new System.Drawing.Size(187, 92);
+            this.pnContextMenu.Size = new System.Drawing.Size(187, 70);
             this.pnContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.pnContextMenu_Opening);
             this.pnContextMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.pnContextMenu_ItemClicked);
             // 
@@ -975,6 +978,8 @@
             this.xoaCTPXMenuItem});
             this.ctpxContextMenu.Name = "ctpxContextMenu";
             this.ctpxContextMenu.Size = new System.Drawing.Size(182, 48);
+            this.ctpxContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.ctpxContextMenu_Opening);
+            this.ctpxContextMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ctpxContextMenu_ItemClicked_1);
             // 
             // themCTPXMenuItem
             // 
@@ -1005,22 +1010,32 @@
             // 
             this.pxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.themPXMenuItem,
+            this.themCTPX_PXMenuItem,
             this.xoaPXMenuItem});
             this.pxContextMenu.Name = "pxContextMenu";
-            this.pxContextMenu.Size = new System.Drawing.Size(164, 48);
+            this.pxContextMenu.Size = new System.Drawing.Size(182, 70);
+            this.pxContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.pxContextMenu_Opening);
+            this.pxContextMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.pxContextMenu_ItemClicked);
             // 
             // themPXMenuItem
             // 
             this.themPXMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("themPXMenuItem.Image")));
             this.themPXMenuItem.Name = "themPXMenuItem";
-            this.themPXMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.themPXMenuItem.Size = new System.Drawing.Size(181, 22);
             this.themPXMenuItem.Text = "Thêm phiếu xuất";
+            // 
+            // themCTPX_PXMenuItem
+            // 
+            this.themCTPX_PXMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("themCTPX_PXMenuItem.Image")));
+            this.themCTPX_PXMenuItem.Name = "themCTPX_PXMenuItem";
+            this.themCTPX_PXMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.themCTPX_PXMenuItem.Text = "Thêm CT phiếu xuất";
             // 
             // xoaPXMenuItem
             // 
             this.xoaPXMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("xoaPXMenuItem.Image")));
             this.xoaPXMenuItem.Name = "xoaPXMenuItem";
-            this.xoaPXMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.xoaPXMenuItem.Size = new System.Drawing.Size(181, 22);
             this.xoaPXMenuItem.Text = "Xóa phiếu xuất";
             // 
             // formDDHPNPX
@@ -1099,8 +1114,8 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem btnReload;
+        private DevExpress.XtraBars.BarButtonItem btnThoat;
         private System.Windows.Forms.BindingSource dhBDS;
         private QLVTDataSetTableAdapters.DatHangTableAdapter datHangTableAdapter;
         private QLVTDataSetTableAdapters.TableAdapterManager tableAdapterManager;
@@ -1188,5 +1203,6 @@
         private System.Windows.Forms.ToolStripMenuItem themCTPXMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xoaCTPXMenuItem;
         private System.Windows.Forms.ToolStripMenuItem themCTPN_CTPNMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem themCTPX_PXMenuItem;
     }
 }

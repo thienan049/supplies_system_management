@@ -17,7 +17,11 @@ namespace QLVT_PT_DevExpressPJ.subforms
             InitializeComponent();
             this.numUDSoluong.TextChanged += new EventHandler(numUDSoLuong_TextChanged);
             this.numUDDonGia.TextChanged += new EventHandler(numUDDonGia_TextChanged);
+            this.btnThoat.Click += new EventHandler(this.btnThoat_Click);
+            this.AcceptButton = this.btnThemCTPN;
+            this.CancelButton = this.btnThoat;
         }
+
         #region form's main processing
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
@@ -36,8 +40,10 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.ctpnBDS.AddNew();
             this.txtbMaPN.Text = ((DataRowView)this.ctpnBDS[this.ctpnBDS.Position])["MAPN"].ToString().Trim();
             this.numUDSoluong.Value = 0;
+            this.numUDSoluong.Value = 1;
+            this.numUDDonGia.Value = 1;
             this.numUDDonGia.Value = 0;
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void subFormCTPN_FormClosing(object sender, FormClosingEventArgs e)
@@ -56,11 +62,14 @@ namespace QLVT_PT_DevExpressPJ.subforms
             }
             if (MessageBox.Show("Thêm phiếu chi tiết cho phiếu nhập này?", "Xác nhận thêm dữ liệu", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                ctpnBDS.EndEdit();
-                this.ctpnTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.ctpnTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().CTPN);
-                this.Close();
-                Program.formDDHPNPX.reloadPN();
+                try
+                {
+                    ctpnBDS.EndEdit();
+                    this.ctpnTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.ctpnTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().CTPN);
+                    this.Close();
+                    Program.formDDHPNPX.reloadPN();
+                }catch(Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
         #endregion
@@ -70,32 +79,37 @@ namespace QLVT_PT_DevExpressPJ.subforms
         /////////////  Additional events  //////////////////////////////////////////////////////////////////////////////////
         private void txtbMaVT_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void numUDSoLuong_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void numUDDonGia_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void numUDSoluong_ValueChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void numUDDonGia_ValueChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void grdVwVattu_ThemCTPN_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             this.txtbMaVT.Text = ((DataRowView)vtBDS[vtBDS.Position])["MAVT"].ToString().Trim();
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
         #endregion
 
@@ -127,7 +141,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             return false;
         }
 
-        private void checkEmpty()
+        private void checkEmptyAndValid()
         {
             if (this.txtbMaVT.Text.Trim() == "" || this.numUDSoluong.Text == "" ||
                this.numUDDonGia.Text == "" || this.numUDSoluong.Value == 0)

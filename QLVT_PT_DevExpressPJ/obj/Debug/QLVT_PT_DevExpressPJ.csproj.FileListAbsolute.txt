@@ -194,3 +194,5 @@ D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.subforms.subFormCTDDH.resources
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.subforms.subFormPN.resources
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.subforms.subFormCTPN.resources
+D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.subforms.subFormPX.resources
+D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.subforms.subFormCTPX.resources

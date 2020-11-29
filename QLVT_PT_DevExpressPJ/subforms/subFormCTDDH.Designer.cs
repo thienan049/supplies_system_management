@@ -35,7 +35,7 @@
             System.Windows.Forms.Label masoDDHLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(subFormCTDDH));
             this.grBxVattu_ThemCTDDH = new System.Windows.Forms.GroupBox();
-            this.vattuGridControl = new DevExpress.XtraGrid.GridControl();
+            this.grdCtrlVattu = new DevExpress.XtraGrid.GridControl();
             this.vtBDS = new System.Windows.Forms.BindingSource(this.components);
             this.qlvtDS = new QLVT_PT_DevExpressPJ.QLVTDataSet();
             this.grdVwVattu_ThemCTDDH = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -53,12 +53,16 @@
             this.ctddhTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTDDHTableAdapter();
             this.tableAdapterManager = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager();
             this.vatTuTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.VattuTableAdapter();
+            this.grCtrlVattu = new DevExpress.XtraEditors.GroupControl();
             dONGIALabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
+            //////////////////////////////////////////
+            this.btnThoat = new System.Windows.Forms.Button();
+            /////////////////////////////////////////
             this.grBxVattu_ThemCTDDH.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlVattu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vtBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwVattu_ThemCTDDH)).BeginInit();
@@ -66,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUDDonGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDSoluong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlVattu)).BeginInit();
+            this.grCtrlVattu.SuspendLayout();
             this.SuspendLayout();
             // 
             // dONGIALabel
@@ -110,24 +116,24 @@
             // 
             // grBxVattu_ThemCTDDH
             // 
-            this.grBxVattu_ThemCTDDH.Controls.Add(this.vattuGridControl);
+            this.grBxVattu_ThemCTDDH.Controls.Add(this.grCtrlVattu);
             this.grBxVattu_ThemCTDDH.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grBxVattu_ThemCTDDH.Location = new System.Drawing.Point(314, 0);
             this.grBxVattu_ThemCTDDH.Name = "grBxVattu_ThemCTDDH";
-            this.grBxVattu_ThemCTDDH.Size = new System.Drawing.Size(527, 266);
+            this.grBxVattu_ThemCTDDH.Size = new System.Drawing.Size(527, 262);
             this.grBxVattu_ThemCTDDH.TabIndex = 16;
             this.grBxVattu_ThemCTDDH.TabStop = false;
             // 
-            // vattuGridControl
+            // grdCtrlVattu
             // 
-            this.vattuGridControl.DataSource = this.vtBDS;
-            this.vattuGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vattuGridControl.Location = new System.Drawing.Point(3, 16);
-            this.vattuGridControl.MainView = this.grdVwVattu_ThemCTDDH;
-            this.vattuGridControl.Name = "vattuGridControl";
-            this.vattuGridControl.Size = new System.Drawing.Size(521, 247);
-            this.vattuGridControl.TabIndex = 0;
-            this.vattuGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdCtrlVattu.DataSource = this.vtBDS;
+            this.grdCtrlVattu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdCtrlVattu.Location = new System.Drawing.Point(2, 23);
+            this.grdCtrlVattu.MainView = this.grdVwVattu_ThemCTDDH;
+            this.grdCtrlVattu.Name = "grdCtrlVattu";
+            this.grdCtrlVattu.Size = new System.Drawing.Size(517, 218);
+            this.grdCtrlVattu.TabIndex = 0;
+            this.grdCtrlVattu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdVwVattu_ThemCTDDH});
             // 
             // vtBDS
@@ -146,7 +152,7 @@
             this.colMAVT,
             this.colTENVT,
             this.colDVT});
-            this.grdVwVattu_ThemCTDDH.GridControl = this.vattuGridControl;
+            this.grdVwVattu_ThemCTDDH.GridControl = this.grdCtrlVattu;
             this.grdVwVattu_ThemCTDDH.Name = "grdVwVattu_ThemCTDDH";
             this.grdVwVattu_ThemCTDDH.OptionsBehavior.Editable = false;
             this.grdVwVattu_ThemCTDDH.OptionsView.ShowDetailButtons = false;
@@ -194,7 +200,7 @@
             this.grBxForm_ThemCTDDH.Dock = System.Windows.Forms.DockStyle.Left;
             this.grBxForm_ThemCTDDH.Location = new System.Drawing.Point(0, 0);
             this.grBxForm_ThemCTDDH.Name = "grBxForm_ThemCTDDH";
-            this.grBxForm_ThemCTDDH.Size = new System.Drawing.Size(314, 266);
+            this.grBxForm_ThemCTDDH.Size = new System.Drawing.Size(314, 262);
             this.grBxForm_ThemCTDDH.TabIndex = 15;
             this.grBxForm_ThemCTDDH.TabStop = false;
             // 
@@ -299,11 +305,21 @@
             // 
             this.vatTuTableAdapter.ClearBeforeFill = true;
             // 
+            // grCtrlVattu
+            // 
+            this.grCtrlVattu.Controls.Add(this.grdCtrlVattu);
+            this.grCtrlVattu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grCtrlVattu.Location = new System.Drawing.Point(3, 16);
+            this.grCtrlVattu.Name = "grCtrlVattu";
+            this.grCtrlVattu.Size = new System.Drawing.Size(521, 243);
+            this.grCtrlVattu.TabIndex = 0;
+            this.grCtrlVattu.Text = "Danh sách vật tư";
+            // 
             // subFormCTDDH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 266);
+            this.ClientSize = new System.Drawing.Size(841, 262);
             this.Controls.Add(this.grBxVattu_ThemCTDDH);
             this.Controls.Add(this.grBxForm_ThemCTDDH);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -314,7 +330,7 @@
             this.Load += new System.EventHandler(this.subFormCTDDH_Load);
             this.Shown += new System.EventHandler(this.subFormCTDDH_Shown);
             this.grBxVattu_ThemCTDDH.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlVattu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vtBDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwVattu_ThemCTDDH)).EndInit();
@@ -323,6 +339,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUDDonGia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDSoluong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlVattu)).EndInit();
+            this.grCtrlVattu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -330,7 +348,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grBxVattu_ThemCTDDH;
-        private DevExpress.XtraGrid.GridControl vattuGridControl;
+        private DevExpress.XtraGrid.GridControl grdCtrlVattu;
         private DevExpress.XtraGrid.Views.Grid.GridView grdVwVattu_ThemCTDDH;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
         private DevExpress.XtraGrid.Columns.GridColumn colTENVT;
@@ -348,5 +366,7 @@
         private QLVTDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private QLVTDataSetTableAdapters.VattuTableAdapter vatTuTableAdapter;
         private System.Windows.Forms.BindingSource vtBDS;
+        private DevExpress.XtraEditors.GroupControl grCtrlVattu;
+        private System.Windows.Forms.Button btnThoat;
     }
 }

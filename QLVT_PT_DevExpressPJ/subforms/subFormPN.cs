@@ -17,7 +17,11 @@ namespace QLVT_PT_DevExpressPJ.subforms
         public subFormPN()
         {
             InitializeComponent();
+            this.btnThoat.Click += new EventHandler(this.btnThoat_Click);
+            this.AcceptButton = this.btnThemPN;
+            this.CancelButton = this.btnThoat;
         }
+
         #region form's main processing
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
@@ -83,27 +87,27 @@ namespace QLVT_PT_DevExpressPJ.subforms
         /////////////  Additional events  //////////////////////////////////////////////////////////////////////////////////
         private void txtbMaPN_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void dateEdNgayLap_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void dateEdNgayLap_EditValueChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbMaSoDDH_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbMaKho_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void grdVwKho_ThemPN_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -115,16 +119,27 @@ namespace QLVT_PT_DevExpressPJ.subforms
         {
             this.txtbMaSoDDH.Text = ((DataRowView)this.v_ds_ddhChuaCoPNBDS[this.v_ds_ddhChuaCoPNBDS.Position])["MASODDH"].ToString().Trim();
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         #endregion
 
-        #region side funtions
+        #region additional funtions
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////  Additional functions  //////////////////////////////////////////////////////////////////////////////////
         private bool checkConflictedMaPN(string maPNMoi, out string conflictErr)
         {
             try
             {
-                String cmd = "exec SP_LAYMAPN '" + maPNMoi + "'";
+                int maPNNumber;
+                int.TryParse(maPNMoi.Substring(2), out maPNNumber);
+                if (maPNNumber < 10)
+                {
+                    maPNMoi = "PN0" + maPNNumber;
+                }
+                String cmd = "exec SP_LAYMAPNPX '" +"PN', '"+ maPNMoi + "'";
                 SqlCommand sqlcmd = new SqlCommand(cmd, Program.conn);
                 if (Program.conn.State == ConnectionState.Closed)
                 {
@@ -155,7 +170,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             return false;
         }
 
-        private void checkEmpty()
+        private void checkEmptyAndValid()
         {           
             if (this.txtbMaPN.Text.Trim() == "" || this.dateEdNgayLap.Text == "" || this.txtbMaSoDDH.Text.Trim() == "" ||
                 this.txtbMaKho.Text.Trim() == "" || !this.txtbMaPN.Text.Trim().All(char.IsLetterOrDigit) ||
@@ -178,9 +193,13 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 int soPNMoi; int.TryParse(value.Substring(2), out soPNMoi);
                 string err;
                 soPNMoi += 1;
-                while (checkConflictedMaPN(("PN" + soPNMoi), out err))
+                while (checkConflictedMaPN((soPNMoi < 10 ? "PN0" + soPNMoi : "PN" + soPNMoi), out err))
                 {
                     soPNMoi += 1;              
+                }
+                if (soPNMoi < 10)
+                {
+                    return "PN0" + (soPNMoi);
                 }
                 return "PN" + (soPNMoi);               
             }

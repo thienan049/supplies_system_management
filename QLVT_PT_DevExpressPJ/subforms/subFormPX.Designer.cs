@@ -62,6 +62,9 @@
             mANVLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
+            //////////////////////////////////////////
+            this.btnThoat = new System.Windows.Forms.Button();
+            /////////////////////////////////////////
             this.grBxKho_ThemPX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlKho_ThemPX)).BeginInit();
             this.grCtrlKho_ThemPX.SuspendLayout();
@@ -316,10 +319,10 @@
             // txtbHoTenKH
             // 
             this.txtbHoTenKH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pxBDS, "HOTENKH", true));
-            this.txtbHoTenKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbHoTenKH.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbHoTenKH.Location = new System.Drawing.Point(116, 131);
             this.txtbHoTenKH.Name = "txtbHoTenKH";
-            this.txtbHoTenKH.Size = new System.Drawing.Size(122, 21);
+            this.txtbHoTenKH.Size = new System.Drawing.Size(122, 23);
             this.txtbHoTenKH.TabIndex = 5;
             this.txtbHoTenKH.TextChanged += new System.EventHandler(this.txtbHoTenKH_TextChanged);
             // 
@@ -355,6 +358,7 @@
             this.Controls.Add(this.gxBxForm_ThemPX);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "subFormPX";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thêm phiếu xuất";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.subFormPX_FormClosing);
             this.Load += new System.EventHandler(this.subFormPX_Load);
@@ -399,5 +403,6 @@
         private QLVTDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private QLVTDataSetTableAdapters.PhieuXuatTableAdapter phieuXuatTableAdapter;
         private System.Windows.Forms.BindingSource pxBDS;
+        private System.Windows.Forms.Button btnThoat;
     }
 }
