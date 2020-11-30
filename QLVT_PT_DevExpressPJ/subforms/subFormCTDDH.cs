@@ -42,6 +42,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.txtbMaSoDDH.Text = ((DataRowView)this.ctddhBDS[this.ctddhBDS.Position])["MASODDH"].ToString().Trim();
             this.numUDSoluong.Value = 0;
             this.numUDDonGia.Value = 0;
+            checkEmptyAndValid();
         }
 
         private void subFormCTDDH_FormClosing(object sender, FormClosingEventArgs e)

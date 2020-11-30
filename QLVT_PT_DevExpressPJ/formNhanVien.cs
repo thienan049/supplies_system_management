@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace QLVT_PT_DevExpressPJ
 {
@@ -18,13 +19,15 @@ namespace QLVT_PT_DevExpressPJ
         bool isEditing = false;
         int maNVSua = -1;
         int editPosition = -1;
-        public String maCNThem = "";
+        public String maCNThem = string.Empty;
         ErrorProvider err = new ErrorProvider();
         Stack<DataTable> tableStates = new Stack<DataTable>();
 
         public formNhanVien()
         {
             InitializeComponent();
+            this.panelCN.Left = (this.grCtrlCN.Width / 2) - (this.panelCN.Width / 2);
+            err.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         }
         
         private void formNV_Load(object sender, EventArgs e)
@@ -295,11 +298,6 @@ namespace QLVT_PT_DevExpressPJ
             checkEmpty();           
         }
 
-        private void txtbMaNV_Enter(object sender, EventArgs e)
-        {
-            toolTipCtrller.SetToolTip(this.txtbMaNV, "Chỉ nhập số!");
-        }
-
         private void txtbHo_TextChanged(object sender, EventArgs e)
         {
             checkEmpty();
@@ -320,11 +318,6 @@ namespace QLVT_PT_DevExpressPJ
             checkEmpty();
         }
 
-        private void txtbLuong_Enter(object sender, EventArgs e)
-        {
-            toolTipCtrller.SetToolTip(this.txtbLuong, "Lương >= 4.000.000!");
-        }
-
         private void txtbDiaChi_EditValueChanged(object sender, EventArgs e)
         {
             checkEmpty();
@@ -332,17 +325,19 @@ namespace QLVT_PT_DevExpressPJ
 
         private void txtbMaNV_Validating(object sender, CancelEventArgs e)
         {
-            if (!this.txtbMaNV.Text.Trim().All(char.IsDigit)) 
+            if (!this.txtbMaNV.Text.All(char.IsDigit)) 
             {
                 e.Cancel = true;
                 this.txtbMaNV.Select(0, this.txtbMaNV.Text.Length);
+                this.err.SetIconPadding(this.txtbMaNV, -20);
                 err.SetError(this.txtbMaNV, "Lỗi");
+                toolTipCtrller.DefaultController.ShowHint("Chỉ nhập số!", this.txtbMaNV, DevExpress.Utils.ToolTipLocation.TopRight);
             }
         }
 
         private void txtbMaNV_Validated(object sender, EventArgs e)
         {
-            err.SetError(this.txtbMaNV, String.Empty);
+            err.Dispose();
         }
 
         private void txtbLuong_Validating(object sender, CancelEventArgs e)
@@ -351,29 +346,28 @@ namespace QLVT_PT_DevExpressPJ
             long.TryParse(this.txtbLuong.Text.Trim(), out luong);
             if (luong < 4000000)
             {
-                e.Cancel = true;
+                e.Cancel = true; 
                 this.txtbLuong.Select(0, this.txtbLuong.Text.Length);
                 this.err.SetIconPadding(this.txtbLuong, -20);
                 this.err.SetError(this.txtbLuong, "Lỗi");
+                toolTipCtrller.DefaultController.ShowHint("Lương >= 4.000.000!", this.txtbLuong, DevExpress.Utils.ToolTipLocation.TopRight);
             }
         }
 
         private void txtbLuong_Validated(object sender, EventArgs e)
         {
-            err.SetError(this.txtbLuong, String.Empty);
-            //NumberFormatInfo nfi = new NumberFormatInfo();
-            //nfi.NumberDecimalSeparator = ".";
-            //this.txtbLuong.Text = this.txtbLuong.Text.ToString(nfi);
-            //Console.Write(this.txtbLuong.Text);
+            err.Dispose();
         }
 
         private void txtbHo_Validating(object sender, CancelEventArgs e)
         {
-            if (!this.txtbHo.Text.Trim().All(char.IsLetter))
+            if (!Regex.IsMatch(this.txtbHo.Text, Program.namePattern))
             {
                 e.Cancel = true;
                 this.txtbHo.Select(0, this.txtbHo.Text.Length);
+                this.err.SetIconPadding(this.txtbHo, -20);
                 err.SetError(this.txtbHo, "Lỗi");
+                toolTipCtrller.DefaultController.ShowHint("Họ không hợp lệ!", this.txtbHo, DevExpress.Utils.ToolTipLocation.TopRight);
             }
         }
 
@@ -384,11 +378,13 @@ namespace QLVT_PT_DevExpressPJ
 
         private void txtbTen_Validating(object sender, CancelEventArgs e)
         {
-            if (!this.txtbTen.Text.Trim().All(char.IsLetter))
+            if (!Regex.IsMatch(this.txtbTen.Text, Program.namePattern))
             {
                 e.Cancel = true;
                 this.txtbTen.Select(0, this.txtbTen.Text.Length);
+                this.err.SetIconPadding(this.txtbTen, -20);
                 err.SetError(this.txtbTen, "Lỗi");
+                toolTipCtrller.DefaultController.ShowHint("Tên không hợp lệ!", this.txtbTen, DevExpress.Utils.ToolTipLocation.TopRight);
             }
         }
 
@@ -433,18 +429,23 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnPhucHoiNV.Enabled = true;
             }
         }
+
+        private void cnGrCtrl_SizeChanged(object sender, EventArgs e)
+        {
+            this.panelCN.Left = (this.grCtrlCN.Width / 2) - (this.panelCN.Width / 2);
+        }
         #endregion
 
-        #region side functions
+        #region additional functions
         private void checkEmpty()
         {
             long luong;
             long.TryParse(this.txtbLuong.Text.Trim(), out luong);
             if (this.txtbMaNV.Text.Trim() == "" || this.txtbHo.Text.Trim() == "" ||
-               this.txtbTen.Text.Trim() == "" || this.dateEdNgaySinh.Text.Trim() == "" ||
+               this.txtbTen.Text.Trim() == "" || this.dateEdNgaySinh.Text == "" ||
                (this.txtbLuong.Text.Trim() == "" || luong < 4000000) || this.txtbDiaChi.Text.Trim() == "" ||
-               !this.txtbMaNV.Text.Trim().All(char.IsDigit) || !this.txtbHo.Text.Trim().All(char.IsLetter) ||
-               !this.txtbTen.Text.Trim().All(char.IsLetter) || this.txtbMaNV.ReadOnly == true)
+               !this.txtbMaNV.Text.Trim().All(char.IsDigit) || !Regex.IsMatch(this.txtbHo.Text, Program.namePattern) ||
+               !Regex.IsMatch(this.txtbTen.Text, Program.namePattern) || this.txtbMaNV.ReadOnly == true)
             {
                 this.btnGhiNV.Enabled = false;
                 if (tableStates.Count == 0)
@@ -524,8 +525,6 @@ namespace QLVT_PT_DevExpressPJ
             DataTable copied = this.qlvtDS.NhanVien.Copy();
             tableStates.Push(copied);
 
-        }
-
-        
+        }       
     }
 }

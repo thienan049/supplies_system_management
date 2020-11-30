@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace QLVT_PT_DevExpressPJ
 {
@@ -15,6 +16,7 @@ namespace QLVT_PT_DevExpressPJ
     {
         bool isAdding = false;
         bool isEditing = false;
+        string pattern = null;
         string maKhoSua = null;
         string tenKhoSua = null;
         int editPosition = -1;
@@ -25,6 +27,7 @@ namespace QLVT_PT_DevExpressPJ
         public formKho()
         {
             InitializeComponent();
+            this.panelCN.Left = (this.grCtrlCN.Width / 2) - (this.panelCN.Width / 2);
         }
 
         private void formKho_Load(object sender, EventArgs e)
@@ -76,6 +79,15 @@ namespace QLVT_PT_DevExpressPJ
 
                 }
             }
+
+            if (this.cbxTenCN_KHO.SelectedIndex == 0)
+            {
+                pattern = "^K\\d+N1$";
+            }
+            else
+            {
+                pattern = "^K\\d+N2$";
+            }
         }
 
         private void cbxTenCN_KHO_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,6 +121,14 @@ namespace QLVT_PT_DevExpressPJ
             {
                 this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.khoTableAdapter.Fill(this.qlvtDS.Kho);
+                if (this.cbxTenCN_KHO.SelectedIndex == 0)
+                {
+                    pattern = "^K\\d+N1$";
+                }
+                else
+                {
+                    pattern = "^K\\d+N2$";
+                }
             }
         }
 
@@ -118,12 +138,15 @@ namespace QLVT_PT_DevExpressPJ
             this.isAdding = true;
             //Console.WriteLine(this.qlvtDS.NhanVien.Count);
             //Console.WriteLine(this.nvBDS.Position);
+            string maKhoMoi = preparedMaKho();
             this.khoBDS.AddNew();
             this.txtbMaCN_Kho.Text = maCNThem;
-
+            this.txtbMaKho.Text = maKhoMoi;
+            
             this.btnThemKho.Enabled = this.btnSuaKho.Enabled = this.btnXoaKho.Enabled = false;
             writableKhoControl(1);
-            checkEmpty();
+            checkEmptyAndValid();
+            this.txtbMaKho.Select(0, this.txtbMaKho.Text.Length);
         }
 
         private void btnSuaKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -135,7 +158,7 @@ namespace QLVT_PT_DevExpressPJ
             this.editPosition = khoBDS.Position;
             this.btnThemKho.Enabled = this.btnSuaKho.Enabled = this.btnXoaKho.Enabled = false;
             writableKhoControl(1);
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void btnGhiKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -241,7 +264,6 @@ namespace QLVT_PT_DevExpressPJ
                 {
                     this.isEditing = false;
                 }
-
                 this.editPosition = -1;
                 this.maKhoSua = null;
                 this.tenKhoSua = null;
@@ -258,17 +280,17 @@ namespace QLVT_PT_DevExpressPJ
 
         private void txtbMaKho_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbTenKho_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbDiaChi_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void grdVwKho_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -277,25 +299,25 @@ namespace QLVT_PT_DevExpressPJ
             int[] selectedRowHandles = grdVwKho.GetSelectedRows();
             int columns = grdVwKho.Columns.Count();
 
-            bool checkEmptyCells = false;
+            bool checkEmptyAndValidCells = false;
             for (int i = 0; i < columns; i++)
             {
                 if (grdVwKho.GetRowCellValue(selectedRowHandles[0], grdVwKho.Columns[i]).ToString().Trim() == "")
                 {
-                    checkEmptyCells = true;
+                    checkEmptyAndValidCells = true;
                     break;
                 }
             }
 
-            if (((checkEmptyCells || (this.qlvtDS.NhanVien.Count - 1) == this.khoBDS.Position) && this.isAdding == true) || (this.khoBDS.Position == editPosition && this.isEditing == true))
+            if (((checkEmptyAndValidCells || (this.qlvtDS.NhanVien.Count - 1) == this.khoBDS.Position) && this.isAdding == true) || (this.khoBDS.Position == editPosition && this.isEditing == true))
             {
                 writableKhoControl(1);
-                checkEmpty();
+                checkEmptyAndValid();
             }
             else
             {
                 writableKhoControl(0);
-                checkEmpty();
+                checkEmptyAndValid();
             }
 
             if (tableStates.Count != 0)
@@ -303,14 +325,21 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnPhucHoiKho.Enabled = true;
             }
         }
+
+        private void grCtrlDSKho_SizeChanged(object sender, EventArgs e)
+        {
+            this.panelCN.Left = (this.grCtrlCN.Width / 2) - (this.panelCN.Width / 2);
+        }
         #endregion
 
-        #region side functions
-        private void checkEmpty()
-        {         
+        #region additional funtions
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////  Additional funtions  //////////////////////////////////////////////////////////////////////////////////
+        private void checkEmptyAndValid()
+        {           
             if (this.txtbMaKho.Text.Trim() == "" || this.txtbTenKho.Text.Trim() == "" ||
                this.txtbDiaChi.Text.Trim() == "" || this.txtbMaKho.ReadOnly == true ||
-               !this.txtbMaKho.Text.Trim().All(char.IsLetterOrDigit))
+               !Regex.IsMatch(this.txtbMaKho.Text, this.pattern))
             {
                 this.btnGhiKho.Enabled = false;
                 if (tableStates.Count == 0)
@@ -354,43 +383,43 @@ namespace QLVT_PT_DevExpressPJ
                     conflictErr = "Mã kho đã tồn tại!";
                     return true;
                 }
-                else if ((int)sqlcmd.ExecuteScalar() != 0 && this.txtbMaKho.Text.Trim() == maKhoSua && this.txtbTenKho.Text.Trim() == tenKhoSua)
+                else if ((int)sqlcmd.ExecuteScalar() != 0 && this.txtbMaKho.Text.Trim() == maKhoSua && this.txtbTenKho.Text.Trim().Equals(tenKhoSua, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictErr = string.Empty;
                     return false;
                 }
-                else if ((int)sqlcmd.ExecuteScalar() == 3 && this.txtbMaKho.Text.Trim() != maKhoSua && this.txtbTenKho.Text.Trim() != tenKhoSua)
+                else if ((int)sqlcmd.ExecuteScalar() == 3 && this.txtbMaKho.Text.Trim() != maKhoSua && !this.txtbTenKho.Text.Trim().Equals(tenKhoSua, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictErr = "Mã kho và tên kho đã tồn tại!";
                     return true;
                 }
-                else if ((int)sqlcmd.ExecuteScalar() == 2 && this.txtbMaKho.Text.Trim() != maKhoSua && this.txtbTenKho.Text.Trim() != tenKhoSua)
+                else if ((int)sqlcmd.ExecuteScalar() == 2 && this.txtbMaKho.Text.Trim() != maKhoSua && !this.txtbTenKho.Text.Trim().Equals(tenKhoSua, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictErr = "Tên kho đã tồn tại!";
                     return true;
                 }
-                else if ((int)sqlcmd.ExecuteScalar() == 1 && this.txtbMaKho.Text.Trim() != maKhoSua && this.txtbTenKho.Text.Trim() != tenKhoSua)
+                else if ((int)sqlcmd.ExecuteScalar() == 1 && this.txtbMaKho.Text.Trim() != maKhoSua && !this.txtbTenKho.Text.Trim().Equals(tenKhoSua, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictErr = "Mã kho đã tồn tại!";
                     return true;
                 }
 
-                else if ((int)sqlcmd.ExecuteScalar() == 3 && this.txtbMaKho.Text.Trim() == maKhoSua && this.txtbTenKho.Text.Trim() != tenKhoSua)
+                else if ((int)sqlcmd.ExecuteScalar() == 3 && this.txtbMaKho.Text.Trim() == maKhoSua && !this.txtbTenKho.Text.Trim().Equals(tenKhoSua, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictErr = "Tên kho đã tồn tại!";
                     return true;
                 }
-                else if ((int)sqlcmd.ExecuteScalar() == 3 && this.txtbMaKho.Text.Trim() != maKhoSua && this.txtbTenKho.Text.Trim() == tenKhoSua)
+                else if ((int)sqlcmd.ExecuteScalar() == 3 && this.txtbMaKho.Text.Trim() != maKhoSua && this.txtbTenKho.Text.Trim().Equals(tenKhoSua, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictErr = "Mã kho đã tồn tại!";
                     return true;
                 }
-                else if ((int)sqlcmd.ExecuteScalar() == 2 && this.txtbTenKho.Text.Trim() != tenKhoSua)
+                else if ((int)sqlcmd.ExecuteScalar() == 2 && !this.txtbTenKho.Text.Trim().Equals(tenKhoSua, StringComparison.OrdinalIgnoreCase))
                 {
-                    conflictErr = "Tên kho đã tồn tại!";
+                    conflictErr = "Tên kho đã tồn tại!"; 
                     return true;
                 }
-                else if ((int)sqlcmd.ExecuteScalar() == 2 && this.txtbTenKho.Text.Trim() == tenKhoSua)
+                else if ((int)sqlcmd.ExecuteScalar() == 2 && this.txtbTenKho.Text.Trim().Equals(tenKhoSua, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictErr = string.Empty;
                     return true;
@@ -430,13 +459,37 @@ namespace QLVT_PT_DevExpressPJ
             }
 
         }
-        #endregion
-
+        
         private void storeDtTbState()
         {
             DataTable copied = this.qlvtDS.Kho.Copy();
             tableStates.Push(copied);
+        }
 
-        }       
+        private string preparedMaKho() 
+        {
+            this.khoBDS.Sort = "MAKHO";
+            string value = ((DataRowView)this.khoBDS[this.khoBDS.Count - 1])["MAKHO"].ToString().Trim();
+            if (Regex.IsMatch(value, this.pattern))
+            {
+                int soKhoMoi; int.TryParse(value.Substring(1, value.IndexOf("N")-1), out soKhoMoi);
+                string err;
+                if(soKhoMoi < 9)
+                {
+                    soKhoMoi += 1;
+                }               
+                while (soKhoMoi < 9 && checkConflictedMaVaTenKho(("K" + soKhoMoi),"", out err))
+                {
+                    soKhoMoi += 1;
+                }
+                if(this.cbxTenCN_KHO.SelectedIndex == 0)
+                {
+                    return "K" + (soKhoMoi) + "N1";
+                }
+                return "K" + (soKhoMoi) + "N2";
+            }
+            return string.Empty;
+        }
+        #endregion
     }
 }

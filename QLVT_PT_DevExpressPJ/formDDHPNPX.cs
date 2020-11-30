@@ -49,6 +49,33 @@ namespace QLVT_PT_DevExpressPJ
             this.grBxPN.Visible = false;
             this.grBxPX.Visible = false;
             this.grBxDDH.Dock = DockStyle.Fill;
+
+            if (Program.mGroup == "CONGTY")
+            {
+                this.ddhContextMenu.Enabled = false;
+                this.ctddhContextMenu.Enabled = false;
+                this.pnContextMenu.Enabled = false;
+                this.ctpnContextMenu.Enabled = false;
+                this.pxContextMenu.Enabled = false;
+                this.ctpxContextMenu.Enabled = false;
+            }
+            else
+            {
+                this.ddhContextMenu.Enabled = true;
+                this.ctddhContextMenu.Enabled = true;
+                this.pnContextMenu.Enabled = true;
+                this.ctpnContextMenu.Enabled = true;
+                this.pxContextMenu.Enabled = true;
+                this.ctpxContextMenu.Enabled = true;
+                if (Program.mGroup == "CHINHANH")
+                {
+
+                }
+                else if (Program.mGroup == "USER")
+                {
+
+                }
+            }
         }
 
         private void btnPhieuNhap_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

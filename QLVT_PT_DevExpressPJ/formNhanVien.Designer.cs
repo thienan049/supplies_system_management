@@ -52,7 +52,8 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.cnGrCtrl = new DevExpress.XtraEditors.GroupControl();
+            this.grCtrlCN = new DevExpress.XtraEditors.GroupControl();
+            this.panelCN = new DevExpress.Utils.Layout.StackPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.cbxTenCN_NV = new System.Windows.Forms.ComboBox();
             this.toolTipCtrller = new DevExpress.Utils.DefaultToolTipController(this.components);
@@ -100,8 +101,10 @@
             lUONGLabel = new System.Windows.Forms.Label();
             mACNLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cnGrCtrl)).BeginInit();
-            this.cnGrCtrl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlCN)).BeginInit();
+            this.grCtrlCN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelCN)).BeginInit();
+            this.panelCN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nvBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBxEmployee)).BeginInit();
@@ -321,7 +324,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 588);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 567);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControlBottom.Size = new System.Drawing.Size(1154, 0);
@@ -333,7 +336,7 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 556);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 535);
             // 
             // barDockControlRight
             // 
@@ -342,7 +345,7 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1154, 32);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 556);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 535);
             // 
             // barButtonItem8
             // 
@@ -350,25 +353,35 @@
             this.barButtonItem8.Id = 8;
             this.barButtonItem8.Name = "barButtonItem8";
             // 
-            // cnGrCtrl
+            // grCtrlCN
             // 
-            this.cnGrCtrl.Controls.Add(this.label1);
-            this.cnGrCtrl.Controls.Add(this.cbxTenCN_NV);
-            this.cnGrCtrl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cnGrCtrl.Location = new System.Drawing.Point(0, 32);
-            this.cnGrCtrl.Margin = new System.Windows.Forms.Padding(4);
-            this.cnGrCtrl.Name = "cnGrCtrl";
-            this.cnGrCtrl.Size = new System.Drawing.Size(1154, 64);
-            this.cnGrCtrl.TabIndex = 4;
-            this.cnGrCtrl.Text = "Danh sách nhân viên ";
-            this.cnGrCtrl.ToolTipController = this.toolTipCtrller.DefaultController;
+            this.grCtrlCN.Controls.Add(this.panelCN);
+            this.grCtrlCN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grCtrlCN.Location = new System.Drawing.Point(0, 32);
+            this.grCtrlCN.Margin = new System.Windows.Forms.Padding(4);
+            this.grCtrlCN.Name = "grCtrlCN";
+            this.grCtrlCN.Size = new System.Drawing.Size(1154, 64);
+            this.grCtrlCN.TabIndex = 4;
+            this.grCtrlCN.Text = "Danh sách nhân viên ";
+            this.grCtrlCN.ToolTipController = this.toolTipCtrller.DefaultController;
+            this.grCtrlCN.SizeChanged += new System.EventHandler(this.cnGrCtrl_SizeChanged);
+            // 
+            // panelCN
+            // 
+            this.toolTipCtrller.SetAllowHtmlText(this.panelCN, DevExpress.Utils.DefaultBoolean.Default);
+            this.panelCN.Controls.Add(this.label1);
+            this.panelCN.Controls.Add(this.cbxTenCN_NV);
+            this.panelCN.Location = new System.Drawing.Point(213, 29);
+            this.panelCN.Name = "panelCN";
+            this.panelCN.Size = new System.Drawing.Size(410, 30);
+            this.panelCN.TabIndex = 18;
             // 
             // label1
             // 
             this.toolTipCtrller.SetAllowHtmlText(this.label1, DevExpress.Utils.DefaultBoolean.Default);
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 36);
+            this.label1.Location = new System.Drawing.Point(4, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 14);
@@ -380,7 +393,7 @@
             this.toolTipCtrller.SetAllowHtmlText(this.cbxTenCN_NV, DevExpress.Utils.DefaultBoolean.Default);
             this.cbxTenCN_NV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTenCN_NV.FormattingEnabled = true;
-            this.cbxTenCN_NV.Location = new System.Drawing.Point(133, 33);
+            this.cbxTenCN_NV.Location = new System.Drawing.Point(109, 4);
             this.cbxTenCN_NV.Margin = new System.Windows.Forms.Padding(4);
             this.cbxTenCN_NV.Name = "cbxTenCN_NV";
             this.cbxTenCN_NV.Size = new System.Drawing.Size(289, 21);
@@ -434,7 +447,6 @@
             this.txtbLuong.Size = new System.Drawing.Size(100, 21);
             this.txtbLuong.TabIndex = 11;
             this.txtbLuong.TextChanged += new System.EventHandler(this.txtbLuong_TextChanged);
-            this.txtbLuong.Enter += new System.EventHandler(this.txtbLuong_Enter);
             this.txtbLuong.Validating += new System.ComponentModel.CancelEventHandler(this.txtbLuong_Validating);
             this.txtbLuong.Validated += new System.EventHandler(this.txtbLuong_Validated);
             // 
@@ -476,7 +488,6 @@
             this.txtbMaNV.Size = new System.Drawing.Size(100, 21);
             this.txtbMaNV.TabIndex = 1;
             this.txtbMaNV.TextChanged += new System.EventHandler(this.txtbMaNV_TextChanged);
-            this.txtbMaNV.Enter += new System.EventHandler(this.txtbMaNV_Enter);
             this.txtbMaNV.Validating += new System.ComponentModel.CancelEventHandler(this.txtbMaNV_Validating);
             this.txtbMaNV.Validated += new System.EventHandler(this.txtbMaNV_Validated);
             // 
@@ -675,7 +686,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 344);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1154, 244);
+            this.groupControl2.Size = new System.Drawing.Size(1154, 223);
             this.groupControl2.TabIndex = 14;
             this.groupControl2.Text = "Thông tin nhân viên";
             this.groupControl2.ToolTipController = this.toolTipCtrller.DefaultController;
@@ -740,10 +751,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1154, 588);
+            this.ClientSize = new System.Drawing.Size(1154, 567);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.nhanVienGridControl);
-            this.Controls.Add(this.cnGrCtrl);
+            this.Controls.Add(this.grCtrlCN);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -754,9 +765,11 @@
             this.Text = "Quản lý nhân viên";
             this.Load += new System.EventHandler(this.formNV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cnGrCtrl)).EndInit();
-            this.cnGrCtrl.ResumeLayout(false);
-            this.cnGrCtrl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlCN)).EndInit();
+            this.grCtrlCN.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelCN)).EndInit();
+            this.panelCN.ResumeLayout(false);
+            this.panelCN.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nvBDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBxEmployee)).EndInit();
@@ -796,7 +809,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraEditors.GroupControl cnGrCtrl;
+        private DevExpress.XtraEditors.GroupControl grCtrlCN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbxTenCN_NV;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
@@ -837,5 +850,6 @@
         private QLVTDataSetTableAdapters.CTPNTableAdapter cTPNTableAdapter;
         private System.Windows.Forms.BindingSource ctddhBDS;
         private QLVTDataSetTableAdapters.CTDDHTableAdapter cTDDHTableAdapter;
+        private DevExpress.Utils.Layout.StackPanel panelCN;
     }
 }

@@ -24,6 +24,7 @@ namespace QLVT_PT_DevExpressPJ
         public formVatTu()
         {
             InitializeComponent();
+            this.panelCN.Left = (this.grCtrlCN.Width / 2) - (this.panelCN.Width / 2);
         }
 
         private void formVatTu_Load(object sender, EventArgs e)
@@ -45,6 +46,11 @@ namespace QLVT_PT_DevExpressPJ
             this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
             this.cTPXTableAdapter.Fill(this.qlvtDS.CTPX);
 
+            cbxTenCN_VATTU.DataSource = Program.bds_dspm;
+            cbxTenCN_VATTU.DisplayMember = "TENCN";
+            cbxTenCN_VATTU.ValueMember = "TENSERVER";
+            cbxTenCN_VATTU.SelectedIndex = Program.mChinhanh;
+
             if (Program.mGroup == "CONGTY")
             {
                 this.btnThemVT.Enabled = false;
@@ -54,7 +60,8 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnPhucHoiVT.Enabled = false;
             }
             else
-            {             
+            {
+                cbxTenCN_VATTU.Enabled = false;
                 this.btnGhiVT.Enabled = false;
                 this.btnPhucHoiVT.Enabled = false;
                 if (Program.mGroup == "CHINHANH")
@@ -65,6 +72,48 @@ namespace QLVT_PT_DevExpressPJ
                 {
 
                 }
+            }
+        }
+
+        private void cbxTenCN_VATTU_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbxTenCN_VATTU.SelectedValue.ToString() == "System.Data.DataRowView")
+                {
+                    return;
+                }
+                Program.servername = cbxTenCN_VATTU.SelectedValue.ToString();
+            }
+            catch (Exception ex) { Console.Write(ex.Message); }
+
+            if (cbxTenCN_VATTU.SelectedIndex != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.vattuTableAdapter.Fill(this.qlvtDS.Vattu);
+                //if (this.cbxTenCN_VATTU.SelectedIndex == 0)
+                //{
+                //    pattern = "^K\\d+N1$";
+                //}
+                //else
+                //{
+                //    pattern = "^K\\d+N2$";
+                //}
             }
         }
 
@@ -234,7 +283,7 @@ namespace QLVT_PT_DevExpressPJ
             if (!this.txtbMaVT.Text.Trim().All(char.IsLetterOrDigit))
             {
                 e.Cancel = true;
-                this.txtbMaVT.Select(0, this.txtbMaVT.Text.Length);
+               // this.txtbMaVT.Select(0, this.txtbMaVT.Text.Length);
                 err.SetError(this.txtbMaVT, "Lỗi");
             }
         }
@@ -301,7 +350,7 @@ namespace QLVT_PT_DevExpressPJ
         }
         #endregion
 
-        #region side functions
+        #region additional functions
         private bool checkConflictedMaVaTenVT(string maVTMoi, string tenVTMoi, out string conflictErr)
         {
             try
@@ -431,6 +480,6 @@ namespace QLVT_PT_DevExpressPJ
         {
             DataTable copied = this.qlvtDS.Vattu.Copy();
             tableStates.Push(copied);
-        }     
+        }        
     }
 }

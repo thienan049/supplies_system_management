@@ -65,6 +65,11 @@
             this.cTPNTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTPNTableAdapter();
             this.ctddhBDS = new System.Windows.Forms.BindingSource(this.components);
             this.cTDDHTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTDDHTableAdapter();
+            this.grCtrlCN = new DevExpress.XtraEditors.GroupControl();
+            this.grBxCN = new System.Windows.Forms.GroupBox();
+            this.panelCN = new DevExpress.Utils.Layout.StackPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbxTenCN_VATTU = new System.Windows.Forms.ComboBox();
             mAVTLabel = new System.Windows.Forms.Label();
             tENVTLabel = new System.Windows.Forms.Label();
             dVTLabel1 = new System.Windows.Forms.Label();
@@ -78,12 +83,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.ctpxBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctpnBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlCN)).BeginInit();
+            this.grCtrlCN.SuspendLayout();
+            this.grBxCN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelCN)).BeginInit();
+            this.panelCN.SuspendLayout();
             this.SuspendLayout();
             // 
             // mAVTLabel
             // 
             mAVTLabel.AutoSize = true;
-            mAVTLabel.Location = new System.Drawing.Point(30, 60);
+            mAVTLabel.Location = new System.Drawing.Point(17, 77);
             mAVTLabel.Name = "mAVTLabel";
             mAVTLabel.Size = new System.Drawing.Size(40, 13);
             mAVTLabel.TabIndex = 0;
@@ -92,7 +102,7 @@
             // tENVTLabel
             // 
             tENVTLabel.AutoSize = true;
-            tENVTLabel.Location = new System.Drawing.Point(26, 147);
+            tENVTLabel.Location = new System.Drawing.Point(13, 164);
             tENVTLabel.Name = "tENVTLabel";
             tENVTLabel.Size = new System.Drawing.Size(44, 13);
             tENVTLabel.TabIndex = 2;
@@ -101,7 +111,7 @@
             // dVTLabel1
             // 
             dVTLabel1.AutoSize = true;
-            dVTLabel1.Location = new System.Drawing.Point(28, 102);
+            dVTLabel1.Location = new System.Drawing.Point(15, 119);
             dVTLabel1.Name = "dVTLabel1";
             dVTLabel1.Size = new System.Drawing.Size(42, 13);
             dVTLabel1.TabIndex = 6;
@@ -212,15 +222,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1008, 32);
+            this.barDockControlTop.Size = new System.Drawing.Size(892, 32);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 410);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 454);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1008, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(892, 0);
             // 
             // barDockControlLeft
             // 
@@ -228,15 +238,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 378);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 422);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1008, 32);
+            this.barDockControlRight.Location = new System.Drawing.Point(892, 32);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 378);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 422);
             // 
             // qlvtDS
             // 
@@ -270,12 +280,12 @@
             // vattuGridControl
             // 
             this.vattuGridControl.DataSource = this.vtBDS;
-            this.vattuGridControl.Dock = System.Windows.Forms.DockStyle.Left;
-            this.vattuGridControl.Location = new System.Drawing.Point(0, 32);
+            this.vattuGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vattuGridControl.Location = new System.Drawing.Point(2, 64);
             this.vattuGridControl.MainView = this.grdVwVT;
             this.vattuGridControl.MenuManager = this.barManager1;
             this.vattuGridControl.Name = "vattuGridControl";
-            this.vattuGridControl.Size = new System.Drawing.Size(647, 378);
+            this.vattuGridControl.Size = new System.Drawing.Size(675, 356);
             this.vattuGridControl.TabIndex = 5;
             this.vattuGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdVwVT});
@@ -327,9 +337,9 @@
             this.groupControl1.Controls.Add(mAVTLabel);
             this.groupControl1.Controls.Add(this.txtbMaVT);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(647, 32);
+            this.groupControl1.Location = new System.Drawing.Point(679, 32);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(361, 378);
+            this.groupControl1.Size = new System.Drawing.Size(213, 422);
             this.groupControl1.TabIndex = 6;
             this.groupControl1.Text = "Thông tin vật tư";
             // 
@@ -342,7 +352,7 @@
             this.cbxDonVi.Items.AddRange(new object[] {
             "Cái",
             "test"});
-            this.cbxDonVi.Location = new System.Drawing.Point(74, 99);
+            this.cbxDonVi.Location = new System.Drawing.Point(61, 116);
             this.cbxDonVi.Name = "cbxDonVi";
             this.cbxDonVi.Size = new System.Drawing.Size(96, 21);
             this.cbxDonVi.TabIndex = 7;
@@ -353,7 +363,7 @@
             // txtbTenVT
             // 
             this.txtbTenVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vtBDS, "TENVT", true));
-            this.txtbTenVT.Location = new System.Drawing.Point(74, 144);
+            this.txtbTenVT.Location = new System.Drawing.Point(61, 161);
             this.txtbTenVT.MaxLength = 30;
             this.txtbTenVT.Name = "txtbTenVT";
             this.txtbTenVT.ReadOnly = true;
@@ -367,7 +377,7 @@
             // 
             this.txtbMaVT.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtbMaVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vtBDS, "MAVT", true));
-            this.txtbMaVT.Location = new System.Drawing.Point(74, 57);
+            this.txtbMaVT.Location = new System.Drawing.Point(61, 74);
             this.txtbMaVT.MaxLength = 4;
             this.txtbMaVT.Name = "txtbMaVT";
             this.txtbMaVT.ReadOnly = true;
@@ -404,13 +414,65 @@
             // 
             this.cTDDHTableAdapter.ClearBeforeFill = true;
             // 
+            // grCtrlCN
+            // 
+            this.grCtrlCN.Controls.Add(this.vattuGridControl);
+            this.grCtrlCN.Controls.Add(this.grBxCN);
+            this.grCtrlCN.Dock = System.Windows.Forms.DockStyle.Left;
+            this.grCtrlCN.Location = new System.Drawing.Point(0, 32);
+            this.grCtrlCN.Name = "grCtrlCN";
+            this.grCtrlCN.Size = new System.Drawing.Size(679, 422);
+            this.grCtrlCN.TabIndex = 11;
+            this.grCtrlCN.Text = "Danh sách vật tư";
+            // 
+            // grBxCN
+            // 
+            this.grBxCN.Controls.Add(this.panelCN);
+            this.grBxCN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grBxCN.Location = new System.Drawing.Point(2, 23);
+            this.grBxCN.Name = "grBxCN";
+            this.grBxCN.Size = new System.Drawing.Size(675, 41);
+            this.grBxCN.TabIndex = 0;
+            this.grBxCN.TabStop = false;
+            // 
+            // panelCN
+            // 
+            this.panelCN.Controls.Add(this.label2);
+            this.panelCN.Controls.Add(this.cbxTenCN_VATTU);
+            this.panelCN.Location = new System.Drawing.Point(134, 11);
+            this.panelCN.Name = "panelCN";
+            this.panelCN.Size = new System.Drawing.Size(383, 28);
+            this.panelCN.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(4, 7);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 14);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Tên chi nhánh:";
+            // 
+            // cbxTenCN_VATTU
+            // 
+            this.cbxTenCN_VATTU.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTenCN_VATTU.FormattingEnabled = true;
+            this.cbxTenCN_VATTU.Location = new System.Drawing.Point(109, 3);
+            this.cbxTenCN_VATTU.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxTenCN_VATTU.Name = "cbxTenCN_VATTU";
+            this.cbxTenCN_VATTU.Size = new System.Drawing.Size(265, 21);
+            this.cbxTenCN_VATTU.TabIndex = 2;
+            this.cbxTenCN_VATTU.SelectedIndexChanged += new System.EventHandler(this.cbxTenCN_VATTU_SelectedIndexChanged);
+            // 
             // formVatTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 410);
+            this.ClientSize = new System.Drawing.Size(892, 454);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.vattuGridControl);
+            this.Controls.Add(this.grCtrlCN);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -429,6 +491,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.ctpxBDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctpnBDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlCN)).EndInit();
+            this.grCtrlCN.ResumeLayout(false);
+            this.grBxCN.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelCN)).EndInit();
+            this.panelCN.ResumeLayout(false);
+            this.panelCN.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,5 +536,10 @@
         private QLVTDataSetTableAdapters.CTDDHTableAdapter cTDDHTableAdapter;
         private System.Windows.Forms.ComboBox cbxDonVi;
         private DevExpress.XtraBars.BarButtonItem btnSuaVT;
+        private System.Windows.Forms.GroupBox grBxCN;
+        private DevExpress.XtraEditors.GroupControl grCtrlCN;
+        private DevExpress.Utils.Layout.StackPanel panelCN;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbxTenCN_VATTU;
     }
 }
