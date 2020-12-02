@@ -24,10 +24,12 @@ namespace QLVT_PT_DevExpressPJ
         ErrorProvider err = new ErrorProvider();      
         Stack<DataTable> tableStates = new Stack<DataTable>();
 
+        #region form loading
         public formKho()
         {
             InitializeComponent();
             this.panelCN.Left = (this.grCtrlCN.Width / 2) - (this.panelCN.Width / 2);
+            err.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         }
 
         private void formKho_Load(object sender, EventArgs e)
@@ -82,56 +84,15 @@ namespace QLVT_PT_DevExpressPJ
 
             if (this.cbxTenCN_KHO.SelectedIndex == 0)
             {
-                pattern = "^K\\d+N1$";
+                pattern = Program.maKhoPattern("1");
             }
             else
             {
-                pattern = "^K\\d+N2$";
+                pattern = Program.maKhoPattern("2");
             }
         }
-
-        private void cbxTenCN_KHO_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (cbxTenCN_KHO.SelectedValue.ToString() == "System.Data.DataRowView")
-                {
-                    return;
-                }
-                Program.servername = cbxTenCN_KHO.SelectedValue.ToString();
-            }
-            catch (Exception ex) { Console.Write(ex.Message); }
-
-            if (cbxTenCN_KHO.SelectedIndex != Program.mChinhanh)
-            {
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-            }
-            else
-            {
-                Program.mlogin = Program.mloginDN;
-                Program.password = Program.passwordDN;
-            }
-
-            if (Program.KetNoi() == 0)
-            {
-                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
-            }
-            else
-            {
-                this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.khoTableAdapter.Fill(this.qlvtDS.Kho);
-                if (this.cbxTenCN_KHO.SelectedIndex == 0)
-                {
-                    pattern = "^K\\d+N1$";
-                }
-                else
-                {
-                    pattern = "^K\\d+N2$";
-                }
-            }
-        }
-
+        #endregion
+       
         #region action buttons event handling
         private void btnThemKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -277,7 +238,6 @@ namespace QLVT_PT_DevExpressPJ
         #endregion
 
         #region additional events
-
         private void txtbMaKho_TextChanged(object sender, EventArgs e)
         {
             checkEmptyAndValid();
@@ -293,23 +253,64 @@ namespace QLVT_PT_DevExpressPJ
             checkEmptyAndValid();
         }
 
+        private void cbxTenCN_KHO_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbxTenCN_KHO.SelectedValue.ToString() == "System.Data.DataRowView")
+                {
+                    return;
+                }
+                Program.servername = cbxTenCN_KHO.SelectedValue.ToString();
+            }
+            catch (Exception ex) { Console.Write(ex.Message); }
+
+            if (cbxTenCN_KHO.SelectedIndex != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.khoTableAdapter.Fill(this.qlvtDS.Kho);
+                if (this.cbxTenCN_KHO.SelectedIndex == 0)
+                {
+                    pattern = Program.maKhoPattern("1");
+                }
+                else
+                {
+                    pattern = Program.maKhoPattern("2");
+                }
+            }
+        }
+
         private void grdVwKho_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             this.err.Dispose();
-            int[] selectedRowHandles = grdVwKho.GetSelectedRows();
-            int columns = grdVwKho.Columns.Count();
+            int columns = grdVwKho.Columns.Count();       
+            bool checkEmptyCells = false;
 
-            bool checkEmptyAndValidCells = false;
             for (int i = 0; i < columns; i++)
             {
-                if (grdVwKho.GetRowCellValue(selectedRowHandles[0], grdVwKho.Columns[i]).ToString().Trim() == "")
+                if (((DataRowView)khoBDS[khoBDS.Position])[i].ToString().Trim() == string.Empty)
                 {
-                    checkEmptyAndValidCells = true;
+                    checkEmptyCells = true;
                     break;
                 }
             }
 
-            if (((checkEmptyAndValidCells || (this.qlvtDS.NhanVien.Count - 1) == this.khoBDS.Position) && this.isAdding == true) || (this.khoBDS.Position == editPosition && this.isEditing == true))
+            if (((checkEmptyCells || (this.qlvtDS.NhanVien.Count - 1) == this.khoBDS.Position) && this.isAdding == true) || (this.khoBDS.Position == editPosition && this.isEditing == true))
             {
                 writableKhoControl(1);
                 checkEmptyAndValid();
@@ -332,9 +333,7 @@ namespace QLVT_PT_DevExpressPJ
         }
         #endregion
 
-        #region additional funtions
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional funtions  //////////////////////////////////////////////////////////////////////////////////
+        #region additional funtions   
         private void checkEmptyAndValid()
         {           
             if (this.txtbMaKho.Text.Trim() == "" || this.txtbTenKho.Text.Trim() == "" ||
@@ -472,11 +471,20 @@ namespace QLVT_PT_DevExpressPJ
             string value = ((DataRowView)this.khoBDS[this.khoBDS.Count - 1])["MAKHO"].ToString().Trim();
             if (Regex.IsMatch(value, this.pattern))
             {
+                char kyTuMakhoMoi = Convert.ToChar(value.Substring(0, 1));
                 int soKhoMoi; int.TryParse(value.Substring(1, value.IndexOf("N")-1), out soKhoMoi);
                 string err;
                 if(soKhoMoi < 9)
                 {
                     soKhoMoi += 1;
+                }
+                else
+                {
+                    if(kyTuMakhoMoi < 'Z')
+                    {
+                        kyTuMakhoMoi++;
+                        soKhoMoi = 1;
+                    }                  
                 }               
                 while (soKhoMoi < 9 && checkConflictedMaVaTenKho(("K" + soKhoMoi),"", out err))
                 {
@@ -484,9 +492,9 @@ namespace QLVT_PT_DevExpressPJ
                 }
                 if(this.cbxTenCN_KHO.SelectedIndex == 0)
                 {
-                    return "K" + (soKhoMoi) + "N1";
+                    return kyTuMakhoMoi.ToString() + (soKhoMoi) + "N1";
                 }
-                return "K" + (soKhoMoi) + "N2";
+                return kyTuMakhoMoi.ToString() + (soKhoMoi) + "N2";
             }
             return string.Empty;
         }

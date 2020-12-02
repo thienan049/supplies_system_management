@@ -23,6 +23,7 @@ namespace QLVT_PT_DevExpressPJ
         ErrorProvider err = new ErrorProvider();
         Stack<DataTable> tableStates = new Stack<DataTable>();
 
+        #region form loading 
         public formNhanVien()
         {
             InitializeComponent();
@@ -60,15 +61,14 @@ namespace QLVT_PT_DevExpressPJ
 
             // TODO: This line of code loads data into the 'qlvtDS.CTPX' table. You can move, or remove it, as needed.
             this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.cTPXTableAdapter.Fill(this.qlvtDS.CTPX);
-            
+            this.cTPXTableAdapter.Fill(this.qlvtDS.CTPX);           
 
             cbxTenCN_NV.DataSource = Program.bds_dspm;
             cbxTenCN_NV.DisplayMember = "TENCN";
             cbxTenCN_NV.ValueMember = "TENSERVER";
             cbxTenCN_NV.SelectedIndex = Program.mChinhanh;
-
             this.lblHint.Visible = false;
+
             if(Program.mGroup == "CONGTY")
             {
                 cbxTenCN_NV.Enabled = true;
@@ -92,60 +92,23 @@ namespace QLVT_PT_DevExpressPJ
 
                 }
             }
-        }
-
-        private void cbxTenCN_NV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (cbxTenCN_NV.SelectedValue.ToString() == "System.Data.DataRowView")
-                {
-                    return;
-                }
-                Program.servername = cbxTenCN_NV.SelectedValue.ToString();
-            }
-            catch (Exception ex){ Console.Write(ex.Message); }
-                      
-            if(cbxTenCN_NV.SelectedIndex != Program.mChinhanh)
-            {
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-            }
-            else
-            {
-                Program.mlogin = Program.mloginDN;
-                Program.password = Program.passwordDN;
-            }
-
-            if(Program.KetNoi() == 0)
-            {
-                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
-            }else
-            {
-                this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.nhanVienTableAdapter.Fill(this.qlvtDS.NhanVien);
-               
-                this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.datHangTableAdapter.Fill(this.qlvtDS.DatHang);
-               
-                this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.phieuNhapTableAdapter.Fill(this.qlvtDS.PhieuNhap);
-            }
-        }
+        }       
+        #endregion
 
         #region action buttons event handling
         private void btnThemNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.isAdding = true;
-            //Console.WriteLine(this.qlvtDS.NhanVien.Count);
-            //Console.WriteLine(this.nvBDS.Position);
+            string maNVMoi = preparedMaNV();
             this.nvBDS.AddNew();
             this.txtbMaCN_NV.Text = maCNThem;
-        
+            this.txtbMaNV.Text = maNVMoi;
+            this.txtbMaNV.Select(0, this.txtbMaNV.Text.Length);
+
             this.lblHint.Visible = true;
             this.btnThemNV.Enabled = this.btnSuaNV.Enabled = this.btnXoaNV.Enabled = false;
             writableNVControl(1);
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void btnSuaNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -156,14 +119,15 @@ namespace QLVT_PT_DevExpressPJ
             this.editPosition = nvBDS.Position;
             this.btnThemNV.Enabled = this.btnSuaNV.Enabled = this.btnXoaNV.Enabled = false;
             writableNVControl(1);
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void btnGhiNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (checkConflictedMaNV(this.txtbMaNV.Text.Trim()))
+            string conflictErr = string.Empty;
+            if (checkConflictedMaNV(this.txtbMaNV.Text.Trim(), out conflictErr))
             {
-                MessageBox.Show("Mã nhân viên đã tồn tại.", "Lỗi cơ sở dữ liệu", MessageBoxButtons.OK);
+                MessageBox.Show(conflictErr, "Lỗi cơ sở dữ liệu", MessageBoxButtons.OK);
                 return;
             }
             else
@@ -295,32 +259,32 @@ namespace QLVT_PT_DevExpressPJ
         #region additional events
         private void txtbMaNV_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();           
+            checkEmptyAndValid();           
         }
 
         private void txtbHo_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbTen_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void dateEdNgaySinh_EditValueChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbLuong_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbDiaChi_EditValueChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbMaNV_Validating(object sender, CancelEventArgs e)
@@ -391,20 +355,58 @@ namespace QLVT_PT_DevExpressPJ
         private void txtbTen_Validated(object sender, EventArgs e)
         {
             err.SetError(this.txtbTen, String.Empty);
+        }       
+
+        private void cbxTenCN_NV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbxTenCN_NV.SelectedValue.ToString() == "System.Data.DataRowView")
+                {
+                    return;
+                }
+                Program.servername = cbxTenCN_NV.SelectedValue.ToString();
+            }
+            catch (Exception ex) { Console.Write(ex.Message); }
+
+            if (cbxTenCN_NV.SelectedIndex != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.nhanVienTableAdapter.Fill(this.qlvtDS.NhanVien);
+
+                this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.datHangTableAdapter.Fill(this.qlvtDS.DatHang);
+
+                this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.phieuNhapTableAdapter.Fill(this.qlvtDS.PhieuNhap);
+            }
         }
 
         private void grdVwNV_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {         
-            this.err.Dispose();
-            int[] selectedRowHandles = grdVwNV.GetSelectedRows();
+        {
             int columns = grdVwNV.Columns.Count();
-
             bool checkEmptyCells = false;
+
             for (int i = 0; i < columns; i++)
             {
                 try
                 {
-                    if (grdVwNV.GetRowCellValue(selectedRowHandles[0], grdVwNV.Columns[i]).ToString().Trim() == "")
+                    if (((DataRowView)nvBDS[nvBDS.Position])[i].ToString().Trim() == string.Empty)
                     {
                         checkEmptyCells = true;
                         break;
@@ -416,12 +418,12 @@ namespace QLVT_PT_DevExpressPJ
             if (((checkEmptyCells || (this.qlvtDS.NhanVien.Count - 1) == this.nvBDS.Position) && this.isAdding == true) || (this.nvBDS.Position == editPosition && this.isEditing == true))
             {
                 writableNVControl(1);
-                checkEmpty();
+                checkEmptyAndValid();
             }
             else
             {
                 writableNVControl(0);
-                checkEmpty();
+                checkEmptyAndValid();
             }
 
             if (tableStates.Count != 0)
@@ -437,14 +439,15 @@ namespace QLVT_PT_DevExpressPJ
         #endregion
 
         #region additional functions
-        private void checkEmpty()
+        private void checkEmptyAndValid()
         {
             long luong;
             long.TryParse(this.txtbLuong.Text.Trim(), out luong);
             if (this.txtbMaNV.Text.Trim() == "" || this.txtbHo.Text.Trim() == "" ||
-               this.txtbTen.Text.Trim() == "" || this.dateEdNgaySinh.Text == "" ||
-               (this.txtbLuong.Text.Trim() == "" || luong < 4000000) || this.txtbDiaChi.Text.Trim() == "" ||
-               !this.txtbMaNV.Text.Trim().All(char.IsDigit) || !Regex.IsMatch(this.txtbHo.Text, Program.namePattern) ||
+               this.txtbTen.Text.Trim() == "" || this.dateEdNgaySinh.Text == "" || this.txtbDiaChi.Text.Trim() == "" ||
+               this.txtbLuong.Text.Trim() == "" || luong < 4000000 || 
+               !this.txtbMaNV.Text.Trim().All(char.IsDigit) || 
+               !Regex.IsMatch(this.txtbHo.Text, Program.namePattern) ||
                !Regex.IsMatch(this.txtbTen.Text, Program.namePattern) || this.txtbMaNV.ReadOnly == true)
             {
                 this.btnGhiNV.Enabled = false;
@@ -459,12 +462,11 @@ namespace QLVT_PT_DevExpressPJ
                 if(tableStates.Count != 0)
                 {
                     this.btnPhucHoiNV.Enabled = true;
-                }
-                
+                }                
             }
         }
 
-        private bool checkConflictedMaNV(String maNVMoi)
+        private bool checkConflictedMaNV(String maNVMoi, out string conflictErr)
         {
             try
             {
@@ -475,24 +477,94 @@ namespace QLVT_PT_DevExpressPJ
                     Program.conn.Open();
                 }
 
-                if ((int)sqlcmd.ExecuteScalar() == 1 && maNVSua == -1)
+                if ((int)sqlcmd.ExecuteScalar() == 0 && maNVSua == -1)
                 {
-                    return true;
+                    conflictErr = string.Empty;
+                    return false;
+                }
+                else if ((int)sqlcmd.ExecuteScalar() == 1 && maNVSua == -1)
+                {
+                    if (this.cbxTenCN_NV.SelectedIndex == 0)
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh này!";
+                        return true;
+                    }
+                    else
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh khác!";
+                        return true;
+                    }
+                }
+                else if ((int)sqlcmd.ExecuteScalar() == 2 && maNVSua == -1)
+                {
+                    if (this.cbxTenCN_NV.SelectedIndex == 0)
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh khác!";
+                        return true;
+                    }
+                    else
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh này!";
+                        return true;
+                    }
                 }
                 else if ((int)sqlcmd.ExecuteScalar() == 1 && maNVSua != -1 && this.txtbMaNV.Text != maNVSua.ToString())
                 {
-                    return true;
+                    if (this.cbxTenCN_NV.SelectedIndex == 0)
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh này!";
+                        return true;
+                    }
+                    else
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh khác!";
+                        return true;
+                    }
                 }
                 else if ((int)sqlcmd.ExecuteScalar() == 1 && maNVSua != -1 && this.txtbMaNV.Text == maNVSua.ToString())
                 {
-                    return false;
+                    if(this.cbxTenCN_NV.SelectedIndex == 0)
+                    {
+                        conflictErr = string.Empty;
+                        return false;
+                    }else
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh khác!";
+                        return true;
+                    }                   
                 }
-                    
+                else if ((int)sqlcmd.ExecuteScalar() == 2 && maNVSua != -1 && this.txtbMaNV.Text != maNVSua.ToString())
+                {
+                    if (this.cbxTenCN_NV.SelectedIndex == 0)
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh khác!";
+                        return true;
+                    }
+                    else
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh này!";
+                        return true;
+                    }
+                }
+                else if ((int)sqlcmd.ExecuteScalar() == 2 && maNVSua != -1 && this.txtbMaNV.Text == maNVSua.ToString())
+                {
+                    if (this.cbxTenCN_NV.SelectedIndex == 0)
+                    {
+                        conflictErr = "Mã nhân viên đã tồn tại ở chi nhánh khác!";
+                        return true;                       
+                    }
+                    else
+                    {
+                        conflictErr = string.Empty;
+                        return false;
+                    }
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show(this, "Lỗi: " + e.Message, "Có lỗi xảy ra", MessageBoxButtons.OK); 
             }
+            conflictErr = string.Empty;
             return false;
         }
 
@@ -515,16 +587,32 @@ namespace QLVT_PT_DevExpressPJ
                 this.dateEdNgaySinh.ReadOnly = true;
                 this.txtbLuong.ReadOnly = true;
                 this.txtbDiaChi.ReadOnly = true;
-            }
-            
+            }          
         }
-        #endregion
+
+        private string preparedMaNV()
+        {
+            this.nvBDS.Sort = "MANV";
+            string value = ((DataRowView)this.nvBDS[this.nvBDS.Count - 1])["MANV"].ToString().Trim();
+            if (value.All(char.IsDigit))
+            {
+                string err;
+                int maNVMoi; int.TryParse(value, out maNVMoi);
+                maNVMoi += 1;
+                while (checkConflictedMaNV(maNVMoi.ToString(), out err))
+                {
+                    maNVMoi += 1;
+                }
+                return maNVMoi.ToString();
+            }
+            return string.Empty;
+        }
 
         private void storeDtTbState()
         {
             DataTable copied = this.qlvtDS.NhanVien.Copy();
             tableStates.Push(copied);
-
-        }       
+        }
+        #endregion
     }
 }

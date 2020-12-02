@@ -195,7 +195,7 @@
             this.toolTipCtrller.SetAllowHtmlText(mACNLabel, DevExpress.Utils.DefaultBoolean.Default);
             mACNLabel.AutoSize = true;
             mACNLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mACNLabel.Location = new System.Drawing.Point(3, 24);
+            mACNLabel.Location = new System.Drawing.Point(2, 25);
             mACNLabel.Name = "mACNLabel";
             mACNLabel.Size = new System.Drawing.Size(49, 14);
             mACNLabel.TabIndex = 12;
@@ -392,11 +392,12 @@
             // 
             this.toolTipCtrller.SetAllowHtmlText(this.cbxTenCN_NV, DevExpress.Utils.DefaultBoolean.Default);
             this.cbxTenCN_NV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTenCN_NV.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxTenCN_NV.FormattingEnabled = true;
             this.cbxTenCN_NV.Location = new System.Drawing.Point(109, 4);
             this.cbxTenCN_NV.Margin = new System.Windows.Forms.Padding(4);
             this.cbxTenCN_NV.Name = "cbxTenCN_NV";
-            this.cbxTenCN_NV.Size = new System.Drawing.Size(289, 21);
+            this.cbxTenCN_NV.Size = new System.Drawing.Size(289, 22);
             this.cbxTenCN_NV.TabIndex = 0;
             this.cbxTenCN_NV.SelectedIndexChanged += new System.EventHandler(this.cbxTenCN_NV_SelectedIndexChanged);
             // 
@@ -421,10 +422,11 @@
             // 
             this.toolTipCtrller.SetAllowHtmlText(this.txtbMaCN_NV, DevExpress.Utils.DefaultBoolean.Default);
             this.txtbMaCN_NV.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nvBDS, "MACN", true));
+            this.txtbMaCN_NV.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbMaCN_NV.Location = new System.Drawing.Point(59, 21);
             this.txtbMaCN_NV.Name = "txtbMaCN_NV";
             this.txtbMaCN_NV.ReadOnly = true;
-            this.txtbMaCN_NV.Size = new System.Drawing.Size(100, 21);
+            this.txtbMaCN_NV.Size = new System.Drawing.Size(100, 23);
             this.txtbMaCN_NV.TabIndex = 13;
             // 
             // nvBDS
@@ -441,10 +443,11 @@
             // 
             this.toolTipCtrller.SetAllowHtmlText(this.txtbLuong, DevExpress.Utils.DefaultBoolean.Default);
             this.txtbLuong.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nvBDS, "LUONG", true));
+            this.txtbLuong.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbLuong.Location = new System.Drawing.Point(59, 105);
             this.txtbLuong.Name = "txtbLuong";
             this.txtbLuong.ReadOnly = true;
-            this.txtbLuong.Size = new System.Drawing.Size(100, 21);
+            this.txtbLuong.Size = new System.Drawing.Size(100, 23);
             this.txtbLuong.TabIndex = 11;
             this.txtbLuong.TextChanged += new System.EventHandler(this.txtbLuong_TextChanged);
             this.txtbLuong.Validating += new System.ComponentModel.CancelEventHandler(this.txtbLuong_Validating);
@@ -454,11 +457,12 @@
             // 
             this.toolTipCtrller.SetAllowHtmlText(this.txtbHo, DevExpress.Utils.DefaultBoolean.Default);
             this.txtbHo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nvBDS, "HO", true));
+            this.txtbHo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbHo.Location = new System.Drawing.Point(233, 62);
             this.txtbHo.MaxLength = 40;
             this.txtbHo.Name = "txtbHo";
             this.txtbHo.ReadOnly = true;
-            this.txtbHo.Size = new System.Drawing.Size(113, 21);
+            this.txtbHo.Size = new System.Drawing.Size(113, 23);
             this.txtbHo.TabIndex = 5;
             this.txtbHo.TextChanged += new System.EventHandler(this.txtbHo_TextChanged);
             this.txtbHo.Validating += new System.ComponentModel.CancelEventHandler(this.txtbHo_Validating);
@@ -468,11 +472,12 @@
             // 
             this.toolTipCtrller.SetAllowHtmlText(this.txtbTen, DevExpress.Utils.DefaultBoolean.Default);
             this.txtbTen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nvBDS, "TEN", true));
+            this.txtbTen.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbTen.Location = new System.Drawing.Point(392, 62);
             this.txtbTen.MaxLength = 10;
             this.txtbTen.Name = "txtbTen";
             this.txtbTen.ReadOnly = true;
-            this.txtbTen.Size = new System.Drawing.Size(66, 21);
+            this.txtbTen.Size = new System.Drawing.Size(66, 23);
             this.txtbTen.TabIndex = 3;
             this.txtbTen.TextChanged += new System.EventHandler(this.txtbTen_TextChanged);
             this.txtbTen.Validating += new System.ComponentModel.CancelEventHandler(this.txtbTen_Validating);
@@ -482,10 +487,11 @@
             // 
             this.toolTipCtrller.SetAllowHtmlText(this.txtbMaNV, DevExpress.Utils.DefaultBoolean.Default);
             this.txtbMaNV.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nvBDS, "MANV", true));
+            this.txtbMaNV.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbMaNV.Location = new System.Drawing.Point(59, 63);
             this.txtbMaNV.Name = "txtbMaNV";
             this.txtbMaNV.ReadOnly = true;
-            this.txtbMaNV.Size = new System.Drawing.Size(100, 21);
+            this.txtbMaNV.Size = new System.Drawing.Size(100, 23);
             this.txtbMaNV.TabIndex = 1;
             this.txtbMaNV.TextChanged += new System.EventHandler(this.txtbMaNV_TextChanged);
             this.txtbMaNV.Validating += new System.ComponentModel.CancelEventHandler(this.txtbMaNV_Validating);
@@ -507,7 +513,7 @@
             // 
             this.toolTipCtrller.SetAllowHtmlText(this.picBxEmployee, DevExpress.Utils.DefaultBoolean.Default);
             this.picBxEmployee.Image = ((System.Drawing.Image)(resources.GetObject("picBxEmployee.Image")));
-            this.picBxEmployee.Location = new System.Drawing.Point(22, 41);
+            this.picBxEmployee.Location = new System.Drawing.Point(22, 36);
             this.picBxEmployee.Name = "picBxEmployee";
             this.picBxEmployee.Size = new System.Drawing.Size(165, 141);
             this.picBxEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -532,7 +538,7 @@
             this.panel1.Controls.Add(this.txtbDiaChi);
             this.panel1.Controls.Add(this.dateEdNgaySinh);
             this.panel1.Controls.Add(dIACHILabel);
-            this.panel1.Location = new System.Drawing.Point(193, 41);
+            this.panel1.Location = new System.Drawing.Point(193, 36);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(922, 141);
             this.panel1.TabIndex = 16;
@@ -543,10 +549,12 @@
             this.txtbDiaChi.Location = new System.Drawing.Point(233, 106);
             this.txtbDiaChi.MenuManager = this.barManager1;
             this.txtbDiaChi.Name = "txtbDiaChi";
+            this.txtbDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbDiaChi.Properties.Appearance.Options.UseFont = true;
             this.txtbDiaChi.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.txtbDiaChi.Properties.MaxLength = 100;
             this.txtbDiaChi.Properties.ReadOnly = true;
-            this.txtbDiaChi.Size = new System.Drawing.Size(418, 20);
+            this.txtbDiaChi.Size = new System.Drawing.Size(418, 22);
             this.txtbDiaChi.TabIndex = 7;
             this.txtbDiaChi.EditValueChanged += new System.EventHandler(this.txtbDiaChi_EditValueChanged);
             // 
@@ -557,13 +565,15 @@
             this.dateEdNgaySinh.Location = new System.Drawing.Point(551, 63);
             this.dateEdNgaySinh.MenuManager = this.barManager1;
             this.dateEdNgaySinh.Name = "dateEdNgaySinh";
+            this.dateEdNgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEdNgaySinh.Properties.Appearance.Options.UseFont = true;
             this.dateEdNgaySinh.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.dateEdNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdNgaySinh.Properties.ReadOnly = true;
-            this.dateEdNgaySinh.Size = new System.Drawing.Size(100, 20);
+            this.dateEdNgaySinh.Size = new System.Drawing.Size(100, 22);
             this.dateEdNgaySinh.TabIndex = 9;
             this.dateEdNgaySinh.EditValueChanged += new System.EventHandler(this.dateEdNgaySinh_EditValueChanged);
             // 
@@ -618,6 +628,8 @@
             // 
             // colMANV
             // 
+            this.colMANV.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMANV.AppearanceCell.Options.UseFont = true;
             this.colMANV.Caption = "Mã NV";
             this.colMANV.FieldName = "MANV";
             this.colMANV.Name = "colMANV";
@@ -627,6 +639,8 @@
             // 
             // colHO
             // 
+            this.colHO.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHO.AppearanceCell.Options.UseFont = true;
             this.colHO.Caption = "Họ";
             this.colHO.FieldName = "HO";
             this.colHO.Name = "colHO";
@@ -636,6 +650,8 @@
             // 
             // colTEN
             // 
+            this.colTEN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colTEN.AppearanceCell.Options.UseFont = true;
             this.colTEN.Caption = "Tên";
             this.colTEN.FieldName = "TEN";
             this.colTEN.Name = "colTEN";
@@ -645,6 +661,8 @@
             // 
             // colDIACHI
             // 
+            this.colDIACHI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colDIACHI.AppearanceCell.Options.UseFont = true;
             this.colDIACHI.Caption = "Địa Chỉ";
             this.colDIACHI.FieldName = "DIACHI";
             this.colDIACHI.Name = "colDIACHI";
@@ -654,6 +672,8 @@
             // 
             // colNGAYSINH
             // 
+            this.colNGAYSINH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNGAYSINH.AppearanceCell.Options.UseFont = true;
             this.colNGAYSINH.Caption = "Ngày Sinh";
             this.colNGAYSINH.FieldName = "NGAYSINH";
             this.colNGAYSINH.Name = "colNGAYSINH";
@@ -663,6 +683,8 @@
             // 
             // colLUONG
             // 
+            this.colLUONG.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colLUONG.AppearanceCell.Options.UseFont = true;
             this.colLUONG.Caption = "Lương";
             this.colLUONG.FieldName = "LUONG";
             this.colLUONG.Name = "colLUONG";
@@ -672,6 +694,8 @@
             // 
             // colMACN
             // 
+            this.colMACN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMACN.AppearanceCell.Options.UseFont = true;
             this.colMACN.Caption = "Mã CN";
             this.colMACN.FieldName = "MACN";
             this.colMACN.Name = "colMACN";

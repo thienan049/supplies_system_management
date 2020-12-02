@@ -21,30 +21,32 @@ namespace QLVT_PT_DevExpressPJ
         ErrorProvider err = new ErrorProvider();
         Stack<DataTable> tableStates = new Stack<DataTable>();
 
+        #region form loading
         public formVatTu()
         {
             InitializeComponent();
             this.panelCN.Left = (this.grCtrlCN.Width / 2) - (this.panelCN.Width / 2);
+            err.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         }
 
         private void formVatTu_Load(object sender, EventArgs e)
         {          
             this.qlvtDS.EnforceConstraints = false;
             // TODO: This line of code loads data into the 'qLVTDataSet.Vattu' table. You can move, or remove it, as needed.
-            this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.vattuTableAdapter.Fill(this.qlvtDS.Vattu);
+            this.vatTuTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.vatTuTableAdapter.Fill(this.qlvtDS.Vattu);
 
             // TODO: This line of code loads data into the 'qlvtDS.CTDDH' table. You can move, or remove it, as needed.
-            this.cTDDHTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.cTDDHTableAdapter.Fill(this.qlvtDS.CTDDH);
+            this.ctddhTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.ctddhTableAdapter.Fill(this.qlvtDS.CTDDH);
 
             // TODO: This line of code loads data into the 'qlvtDS.CTPN' table. You can move, or remove it, as needed.
-            this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.cTPNTableAdapter.Fill(this.qlvtDS.CTPN);
+            this.ctpnTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.ctpnTableAdapter.Fill(this.qlvtDS.CTPN);
 
             // TODO: This line of code loads data into the 'qlvtDS.CTPX' table. You can move, or remove it, as needed.
-            this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.cTPXTableAdapter.Fill(this.qlvtDS.CTPX);
+            this.ctpxTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.ctpxTableAdapter.Fill(this.qlvtDS.CTPX);
 
             cbxTenCN_VATTU.DataSource = Program.bds_dspm;
             cbxTenCN_VATTU.DisplayMember = "TENCN";
@@ -74,48 +76,7 @@ namespace QLVT_PT_DevExpressPJ
                 }
             }
         }
-
-        private void cbxTenCN_VATTU_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (cbxTenCN_VATTU.SelectedValue.ToString() == "System.Data.DataRowView")
-                {
-                    return;
-                }
-                Program.servername = cbxTenCN_VATTU.SelectedValue.ToString();
-            }
-            catch (Exception ex) { Console.Write(ex.Message); }
-
-            if (cbxTenCN_VATTU.SelectedIndex != Program.mChinhanh)
-            {
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-            }
-            else
-            {
-                Program.mlogin = Program.mloginDN;
-                Program.password = Program.passwordDN;
-            }
-
-            if (Program.KetNoi() == 0)
-            {
-                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
-            }
-            else
-            {
-                this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.vattuTableAdapter.Fill(this.qlvtDS.Vattu);
-                //if (this.cbxTenCN_VATTU.SelectedIndex == 0)
-                //{
-                //    pattern = "^K\\d+N1$";
-                //}
-                //else
-                //{
-                //    pattern = "^K\\d+N2$";
-                //}
-            }
-        }
+        #endregion        
 
         #region action buttons event handling
         private void btnThemVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -127,7 +88,7 @@ namespace QLVT_PT_DevExpressPJ
             writableVTControl(1);
             this.cbxDonVi.Items.Insert(0, "--Chọn--");
             this.cbxDonVi.SelectedIndex = 0;
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void btnSuaVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -139,7 +100,7 @@ namespace QLVT_PT_DevExpressPJ
             this.editPosition = vtBDS.Position;
             this.btnThemVT.Enabled = this.btnSuaVT.Enabled = this.btnXoaVT.Enabled = false;
             writableVTControl(1);
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void btnGhiVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -152,8 +113,8 @@ namespace QLVT_PT_DevExpressPJ
             else
             {
                 vtBDS.EndEdit();
-                this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.vattuTableAdapter.Update(this.qlvtDS.Vattu);
+                this.vatTuTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.vatTuTableAdapter.Update(this.qlvtDS.Vattu);
                 this.btnReloadVT.PerformClick();              
             }                      
         }
@@ -182,13 +143,13 @@ namespace QLVT_PT_DevExpressPJ
                 {
                     int.TryParse(((DataRowView)vtBDS[vtBDS.Position])["MAVT"].ToString(), out mavt);
                     vtBDS.RemoveCurrent();
-                    this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.vattuTableAdapter.Update(this.qlvtDS.Vattu);
+                    this.vatTuTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.vatTuTableAdapter.Update(this.qlvtDS.Vattu);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi: " + ex.Message, "Lỗi xóa dữ liệu", MessageBoxButtons.OK);
-                    this.vattuTableAdapter.Fill(this.qlvtDS.Vattu);
+                    this.vatTuTableAdapter.Fill(this.qlvtDS.Vattu);
                     vtBDS.Position = vtBDS.Find("MAVT", mavt);
                     return;
                 }
@@ -207,17 +168,17 @@ namespace QLVT_PT_DevExpressPJ
         private void btnReloadVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             writableVTControl(0);
-            this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.vattuTableAdapter.Fill(this.qlvtDS.Vattu);
+            this.vatTuTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.vatTuTableAdapter.Fill(this.qlvtDS.Vattu);
 
-            this.cTDDHTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.cTDDHTableAdapter.Fill(this.qlvtDS.CTDDH);
+            this.ctddhTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.ctddhTableAdapter.Fill(this.qlvtDS.CTDDH);
 
-            this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.cTPNTableAdapter.Fill(this.qlvtDS.CTPN);
+            this.ctpnTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.ctpnTableAdapter.Fill(this.qlvtDS.CTPN);
 
-            this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.cTPXTableAdapter.Fill(this.qlvtDS.CTPX);
+            this.ctpxTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.ctpxTableAdapter.Fill(this.qlvtDS.CTPX);
 
             if(Program.mGroup != "CONGTY")
             {
@@ -265,17 +226,17 @@ namespace QLVT_PT_DevExpressPJ
         #region additional events
         private void txtbMaVT_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbTenVT_TextChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void cbxDonVi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            checkEmpty();
+            checkEmptyAndValid();
         }
 
         private void txtbMaVT_Validating(object sender, CancelEventArgs e)
@@ -293,22 +254,13 @@ namespace QLVT_PT_DevExpressPJ
             err.SetError(this.txtbMaVT, String.Empty);
         }
 
-        private void txtbTenVT_Validating(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void txtbTenVT_Validated(object sender, EventArgs e)
-        {
-            err.SetError(this.txtbMaVT, String.Empty);
-        }
-
         private void cbxDonVi_Validating(object sender, CancelEventArgs e)
         {
             if (this.cbxDonVi.GetItemText(this.cbxDonVi.SelectedItem) == "--Chọn--")
             {
                 e.Cancel = true;
                 err.SetError(this.cbxDonVi, "Lỗi");
+                toolTipCtrller.DefaultController.ShowHint("Chọn đơn vị!", this.cbxDonVi, DevExpress.Utils.ToolTipLocation.TopRight);
             }
         }
 
@@ -317,15 +269,56 @@ namespace QLVT_PT_DevExpressPJ
             err.SetError(this.cbxDonVi, String.Empty);
         }
 
+        private void cbxTenCN_VATTU_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbxTenCN_VATTU.SelectedValue.ToString() == "System.Data.DataRowView")
+                {
+                    return;
+                }
+                Program.servername = cbxTenCN_VATTU.SelectedValue.ToString();
+            }
+            catch (Exception ex) { Console.Write(ex.Message); }
+
+            if (cbxTenCN_VATTU.SelectedIndex != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                this.vatTuTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.vatTuTableAdapter.Fill(this.qlvtDS.Vattu);
+                //if (this.cbxTenCN_VATTU.SelectedIndex == 0)
+                //{
+                //    pattern = "^K\\d+N1$";
+                //}
+                //else
+                //{
+                //    pattern = "^K\\d+N2$";
+                //}
+            }
+        }
+
         private void grdVwVT_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            int[] selectedRowHandles = grdVwVT.GetSelectedRows();
-            int columns = grdVwVT.Columns.Count();
-
+            int columns = grdVwVT.Columns.Count();           
             bool checkEmptyCells = false;
+
             for (int i = 0; i < columns; i++)
             {
-                if (grdVwVT.GetRowCellValue(selectedRowHandles[0], grdVwVT.Columns[i]).ToString().Trim() == "")
+                if (((DataRowView)vtBDS[vtBDS.Position])[i].ToString().Trim() == string.Empty)
                 {
                     checkEmptyCells = true;
                     break;
@@ -335,18 +328,19 @@ namespace QLVT_PT_DevExpressPJ
             if ((checkEmptyCells || (this.qlvtDS.Vattu.Count - 1) == this.vtBDS.Position) && this.isAdding == true || (this.vtBDS.Position == editPosition) && this.isEditing == true)
             {
                 writableVTControl(1);
-                checkEmpty();
+                checkEmptyAndValid();
             }
             else
             {
                 writableVTControl(0);
-                checkEmpty();
+                checkEmptyAndValid();
             }
-
             if (tableStates.Count != 0)
             {
-                this.btnPhucHoiVT.Enabled = true;
+                    this.btnPhucHoiVT.Enabled = true;
             }
+
+            
         }
         #endregion
 
@@ -437,7 +431,7 @@ namespace QLVT_PT_DevExpressPJ
             return false;
         }
       
-        private void checkEmpty()
+        private void checkEmptyAndValid()
         {
             if (this.txtbMaVT.Text.Trim() == "" || this.txtbTenVT.Text.Trim() == "" ||
                !this.txtbMaVT.Text.Trim().All(char.IsLetterOrDigit) || 
@@ -474,12 +468,12 @@ namespace QLVT_PT_DevExpressPJ
                 this.cbxDonVi.Enabled = false;
             }
         }
-        #endregion
 
         private void storeDtTbState()
         {
             DataTable copied = this.qlvtDS.Vattu.Copy();
             tableStates.Push(copied);
-        }        
+        }
+        #endregion       
     }
 }
