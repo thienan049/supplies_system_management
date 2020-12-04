@@ -5,7 +5,6 @@ D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.formMain.resources
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.formNhanVien.resources
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.formVatTu.resources
-D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.PhieuNhapRP.resources
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.Properties.Resources.resources
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.subforms.subFormDDH.resources
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.csproj.GenerateResource.Cache
@@ -196,3 +195,8 @@ D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.subforms.subFormCTPN.resources
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.subforms.subFormPX.resources
 D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.subforms.subFormCTPX.resources
+D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.PhieuLapTrongNamTheoLoaiRP.resources
+D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.DsNhanVienRP.resources
+D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.reports.subformsRP.subFormPhieuLap.resources
+D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.reports.DsVatTuRP.resources
+D:\Docs\Projects\C#\QLVT_PT_DevExpressPJ\QLVT_PT_DevExpressPJ\obj\Debug\QLVT_PT_DevExpressPJ.reports.subformsRP.subFormChonCN_RP.resources

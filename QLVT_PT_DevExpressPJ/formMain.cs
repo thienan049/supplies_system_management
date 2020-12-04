@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,11 +7,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using QLVT_PT_DevExpressPJ.reports.subformsRP;
+using QLVT_PT_DevExpressPJ.reports;
 
 namespace QLVT_PT_DevExpressPJ
 {
     public partial class formMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        public static ReportPrintTool prTl = null;
+
         public formMain()
         {
             InitializeComponent();
@@ -142,14 +147,61 @@ namespace QLVT_PT_DevExpressPJ
             }
         }
 
-        private void formMain_Load(object sender, EventArgs e)
+        private void btnPhLapTheoLoaiRP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            Form frm = this.CheckExists(typeof(subFormPhieuLap));
+            if (frm != null) frm.Activate();
+            else
+            {
+                subFormPhieuLap sfPL = new subFormPhieuLap();
+                sfPL.Owner = Program.formChinh;
+                sfPL.ShowDialog();
+            }
         }
 
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnDsNVRP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Program.chosenRP = 1;
+            if (Program.mGroup == "CONGTY")
+            {               
+                Form frm = this.CheckExists(typeof(subFormChonCN_RP));
+                if (frm != null) frm.Activate();
+                else
+                {
+                    subFormChonCN_RP sfCN = new subFormChonCN_RP();
+                    sfCN.Owner = Program.formChinh;
+                    sfCN.ShowDialog();
+                }
+            }else
+            {
+                try
+                {
+                    DsNhanVienRP rp = new DsNhanVienRP();
+                    if(Program.mChinhanh == 0)
+                    {
+                        rp.lblTitle.Text = "DANH SÁCH NHÂN VIÊN CHI NHÁNH 1";
+                    }else if(Program.mChinhanh == 1)
+                    {
+                        rp.lblTitle.Text = "DANH SÁCH NHÂN VIÊN CHI NHÁNH 2";
+                    }
+                    
+                    prTl = new ReportPrintTool(rp);
+                    prTl.ShowPreviewDialog();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+        }
 
+        private void btnDsVTRP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Program.chosenRP = 2;
+            try
+            {
+                DsVatTuRP rp = new DsVatTuRP();
+                prTl = new ReportPrintTool(rp);
+                prTl.ShowPreviewDialog();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 

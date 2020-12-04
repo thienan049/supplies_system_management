@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using DevExpress.XtraReports.UI;
 
 namespace QLVT_PT_DevExpressPJ
 {
@@ -35,10 +36,11 @@ namespace QLVT_PT_DevExpressPJ
         public static formDDHPNPX formDDHPNPX;
 
         public static string namePattern = "^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ']+\\s?)+$";
-
         public static string maKhoPattern(string num) {
             return "^[A-Z]\\d+N" + num + "$";
         }
+
+        public static int chosenRP = -1;     
 
         public static int KetNoi()
         {

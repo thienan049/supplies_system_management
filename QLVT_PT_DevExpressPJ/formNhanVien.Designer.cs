@@ -561,7 +561,7 @@
             // dateEdNgaySinh
             // 
             this.dateEdNgaySinh.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.nvBDS, "NGAYSINH", true));
-            this.dateEdNgaySinh.EditValue = null;
+            this.dateEdNgaySinh.EditValue = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
             this.dateEdNgaySinh.Location = new System.Drawing.Point(551, 63);
             this.dateEdNgaySinh.MenuManager = this.barManager1;
             this.dateEdNgaySinh.Name = "dateEdNgaySinh";
@@ -572,6 +572,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdNgaySinh.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dateEdNgaySinh.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdNgaySinh.Properties.MaxValue = new System.DateTime(2003, 12, 31, 0, 0, 0, 0);
+            this.dateEdNgaySinh.Properties.MinValue = new System.DateTime(1960, 1, 1, 0, 0, 0, 0);
             this.dateEdNgaySinh.Properties.ReadOnly = true;
             this.dateEdNgaySinh.Size = new System.Drawing.Size(100, 22);
             this.dateEdNgaySinh.TabIndex = 9;
