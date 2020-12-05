@@ -431,6 +431,8 @@
             // colNGAY
             // 
             this.colNGAY.Caption = "Ngày đặt";
+            this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colNGAY.FieldName = "NGAY";
             this.colNGAY.Name = "colNGAY";
             this.colNGAY.Visible = true;
@@ -501,6 +503,8 @@
             // colNGAY1
             // 
             this.colNGAY1.Caption = "Ngày nhập";
+            this.colNGAY1.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.colNGAY1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colNGAY1.FieldName = "NGAY";
             this.colNGAY1.Name = "colNGAY1";
             this.colNGAY1.Visible = true;
@@ -571,6 +575,8 @@
             // colNGAY2
             // 
             this.colNGAY2.Caption = "Ngày lập";
+            this.colNGAY2.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.colNGAY2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colNGAY2.FieldName = "NGAY";
             this.colNGAY2.Name = "colNGAY2";
             this.colNGAY2.Visible = true;
@@ -705,6 +711,8 @@
             // colSOLUONG2
             // 
             this.colSOLUONG2.Caption = "Số lượng";
+            this.colSOLUONG2.DisplayFormat.FormatString = "#,#";
+            this.colSOLUONG2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSOLUONG2.FieldName = "SOLUONG";
             this.colSOLUONG2.Name = "colSOLUONG2";
             this.colSOLUONG2.Visible = true;
@@ -713,6 +721,8 @@
             // colDONGIA2
             // 
             this.colDONGIA2.Caption = "Đơn giá";
+            this.colDONGIA2.DisplayFormat.FormatString = "#,#";
+            this.colDONGIA2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDONGIA2.FieldName = "DONGIA";
             this.colDONGIA2.Name = "colDONGIA2";
             this.colDONGIA2.Visible = true;
@@ -771,6 +781,8 @@
             // colSOLUONG
             // 
             this.colSOLUONG.Caption = "Số lượng";
+            this.colSOLUONG.DisplayFormat.FormatString = "#,#";
+            this.colSOLUONG.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSOLUONG.FieldName = "SOLUONG";
             this.colSOLUONG.Name = "colSOLUONG";
             this.colSOLUONG.Visible = true;
@@ -779,6 +791,8 @@
             // colDONGIA
             // 
             this.colDONGIA.Caption = "Đơn giá";
+            this.colDONGIA.DisplayFormat.FormatString = "#,#";
+            this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDONGIA.FieldName = "DONGIA";
             this.colDONGIA.Name = "colDONGIA";
             this.colDONGIA.Visible = true;
@@ -832,6 +846,8 @@
             // colSOLUONG1
             // 
             this.colSOLUONG1.Caption = "Số lượng";
+            this.colSOLUONG1.DisplayFormat.FormatString = "#,#";
+            this.colSOLUONG1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSOLUONG1.FieldName = "SOLUONG";
             this.colSOLUONG1.Name = "colSOLUONG1";
             this.colSOLUONG1.Visible = true;
@@ -840,6 +856,8 @@
             // colDONGIA1
             // 
             this.colDONGIA1.Caption = "Đơn giá";
+            this.colDONGIA1.DisplayFormat.FormatString = "#,#";
+            this.colDONGIA1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDONGIA1.FieldName = "DONGIA";
             this.colDONGIA1.Name = "colDONGIA1";
             this.colDONGIA1.Visible = true;

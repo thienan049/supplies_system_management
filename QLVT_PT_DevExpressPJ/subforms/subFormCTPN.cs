@@ -29,9 +29,10 @@ namespace QLVT_PT_DevExpressPJ.subforms
         {
             this.qlvtDS.EnforceConstraints = false;
             this.ctpnBDS.DataSource = Program.formDDHPNPX.getFormDDHPNPX_ctpnBDS();
-
-            this.vatTuTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.vatTuTableAdapter.Fill(this.qlvtDS.Vattu);
+            
+            string masoDDH = ((DataRowView)Program.formDDHPNPX.getFormDDHPNPX_pnBDS()[Program.formDDHPNPX.getFormDDHPNPX_pnBDS().Position])["MASODDH"].ToString().Trim();
+            this.sp_LayttvtdhTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.sp_LayttvtdhTableAdapter.Fill(this.qlvtDS.SP_LAYTHONGTINVATTUDATHANG, masoDDH);
         }
 
         private void subFormCTPN_Shown(object sender, EventArgs e)
@@ -102,9 +103,10 @@ namespace QLVT_PT_DevExpressPJ.subforms
             checkEmptyAndValid();
         }
 
-        private void grdVwVattu_ThemCTPN_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        private void grdVwVattu_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            this.txtbMaVT.Text = ((DataRowView)vtBDS[vtBDS.Position])["MAVT"].ToString().Trim();
+            this.txtbMaVT.Text = ((DataRowView)sp_LayttvtdhBDS[sp_LayttvtdhBDS.Position])["MAVT"].ToString().Trim();
+            this.numUDSoluong.Maximum = int.Parse(((DataRowView)sp_LayttvtdhBDS[sp_LayttvtdhBDS.Position])["SOLUONG"].ToString().Trim());
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -153,6 +155,6 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 this.btnThemCTPN.Enabled = true;
             }
         }
-        #endregion
+        #endregion        
     }
 }

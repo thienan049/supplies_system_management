@@ -35,6 +35,7 @@
             System.Windows.Forms.Label masoDDHLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(subFormCTDDH));
             this.grBxVattu_ThemCTDDH = new System.Windows.Forms.GroupBox();
+            this.grCtrlVattu = new DevExpress.XtraEditors.GroupControl();
             this.grdCtrlVattu = new DevExpress.XtraGrid.GridControl();
             this.vtBDS = new System.Windows.Forms.BindingSource(this.components);
             this.qlvtDS = new QLVT_PT_DevExpressPJ.QLVTDataSet();
@@ -53,15 +54,14 @@
             this.ctddhTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTDDHTableAdapter();
             this.tableAdapterManager = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager();
             this.vatTuTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.VattuTableAdapter();
-            this.grCtrlVattu = new DevExpress.XtraEditors.GroupControl();
+            this.btnThoat = new System.Windows.Forms.Button();
             dONGIALabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
-            //////////////////////////////////////////
-            this.btnThoat = new System.Windows.Forms.Button();
-            /////////////////////////////////////////
             this.grBxVattu_ThemCTDDH.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlVattu)).BeginInit();
+            this.grCtrlVattu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlVattu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vtBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).BeginInit();
@@ -70,8 +70,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUDDonGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDSoluong)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grCtrlVattu)).BeginInit();
-            this.grCtrlVattu.SuspendLayout();
             this.SuspendLayout();
             // 
             // dONGIALabel
@@ -124,6 +122,16 @@
             this.grBxVattu_ThemCTDDH.TabIndex = 16;
             this.grBxVattu_ThemCTDDH.TabStop = false;
             // 
+            // grCtrlVattu
+            // 
+            this.grCtrlVattu.Controls.Add(this.grdCtrlVattu);
+            this.grCtrlVattu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grCtrlVattu.Location = new System.Drawing.Point(3, 16);
+            this.grCtrlVattu.Name = "grCtrlVattu";
+            this.grCtrlVattu.Size = new System.Drawing.Size(521, 243);
+            this.grCtrlVattu.TabIndex = 0;
+            this.grCtrlVattu.Text = "Danh sách vật tư";
+            // 
             // grdCtrlVattu
             // 
             this.grdCtrlVattu.DataSource = this.vtBDS;
@@ -165,7 +173,7 @@
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 0;
-            this.colMAVT.Width = 147;
+            this.colMAVT.Width = 86;
             // 
             // colTENVT
             // 
@@ -174,7 +182,7 @@
             this.colTENVT.Name = "colTENVT";
             this.colTENVT.Visible = true;
             this.colTENVT.VisibleIndex = 1;
-            this.colTENVT.Width = 263;
+            this.colTENVT.Width = 307;
             // 
             // colDVT
             // 
@@ -183,7 +191,7 @@
             this.colDVT.Name = "colDVT";
             this.colDVT.Visible = true;
             this.colDVT.VisibleIndex = 2;
-            this.colDVT.Width = 85;
+            this.colDVT.Width = 101;
             // 
             // grBxForm_ThemCTDDH
             // 
@@ -305,15 +313,12 @@
             // 
             this.vatTuTableAdapter.ClearBeforeFill = true;
             // 
-            // grCtrlVattu
+            // btnThoat
             // 
-            this.grCtrlVattu.Controls.Add(this.grdCtrlVattu);
-            this.grCtrlVattu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grCtrlVattu.Location = new System.Drawing.Point(3, 16);
-            this.grCtrlVattu.Name = "grCtrlVattu";
-            this.grCtrlVattu.Size = new System.Drawing.Size(521, 243);
-            this.grCtrlVattu.TabIndex = 0;
-            this.grCtrlVattu.Text = "Danh sách vật tư";
+            this.btnThoat.Location = new System.Drawing.Point(0, 0);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.TabIndex = 0;
             // 
             // subFormCTDDH
             // 
@@ -330,6 +335,8 @@
             this.Load += new System.EventHandler(this.subFormCTDDH_Load);
             this.Shown += new System.EventHandler(this.subFormCTDDH_Shown);
             this.grBxVattu_ThemCTDDH.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlVattu)).EndInit();
+            this.grCtrlVattu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlVattu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vtBDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();
@@ -339,8 +346,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUDDonGia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDSoluong)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grCtrlVattu)).EndInit();
-            this.grCtrlVattu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

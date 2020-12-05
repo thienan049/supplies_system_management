@@ -203,6 +203,41 @@ namespace QLVT_PT_DevExpressPJ
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
+
+        private void btnDdhChuaPN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Program.chosenRP = 3;
+            if (Program.mGroup == "CONGTY")
+            {
+                Form frm = this.CheckExists(typeof(subFormChonCN_RP));
+                if (frm != null) frm.Activate();
+                else
+                {
+                    subFormChonCN_RP sfCN = new subFormChonCN_RP();
+                    sfCN.Owner = Program.formChinh;
+                    sfCN.ShowDialog();
+                }
+            }
+            else
+            {
+                try
+                {
+                    DsDDHChuaCoPnRP rp = new DsDDHChuaCoPnRP();
+                    if (Program.mChinhanh == 0)
+                    {
+                        rp.lblTitle.Text += " CHI NHÁNH 1";
+                    }
+                    else if (Program.mChinhanh == 1)
+                    {
+                        rp.lblTitle.Text = " CHI NHÁNH 2";
+                    }
+
+                    prTl = new ReportPrintTool(rp);
+                    prTl.ShowPreviewDialog();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+        }
     }
 
 

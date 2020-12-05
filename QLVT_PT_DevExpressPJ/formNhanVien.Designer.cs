@@ -679,6 +679,8 @@
             this.colNGAYSINH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colNGAYSINH.AppearanceCell.Options.UseFont = true;
             this.colNGAYSINH.Caption = "Ngày Sinh";
+            this.colNGAYSINH.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.colNGAYSINH.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colNGAYSINH.FieldName = "NGAYSINH";
             this.colNGAYSINH.Name = "colNGAYSINH";
             this.colNGAYSINH.Visible = true;
@@ -689,7 +691,11 @@
             // 
             this.colLUONG.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colLUONG.AppearanceCell.Options.UseFont = true;
+            this.colLUONG.AppearanceHeader.Options.UseTextOptions = true;
+            this.colLUONG.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colLUONG.Caption = "Lương";
+            this.colLUONG.DisplayFormat.FormatString = "#,#";
+            this.colLUONG.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colLUONG.FieldName = "LUONG";
             this.colLUONG.Name = "colLUONG";
             this.colLUONG.Visible = true;

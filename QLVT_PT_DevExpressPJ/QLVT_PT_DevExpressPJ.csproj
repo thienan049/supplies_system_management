@@ -78,6 +78,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="reports\DsDDHChuaCoPnRP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\DsDDHChuaCoPnRP.Designer.cs">
+      <DependentUpon>DsDDHChuaCoPnRP.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\DsNhanVienRP.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     <Compile Include="subforms\subFormPX.Designer.cs">
       <DependentUpon>subFormPX.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reports\DsDDHChuaCoPnRP.resx">
+      <DependentUpon>DsDDHChuaCoPnRP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="reports\DsNhanVienRP.resx">
       <DependentUpon>DsNhanVienRP.cs</DependentUpon>
     </EmbeddedResource>

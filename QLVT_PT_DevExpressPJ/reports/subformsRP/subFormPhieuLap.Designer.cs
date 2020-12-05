@@ -137,8 +137,6 @@
             this.cbxNam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxNam.FormattingEnabled = true;
             this.cbxNam.Items.AddRange(new object[] {
-            "2015",
-            "2016",
             "2017",
             "2018",
             "2019",

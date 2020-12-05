@@ -13,6 +13,8 @@ namespace QLVT_PT_DevExpressPJ
 {
     public partial class formDangNhap : Form
     {
+        CheckBox lastChecked;
+
         public formDangNhap()
         {
             InitializeComponent();
@@ -22,22 +24,51 @@ namespace QLVT_PT_DevExpressPJ
         {
             // TODO: This line of code loads data into the 'qLVTPhMDataSet.V_DS_PHANMANH' table. You can move, or remove it, as needed.
             this.v_DS_PHANMANHTableAdapter.Fill(this.qLVTPhMDataSet.V_DS_PHANMANH);
-            cboxTenCN.SelectedIndex = 1;
-            cboxTenCN.SelectedIndex = 0;
+            this.chbxCN.Checked = true;
+            lastChecked = chbxCN;
+            cbxTenCN.SelectedIndex = 1;
+            cbxTenCN.SelectedIndex = 0;
             Program.bds_dspm.DataSource = bdsVDsPM.DataSource;
             Program.bds_dspm.DataMember = bdsVDsPM.DataMember;
 
-            this.AcceptButton = this.btnDangNhap;
-            this.txtbLoginName.Text = "halg";
-            this.txtbPassWord.Text = "asd";
+            this.AcceptButton = this.btnDangNhap;           
         }
        
         private void cboxTenCN_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                Program.servername = cboxTenCN.SelectedValue.ToString();
-                Program.mChinhanh = cboxTenCN.SelectedIndex;
+                Program.servername = cbxTenCN.SelectedValue.ToString();
+                Program.mChinhanh = cbxTenCN.SelectedIndex;
+                if(this.cbxTenCN.SelectedIndex == 0)
+                {
+                    if (this.chbxCTY.Checked)
+                    {
+                        setLogin("anlg", "asd");
+                    }
+                    else if (this.chbxCN.Checked)
+                    {
+                        setLogin("halg", "asd");
+                    }
+                    else if (this.chbxUSR.Checked)
+                    {
+                        setLogin("tranglg", "asd");
+                    }
+                }else
+                {
+                    if (this.chbxCTY.Checked)
+                    {
+                        setLogin("tra2lg", "asd");
+                    }
+                    else if (this.chbxCN.Checked)
+                    {
+                        setLogin("ha2lg", "asd");
+                    }
+                    else if (this.chbxUSR.Checked)
+                    {
+                        setLogin("thai2lg", "asd");
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -130,7 +161,59 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnShowAndHidePassword.ImageIndex = 0;
                 this.txtbPassWord.PasswordChar = '*';
             }
+        }
 
+        private void chbxCTY_Click(object sender, EventArgs e)
+        {
+            checkChecked(sender);
+            if (this.cbxTenCN.SelectedIndex == 0)
+            {
+                setLogin("anlg", "asd");
+            }
+            else
+            {
+                setLogin("tra2lg", "asd");
+            }
+        }
+
+        private void chbxCN_Click(object sender, EventArgs e)
+        {
+            checkChecked(sender);
+            if (this.cbxTenCN.SelectedIndex == 0)
+            {
+                setLogin("halg", "asd");
+            }
+            else
+            {
+                setLogin("ha2lg", "asd");
+            }
+        }
+
+        private void chbxUSR_Click(object sender, EventArgs e)
+        {
+            checkChecked(sender);
+            if (this.cbxTenCN.SelectedIndex == 0)
+            {
+                setLogin("tranglg", "asd");
+            }
+            else
+            {
+                setLogin("thai2lg", "asd");
+            }
+        }
+
+        private void checkChecked(object sender)
+        {
+            CheckBox activeCheckBox = sender as CheckBox;
+            if (activeCheckBox != lastChecked && lastChecked != null)
+                lastChecked.Checked = false;
+            lastChecked = activeCheckBox.Checked ? activeCheckBox : null;
+        }
+
+        private void setLogin(string login, string password)
+        {       
+            this.txtbLoginName.Text = login;
+            this.txtbPassWord.Text = password;
         }
     }
 }

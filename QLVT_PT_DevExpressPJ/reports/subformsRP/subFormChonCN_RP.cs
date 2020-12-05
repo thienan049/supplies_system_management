@@ -75,6 +75,17 @@ namespace QLVT_PT_DevExpressPJ.reports.subformsRP
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
+            else if(Program.chosenRP == 3)
+            {
+                try
+                {
+                    DsDDHChuaCoPnRP rp = new DsDDHChuaCoPnRP();
+                    rp.lblTitle.Text += " " + this.cbxTenCN.Text;
+                    ReportPrintTool prTl = new ReportPrintTool(rp);
+                    prTl.ShowPreviewDialog();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

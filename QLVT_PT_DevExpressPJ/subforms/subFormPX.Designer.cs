@@ -57,14 +57,12 @@
             this.khoTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.KhoTableAdapter();
             this.tableAdapterManager = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager();
             this.phieuXuatTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.PhieuXuatTableAdapter();
+            this.btnThoat = new System.Windows.Forms.Button();
             mAKHOLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
             mANVLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
-            //////////////////////////////////////////
-            this.btnThoat = new System.Windows.Forms.Button();
-            /////////////////////////////////////////
             this.grBxKho_ThemPX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlKho_ThemPX)).BeginInit();
             this.grCtrlKho_ThemPX.SuspendLayout();
@@ -132,9 +130,9 @@
             // 
             this.grBxKho_ThemPX.Controls.Add(this.grCtrlKho_ThemPX);
             this.grBxKho_ThemPX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grBxKho_ThemPX.Location = new System.Drawing.Point(289, 0);
+            this.grBxKho_ThemPX.Location = new System.Drawing.Point(274, 0);
             this.grBxKho_ThemPX.Name = "grBxKho_ThemPX";
-            this.grBxKho_ThemPX.Size = new System.Drawing.Size(530, 282);
+            this.grBxKho_ThemPX.Size = new System.Drawing.Size(545, 282);
             this.grBxKho_ThemPX.TabIndex = 16;
             this.grBxKho_ThemPX.TabStop = false;
             // 
@@ -144,7 +142,7 @@
             this.grCtrlKho_ThemPX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grCtrlKho_ThemPX.Location = new System.Drawing.Point(3, 16);
             this.grCtrlKho_ThemPX.Name = "grCtrlKho_ThemPX";
-            this.grCtrlKho_ThemPX.Size = new System.Drawing.Size(524, 263);
+            this.grCtrlKho_ThemPX.Size = new System.Drawing.Size(539, 263);
             this.grCtrlKho_ThemPX.TabIndex = 1;
             this.grCtrlKho_ThemPX.Text = "Danh sách kho";
             // 
@@ -155,7 +153,7 @@
             this.grdCtrlKho_ThemPX.Location = new System.Drawing.Point(2, 23);
             this.grdCtrlKho_ThemPX.MainView = this.grdVwKho_ThemPX;
             this.grdCtrlKho_ThemPX.Name = "grdCtrlKho_ThemPX";
-            this.grdCtrlKho_ThemPX.Size = new System.Drawing.Size(520, 238);
+            this.grdCtrlKho_ThemPX.Size = new System.Drawing.Size(535, 238);
             this.grdCtrlKho_ThemPX.TabIndex = 11;
             this.grdCtrlKho_ThemPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdVwKho_ThemPX});
@@ -181,6 +179,8 @@
             this.grdVwKho_ThemPX.Name = "grdVwKho_ThemPX";
             this.grdVwKho_ThemPX.OptionsBehavior.Editable = false;
             this.grdVwKho_ThemPX.OptionsView.ShowDetailButtons = false;
+            this.grdVwKho_ThemPX.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colMACN, DevExpress.Data.ColumnSortOrder.Descending)});
             this.grdVwKho_ThemPX.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.grdVwKho_ThemPX_RowClick);
             // 
             // colMAKHO
@@ -190,7 +190,7 @@
             this.colMAKHO.Name = "colMAKHO";
             this.colMAKHO.Visible = true;
             this.colMAKHO.VisibleIndex = 0;
-            this.colMAKHO.Width = 109;
+            this.colMAKHO.Width = 73;
             // 
             // colTENKHO
             // 
@@ -199,7 +199,7 @@
             this.colTENKHO.Name = "colTENKHO";
             this.colTENKHO.Visible = true;
             this.colTENKHO.VisibleIndex = 1;
-            this.colTENKHO.Width = 129;
+            this.colTENKHO.Width = 136;
             // 
             // colDIACHI
             // 
@@ -208,7 +208,7 @@
             this.colDIACHI.Name = "colDIACHI";
             this.colDIACHI.Visible = true;
             this.colDIACHI.VisibleIndex = 2;
-            this.colDIACHI.Width = 173;
+            this.colDIACHI.Width = 396;
             // 
             // colMACN
             // 
@@ -217,7 +217,7 @@
             this.colMACN.Name = "colMACN";
             this.colMACN.Visible = true;
             this.colMACN.VisibleIndex = 3;
-            this.colMACN.Width = 91;
+            this.colMACN.Width = 80;
             // 
             // gxBxForm_ThemPX
             // 
@@ -236,7 +236,7 @@
             this.gxBxForm_ThemPX.Dock = System.Windows.Forms.DockStyle.Left;
             this.gxBxForm_ThemPX.Location = new System.Drawing.Point(0, 0);
             this.gxBxForm_ThemPX.Name = "gxBxForm_ThemPX";
-            this.gxBxForm_ThemPX.Size = new System.Drawing.Size(289, 282);
+            this.gxBxForm_ThemPX.Size = new System.Drawing.Size(274, 282);
             this.gxBxForm_ThemPX.TabIndex = 15;
             this.gxBxForm_ThemPX.TabStop = false;
             // 
@@ -311,6 +311,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdNgayLap.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdNgayLap.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dateEdNgayLap.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateEdNgayLap.Size = new System.Drawing.Size(122, 22);
             this.dateEdNgayLap.TabIndex = 4;
             this.dateEdNgayLap.EditValueChanged += new System.EventHandler(this.dateEdNgayLap_EditValueChanged);
@@ -348,6 +350,13 @@
             // phieuXuatTableAdapter
             // 
             this.phieuXuatTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(0, 0);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.TabIndex = 0;
             // 
             // subFormPX
             // 

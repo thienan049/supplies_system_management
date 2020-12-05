@@ -36,13 +36,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(subFormCTPN));
             this.grBxVattu_ThemCTPN = new System.Windows.Forms.GroupBox();
             this.grCtrlVT_ThemCTPN = new DevExpress.XtraEditors.GroupControl();
-            this.grdCtrlVattu = new DevExpress.XtraGrid.GridControl();
-            this.vtBDS = new System.Windows.Forms.BindingSource(this.components);
+            this.grdCtrlVT = new DevExpress.XtraGrid.GridControl();
+            this.sp_LayttvtdhBDS = new System.Windows.Forms.BindingSource(this.components);
             this.qlvtDS = new QLVT_PT_DevExpressPJ.QLVTDataSet();
-            this.grdVwVattu_ThemCTPN = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.grdVwVattu = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDVT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grBxForm_ThemCTPN = new System.Windows.Forms.GroupBox();
             this.numUDDonGia = new System.Windows.Forms.NumericUpDown();
             this.ctpnBDS = new System.Windows.Forms.BindingSource(this.components);
@@ -53,21 +54,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ctpnTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTPNTableAdapter();
             this.tableAdapterManager = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager();
-            this.vatTuTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.VattuTableAdapter();
+            this.btnThoat = new System.Windows.Forms.Button();
+            this.sp_LayttvtdhTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.SP_LAYTHONGTINVATTUDATHANGTableAdapter();
             dONGIALabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             maPNLabel = new System.Windows.Forms.Label();
-            //////////////////////////////////////////
-            this.btnThoat = new System.Windows.Forms.Button();
-            /////////////////////////////////////////
             this.grBxVattu_ThemCTPN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlVT_ThemCTPN)).BeginInit();
             this.grCtrlVT_ThemCTPN.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlVattu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vtBDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlVT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_LayttvtdhBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdVwVattu_ThemCTPN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwVattu)).BeginInit();
             this.grBxForm_ThemCTPN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDDonGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctpnBDS)).BeginInit();
@@ -120,71 +119,73 @@
             this.grBxVattu_ThemCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grBxVattu_ThemCTPN.Location = new System.Drawing.Point(314, 0);
             this.grBxVattu_ThemCTPN.Name = "grBxVattu_ThemCTPN";
-            this.grBxVattu_ThemCTPN.Size = new System.Drawing.Size(527, 260);
+            this.grBxVattu_ThemCTPN.Size = new System.Drawing.Size(527, 268);
             this.grBxVattu_ThemCTPN.TabIndex = 18;
             this.grBxVattu_ThemCTPN.TabStop = false;
             // 
             // grCtrlVT_ThemCTPN
             // 
-            this.grCtrlVT_ThemCTPN.Controls.Add(this.grdCtrlVattu);
+            this.grCtrlVT_ThemCTPN.Controls.Add(this.grdCtrlVT);
             this.grCtrlVT_ThemCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grCtrlVT_ThemCTPN.Location = new System.Drawing.Point(3, 16);
             this.grCtrlVT_ThemCTPN.Name = "grCtrlVT_ThemCTPN";
-            this.grCtrlVT_ThemCTPN.Size = new System.Drawing.Size(521, 241);
+            this.grCtrlVT_ThemCTPN.Size = new System.Drawing.Size(521, 249);
             this.grCtrlVT_ThemCTPN.TabIndex = 0;
-            this.grCtrlVT_ThemCTPN.Text = "Danh sách vật tư";
+            this.grCtrlVT_ThemCTPN.Text = "Danh sách vật tư đã đặt hàng của đơn đặt hàng này";
             // 
-            // grdCtrlVattu
+            // grdCtrlVT
             // 
-            this.grdCtrlVattu.DataSource = this.vtBDS;
-            this.grdCtrlVattu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdCtrlVattu.Location = new System.Drawing.Point(2, 23);
-            this.grdCtrlVattu.MainView = this.grdVwVattu_ThemCTPN;
-            this.grdCtrlVattu.Name = "grdCtrlVattu";
-            this.grdCtrlVattu.Size = new System.Drawing.Size(517, 216);
-            this.grdCtrlVattu.TabIndex = 0;
-            this.grdCtrlVattu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grdVwVattu_ThemCTPN});
+            this.grdCtrlVT.DataSource = this.sp_LayttvtdhBDS;
+            this.grdCtrlVT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdCtrlVT.Location = new System.Drawing.Point(2, 23);
+            this.grdCtrlVT.MainView = this.grdVwVattu;
+            this.grdCtrlVT.Name = "grdCtrlVT";
+            this.grdCtrlVT.Size = new System.Drawing.Size(517, 224);
+            this.grdCtrlVT.TabIndex = 0;
+            this.grdCtrlVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdVwVattu});
             // 
-            // vtBDS
+            // sp_LayttvtdhBDS
             // 
-            this.vtBDS.DataMember = "Vattu";
-            this.vtBDS.DataSource = this.qlvtDS;
+            this.sp_LayttvtdhBDS.DataMember = "SP_LAYTHONGTINVATTUDATHANG";
+            this.sp_LayttvtdhBDS.DataSource = this.qlvtDS;
             // 
             // qlvtDS
             // 
             this.qlvtDS.DataSetName = "QLVTDataSet";
             this.qlvtDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // grdVwVattu_ThemCTPN
+            // grdVwVattu
             // 
-            this.grdVwVattu_ThemCTPN.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.grdVwVattu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMAVT,
             this.colTENVT,
-            this.colDVT});
-            this.grdVwVattu_ThemCTPN.GridControl = this.grdCtrlVattu;
-            this.grdVwVattu_ThemCTPN.Name = "grdVwVattu_ThemCTPN";
-            this.grdVwVattu_ThemCTPN.OptionsBehavior.Editable = false;
-            this.grdVwVattu_ThemCTPN.OptionsView.ShowDetailButtons = false;
-            this.grdVwVattu_ThemCTPN.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.grdVwVattu_ThemCTPN_RowClick);
+            this.colDVT,
+            this.colSOLUONG});
+            this.grdVwVattu.GridControl = this.grdCtrlVT;
+            this.grdVwVattu.Name = "grdVwVattu";
+            this.grdVwVattu.OptionsBehavior.Editable = false;
+            this.grdVwVattu.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colDVT, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.grdVwVattu.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.grdVwVattu_RowClick);
             // 
             // colMAVT
             // 
-            this.colMAVT.Caption = "Mã vật tư";
+            this.colMAVT.Caption = "Mã VT";
             this.colMAVT.FieldName = "MAVT";
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 0;
-            this.colMAVT.Width = 147;
+            this.colMAVT.Width = 102;
             // 
             // colTENVT
             // 
-            this.colTENVT.Caption = "Tên vật tư";
+            this.colTENVT.Caption = "Tên VT";
             this.colTENVT.FieldName = "TENVT";
             this.colTENVT.Name = "colTENVT";
             this.colTENVT.Visible = true;
             this.colTENVT.VisibleIndex = 1;
-            this.colTENVT.Width = 263;
+            this.colTENVT.Width = 361;
             // 
             // colDVT
             // 
@@ -193,7 +194,18 @@
             this.colDVT.Name = "colDVT";
             this.colDVT.Visible = true;
             this.colDVT.VisibleIndex = 2;
-            this.colDVT.Width = 85;
+            this.colDVT.Width = 86;
+            // 
+            // colSOLUONG
+            // 
+            this.colSOLUONG.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSOLUONG.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colSOLUONG.Caption = "Số lượng";
+            this.colSOLUONG.FieldName = "SOLUONG";
+            this.colSOLUONG.Name = "colSOLUONG";
+            this.colSOLUONG.Visible = true;
+            this.colSOLUONG.VisibleIndex = 3;
+            this.colSOLUONG.Width = 136;
             // 
             // grBxForm_ThemCTPN
             // 
@@ -210,7 +222,7 @@
             this.grBxForm_ThemCTPN.Dock = System.Windows.Forms.DockStyle.Left;
             this.grBxForm_ThemCTPN.Location = new System.Drawing.Point(0, 0);
             this.grBxForm_ThemCTPN.Name = "grBxForm_ThemCTPN";
-            this.grBxForm_ThemCTPN.Size = new System.Drawing.Size(314, 260);
+            this.grBxForm_ThemCTPN.Size = new System.Drawing.Size(314, 268);
             this.grBxForm_ThemCTPN.TabIndex = 17;
             this.grBxForm_ThemCTPN.TabStop = false;
             // 
@@ -309,17 +321,24 @@
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.VattuTableAdapter = this.vatTuTableAdapter;
+            this.tableAdapterManager.VattuTableAdapter = null;
             // 
-            // vatTuTableAdapter
+            // btnThoat
             // 
-            this.vatTuTableAdapter.ClearBeforeFill = true;
+            this.btnThoat.Location = new System.Drawing.Point(0, 0);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.TabIndex = 0;
+            // 
+            // sp_LayttvtdhTableAdapter
+            // 
+            this.sp_LayttvtdhTableAdapter.ClearBeforeFill = true;
             // 
             // subFormCTPN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 260);
+            this.ClientSize = new System.Drawing.Size(841, 268);
             this.Controls.Add(this.grBxVattu_ThemCTPN);
             this.Controls.Add(this.grBxForm_ThemCTPN);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -332,10 +351,10 @@
             this.grBxVattu_ThemCTPN.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlVT_ThemCTPN)).EndInit();
             this.grCtrlVT_ThemCTPN.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlVattu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vtBDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlVT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_LayttvtdhBDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdVwVattu_ThemCTPN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwVattu)).EndInit();
             this.grBxForm_ThemCTPN.ResumeLayout(false);
             this.grBxForm_ThemCTPN.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDDonGia)).EndInit();
@@ -348,11 +367,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grBxVattu_ThemCTPN;
-        private DevExpress.XtraGrid.GridControl grdCtrlVattu;
-        private DevExpress.XtraGrid.Views.Grid.GridView grdVwVattu_ThemCTPN;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
-        private DevExpress.XtraGrid.Columns.GridColumn colTENVT;
-        private DevExpress.XtraGrid.Columns.GridColumn colDVT;
         private System.Windows.Forms.GroupBox grBxForm_ThemCTPN;
         private System.Windows.Forms.NumericUpDown numUDDonGia;
         private System.Windows.Forms.NumericUpDown numUDSoluong;
@@ -364,9 +378,15 @@
         private System.Windows.Forms.BindingSource ctpnBDS;
         private QLVTDataSetTableAdapters.CTPNTableAdapter ctpnTableAdapter;
         private QLVTDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private QLVTDataSetTableAdapters.VattuTableAdapter vatTuTableAdapter;
-        private System.Windows.Forms.BindingSource vtBDS;
         private DevExpress.XtraEditors.GroupControl grCtrlVT_ThemCTPN;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.BindingSource sp_LayttvtdhBDS;
+        private QLVTDataSetTableAdapters.SP_LAYTHONGTINVATTUDATHANGTableAdapter sp_LayttvtdhTableAdapter;
+        private DevExpress.XtraGrid.GridControl grdCtrlVT;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdVwVattu;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
+        private DevExpress.XtraGrid.Columns.GridColumn colTENVT;
+        private DevExpress.XtraGrid.Columns.GridColumn colDVT;
+        private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG;
     }
 }

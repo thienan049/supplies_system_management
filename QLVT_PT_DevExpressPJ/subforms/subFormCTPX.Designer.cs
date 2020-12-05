@@ -53,13 +53,11 @@
             this.vatTuTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.VattuTableAdapter();
             this.tableAdapterManager = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager();
             this.ctpxTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTPXTableAdapter();
+            this.btnThoat = new System.Windows.Forms.Button();
             dONGIALabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             maPNLabel = new System.Windows.Forms.Label();
-            //////////////////////////////////////////
-            this.btnThoat = new System.Windows.Forms.Button();
-            /////////////////////////////////////////
             this.grBxVattu_ThemCTPX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlVT_ThemCTPX)).BeginInit();
             this.grCtrlVT_ThemCTPX.SuspendLayout();
@@ -174,7 +172,7 @@
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 0;
-            this.colMAVT.Width = 147;
+            this.colMAVT.Width = 96;
             // 
             // colTENVT
             // 
@@ -183,7 +181,7 @@
             this.colTENVT.Name = "colTENVT";
             this.colTENVT.Visible = true;
             this.colTENVT.VisibleIndex = 1;
-            this.colTENVT.Width = 263;
+            this.colTENVT.Width = 443;
             // 
             // colDVT
             // 
@@ -192,7 +190,7 @@
             this.colDVT.Name = "colDVT";
             this.colDVT.Visible = true;
             this.colDVT.VisibleIndex = 2;
-            this.colDVT.Width = 85;
+            this.colDVT.Width = 146;
             // 
             // grBxForm_ThemCTPX
             // 
@@ -313,6 +311,13 @@
             // ctpxTableAdapter
             // 
             this.ctpxTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(0, 0);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.TabIndex = 0;
             // 
             // subFormCTPX
             // 
