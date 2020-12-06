@@ -1,6 +1,6 @@
 USE [QLVT]
 GO
-/****** Object:  View [dbo].[V_DS_DDHCHUACOPN]    Script Date: 11/29/2020 5:27:20 PM ******/
+/****** Object:  View [dbo].[V_DS_DDHCHUACOPN]    Script Date: 12/6/2020 1:04:57 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14,7 +14,20 @@ AS
 SELECT * FROM DatHang WHERE MasoDDH in
 	(SELECT MasoDDH FROM DatHang EXCEPT SELECT MasoDDH FROM PhieuNhap)
 GO
-/****** Object:  View [dbo].[V_DS_PHANMANH]    Script Date: 11/29/2020 5:27:20 PM ******/
+/****** Object:  View [dbo].[V_DS_DDHCHUACOPN_RP]    Script Date: 12/6/2020 1:04:57 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[V_DS_DDHCHUACOPN_RP]
+AS
+	SELECT DatHang.MasoDDH, DatHang.NGAY, DatHang.NhaCC, NV.HOTEN, VT.TENVT, CT.SOLUONG, CT.DONGIA
+	FROM DatHang, (SELECT MANV, HO+ ' '+TEN as HOTEN FROM NhanVien) as NV, Vattu as VT, CTDDH as CT
+	WHERE DatHang.MasoDDH in (SELECT MasoDDH FROM DatHang EXCEPT SELECT MasoDDH FROM PhieuNhap) AND DatHang.MANV = NV.MANV
+	AND CT.MasoDDH = DatHang.MasoDDH AND VT.MAVT = CT.MAVT
+GO
+/****** Object:  View [dbo].[V_DS_PHANMANH]    Script Date: 12/6/2020 1:04:57 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

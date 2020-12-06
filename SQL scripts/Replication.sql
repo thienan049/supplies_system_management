@@ -1,9 +1,9 @@
-/****** Scripting replication configuration. Script Date: 11/29/2020 5:10:10 PM ******/
+/****** Scripting replication configuration. Script Date: 12/6/2020 1:03:19 PM ******/
 /****** Please Note: For security reasons, all password parameters were scripted with either NULL or an empty string. ******/
 
 /****** Begin: Script to be run at Publisher ******/
 
-/****** Installing the server as a Distributor. Script Date: 11/29/2020 5:10:10 PM ******/
+/****** Installing the server as a Distributor. Script Date: 12/6/2020 1:03:19 PM ******/
 use master
 exec sp_adddistributor @distributor = N'ANTHIEN049', @password = N''
 GO
@@ -102,10 +102,16 @@ use [QLVT]
 exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'SP_LAYMANV', @source_owner = N'dbo', @source_object = N'SP_LAYMANV', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYMANV', @force_reinit_subscription = 1
 GO
 use [QLVT]
-exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'SP_LAYMAPN', @source_owner = N'dbo', @source_object = N'SP_LAYMAPN', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYMAPN', @force_reinit_subscription = 1
+exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'SP_LAYMAPNPX', @source_owner = N'dbo', @source_object = N'SP_LAYMAPNPX', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYMAPNPX', @force_reinit_subscription = 1
 GO
 use [QLVT]
 exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'SP_LAYMAVT', @source_owner = N'dbo', @source_object = N'SP_LAYMAVT', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYMAVT', @force_reinit_subscription = 1
+GO
+use [QLVT]
+exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'SP_LAYTHONGTINVATTUDATHANG', @source_owner = N'dbo', @source_object = N'SP_LAYTHONGTINVATTUDATHANG', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYTHONGTINVATTUDATHANG', @force_reinit_subscription = 1
+GO
+use [QLVT]
+exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'SP_PHIEULAPTRONGNAMTHEOLOAI', @source_owner = N'dbo', @source_object = N'SP_PHIEULAPTRONGNAMTHEOLOAI', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_PHIEULAPTRONGNAMTHEOLOAI', @force_reinit_subscription = 1
 GO
 use [QLVT]
 exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'SP_TAOTAIKHOAN', @source_owner = N'dbo', @source_object = N'SP_TAOTAIKHOAN', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_TAOTAIKHOAN', @force_reinit_subscription = 1
@@ -115,6 +121,9 @@ exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'SP_THONGTINDANG
 GO
 use [QLVT]
 exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'V_DS_DDHCHUACOPN', @source_owner = N'dbo', @source_object = N'V_DS_DDHCHUACOPN', @type = N'view schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'V_DS_DDHCHUACOPN', @force_reinit_subscription = 1
+GO
+use [QLVT]
+exec sp_addmergearticle @publication = N'QLVT_CN1', @article = N'V_DS_DDHCHUACOPN_RP', @source_owner = N'dbo', @source_object = N'V_DS_DDHCHUACOPN_RP', @type = N'view schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'V_DS_DDHCHUACOPN_RP', @force_reinit_subscription = 1
 GO
 
 -- Adding the merge article join filters
@@ -212,10 +221,16 @@ use [QLVT]
 exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'SP_LAYMANV', @source_owner = N'dbo', @source_object = N'SP_LAYMANV', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYMANV', @force_reinit_subscription = 1
 GO
 use [QLVT]
-exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'SP_LAYMAPN', @source_owner = N'dbo', @source_object = N'SP_LAYMAPN', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYMAPN', @force_reinit_subscription = 1
+exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'SP_LAYMAPNPX', @source_owner = N'dbo', @source_object = N'SP_LAYMAPNPX', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYMAPNPX', @force_reinit_subscription = 1
 GO
 use [QLVT]
 exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'SP_LAYMAVT', @source_owner = N'dbo', @source_object = N'SP_LAYMAVT', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYMAVT', @force_reinit_subscription = 1
+GO
+use [QLVT]
+exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'SP_LAYTHONGTINVATTUDATHANG', @source_owner = N'dbo', @source_object = N'SP_LAYTHONGTINVATTUDATHANG', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_LAYTHONGTINVATTUDATHANG', @force_reinit_subscription = 1
+GO
+use [QLVT]
+exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'SP_PHIEULAPTRONGNAMTHEOLOAI', @source_owner = N'dbo', @source_object = N'SP_PHIEULAPTRONGNAMTHEOLOAI', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_PHIEULAPTRONGNAMTHEOLOAI', @force_reinit_subscription = 1
 GO
 use [QLVT]
 exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'SP_TAOTAIKHOAN', @source_owner = N'dbo', @source_object = N'SP_TAOTAIKHOAN', @type = N'proc schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'SP_TAOTAIKHOAN', @force_reinit_subscription = 1
@@ -225,6 +240,9 @@ exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'SP_THONGTINDANG
 GO
 use [QLVT]
 exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'V_DS_DDHCHUACOPN', @source_owner = N'dbo', @source_object = N'V_DS_DDHCHUACOPN', @type = N'view schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'V_DS_DDHCHUACOPN', @force_reinit_subscription = 1
+GO
+use [QLVT]
+exec sp_addmergearticle @publication = N'QLVT_CN2', @article = N'V_DS_DDHCHUACOPN_RP', @source_owner = N'dbo', @source_object = N'V_DS_DDHCHUACOPN_RP', @type = N'view schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_owner = N'dbo', @destination_object = N'V_DS_DDHCHUACOPN_RP', @force_reinit_subscription = 1
 GO
 
 -- Adding the merge article join filters
