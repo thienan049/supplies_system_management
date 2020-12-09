@@ -132,6 +132,12 @@
     <Compile Include="reports\DsVatTuRP.Designer.cs">
       <DependentUpon>DsVatTuRP.cs</DependentUpon>
     </Compile>
+    <Compile Include="reports\NhapXuatTheoThangRP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\NhapXuatTheoThangRP.Designer.cs">
+      <DependentUpon>NhapXuatTheoThangRP.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\PhieuLapTrongNamTheoLoaiRP.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reports\DsVatTuRP.resx">
       <DependentUpon>DsVatTuRP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\NhapXuatTheoThangRP.resx">
+      <DependentUpon>NhapXuatTheoThangRP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\PhieuLapTrongNamTheoLoaiRP.resx">
       <DependentUpon>PhieuLapTrongNamTheoLoaiRP.cs</DependentUpon>
