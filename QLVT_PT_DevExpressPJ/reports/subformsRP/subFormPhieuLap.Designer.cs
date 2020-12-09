@@ -71,11 +71,12 @@
             // cbxTenCN
             // 
             this.cbxTenCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTenCN.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxTenCN.FormattingEnabled = true;
-            this.cbxTenCN.Location = new System.Drawing.Point(109, 3);
+            this.cbxTenCN.Location = new System.Drawing.Point(109, 2);
             this.cbxTenCN.Margin = new System.Windows.Forms.Padding(4);
             this.cbxTenCN.Name = "cbxTenCN";
-            this.cbxTenCN.Size = new System.Drawing.Size(265, 21);
+            this.cbxTenCN.Size = new System.Drawing.Size(265, 24);
             this.cbxTenCN.TabIndex = 2;
             this.cbxTenCN.SelectedIndexChanged += new System.EventHandler(this.cbxTenCN_SelectedIndexChanged);
             // 
@@ -102,14 +103,15 @@
             // cbxLoaiPhieu
             // 
             this.cbxLoaiPhieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxLoaiPhieu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxLoaiPhieu.FormattingEnabled = true;
             this.cbxLoaiPhieu.Items.AddRange(new object[] {
             "Phiếu nhập",
             "Phiếu xuất"});
-            this.cbxLoaiPhieu.Location = new System.Drawing.Point(86, 3);
+            this.cbxLoaiPhieu.Location = new System.Drawing.Point(86, 2);
             this.cbxLoaiPhieu.Margin = new System.Windows.Forms.Padding(4);
             this.cbxLoaiPhieu.Name = "cbxLoaiPhieu";
-            this.cbxLoaiPhieu.Size = new System.Drawing.Size(265, 21);
+            this.cbxLoaiPhieu.Size = new System.Drawing.Size(265, 24);
             this.cbxLoaiPhieu.TabIndex = 2;
             // 
             // stackPanel2
@@ -135,6 +137,7 @@
             // cbxNam
             // 
             this.cbxNam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxNam.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxNam.FormattingEnabled = true;
             this.cbxNam.Items.AddRange(new object[] {
             "2017",
@@ -144,11 +147,12 @@
             this.cbxNam.Location = new System.Drawing.Point(49, 3);
             this.cbxNam.Margin = new System.Windows.Forms.Padding(4);
             this.cbxNam.Name = "cbxNam";
-            this.cbxNam.Size = new System.Drawing.Size(267, 21);
+            this.cbxNam.Size = new System.Drawing.Size(267, 22);
             this.cbxNam.TabIndex = 2;
             // 
             // btnXem
             // 
+            this.btnXem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXem.Location = new System.Drawing.Point(223, 197);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
@@ -159,6 +163,7 @@
             // 
             // btnThoat
             // 
+            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.Location = new System.Drawing.Point(345, 197);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 23);

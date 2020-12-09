@@ -106,7 +106,7 @@
             queryParameter1.ValueInfo = "PN";
             queryParameter2.Name = "@NAM";
             queryParameter2.Type = typeof(int);
-            queryParameter2.ValueInfo = "2020";
+            queryParameter2.ValueInfo = "2017";
             storedProcQuery1.Parameters.Add(queryParameter1);
             storedProcQuery1.Parameters.Add(queryParameter2);
             storedProcQuery1.StoredProcName = "SP_PHIEULAPTRONGNAMTHEOLOAI";

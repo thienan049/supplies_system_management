@@ -238,6 +238,18 @@ namespace QLVT_PT_DevExpressPJ
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
+
+        private void btnNXThang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(subFormNXTheoThang));
+            if (frm != null) frm.Activate();
+            else
+            {
+                subFormNXTheoThang sfNXTT = new subFormNXTheoThang();
+                sfNXTT.Owner = Program.formChinh;
+                sfNXTT.ShowDialog();
+            }
+        }
     }
 
 

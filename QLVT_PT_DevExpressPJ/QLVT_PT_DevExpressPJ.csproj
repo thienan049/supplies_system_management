@@ -173,6 +173,12 @@
     <Compile Include="reports\subformsRP\subFormChonCN_RP.Designer.cs">
       <DependentUpon>subFormChonCN_RP.cs</DependentUpon>
     </Compile>
+    <Compile Include="reports\subformsRP\subFormNXTheoThang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reports\subformsRP\subFormNXTheoThang.Designer.cs">
+      <DependentUpon>subFormNXTheoThang.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\subformsRP\subFormPhieuLap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reports\subformsRP\subFormChonCN_RP.resx">
       <DependentUpon>subFormChonCN_RP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\subformsRP\subFormNXTheoThang.resx">
+      <DependentUpon>subFormNXTheoThang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\subformsRP\subFormPhieuLap.resx">
       <DependentUpon>subFormPhieuLap.cs</DependentUpon>

@@ -40,6 +40,7 @@
             this.btnPhLapTheoLoaiRP = new DevExpress.XtraBars.BarButtonItem();
             this.btnDsNVRP = new DevExpress.XtraBars.BarButtonItem();
             this.btnDsVTRP = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDdhChuaPN = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageLogin = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonLoginGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonLogoutGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -52,6 +53,7 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -59,8 +61,8 @@
             this.sttLblHoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.sttLblNhom = new System.Windows.Forms.ToolStripStatusLabel();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnDdhChuaPN = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnNXThang = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -81,10 +83,11 @@
             this.btnPhLapTheoLoaiRP,
             this.btnDsNVRP,
             this.btnDsVTRP,
-            this.btnDdhChuaPN});
+            this.btnDdhChuaPN,
+            this.btnNXThang});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 34;
+            this.ribbonControl1.MaxItemId = 35;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 440;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -144,8 +147,7 @@
             // 
             this.btnDDHPNPX.Caption = "Đơn đặt hàng | Phiếu nhập | Phiếu xuất";
             this.btnDDHPNPX.Id = 22;
-            this.btnDDHPNPX.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDDHPNPX.ImageOptions.Image")));
-            this.btnDDHPNPX.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDDHPNPX.ImageOptions.LargeImage")));
+            this.btnDDHPNPX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDDHPNPX.ImageOptions.SvgImage")));
             this.btnDDHPNPX.Name = "btnDDHPNPX";
             this.btnDDHPNPX.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDDHPNPX_ItemClick);
             // 
@@ -153,8 +155,7 @@
             // 
             this.btnPhLapTheoLoaiRP.Caption = "Phiếu lập trong năm theo loại";
             this.btnPhLapTheoLoaiRP.Id = 30;
-            this.btnPhLapTheoLoaiRP.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPhLapTheoLoaiRP.ImageOptions.Image")));
-            this.btnPhLapTheoLoaiRP.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPhLapTheoLoaiRP.ImageOptions.LargeImage")));
+            this.btnPhLapTheoLoaiRP.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPhLapTheoLoaiRP.ImageOptions.SvgImage")));
             this.btnPhLapTheoLoaiRP.Name = "btnPhLapTheoLoaiRP";
             this.btnPhLapTheoLoaiRP.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnPhLapTheoLoaiRP.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhLapTheoLoaiRP_ItemClick);
@@ -163,8 +164,7 @@
             // 
             this.btnDsNVRP.Caption = "Danh sách nhân viên";
             this.btnDsNVRP.Id = 31;
-            this.btnDsNVRP.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDsNVRP.ImageOptions.Image")));
-            this.btnDsNVRP.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDsNVRP.ImageOptions.LargeImage")));
+            this.btnDsNVRP.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDsNVRP.ImageOptions.SvgImage")));
             this.btnDsNVRP.Name = "btnDsNVRP";
             this.btnDsNVRP.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDsNVRP_ItemClick);
             // 
@@ -172,10 +172,17 @@
             // 
             this.btnDsVTRP.Caption = "Danh sách vật tư";
             this.btnDsVTRP.Id = 32;
-            this.btnDsVTRP.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDsVTRP.ImageOptions.Image")));
-            this.btnDsVTRP.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDsVTRP.ImageOptions.LargeImage")));
+            this.btnDsVTRP.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDsVTRP.ImageOptions.SvgImage")));
             this.btnDsVTRP.Name = "btnDsVTRP";
             this.btnDsVTRP.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDsVTRP_ItemClick);
+            // 
+            // btnDdhChuaPN
+            // 
+            this.btnDdhChuaPN.Caption = "Đơn đặt hàng chưa có phiếu nhập";
+            this.btnDdhChuaPN.Id = 33;
+            this.btnDdhChuaPN.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDdhChuaPN.ImageOptions.SvgImage")));
+            this.btnDdhChuaPN.Name = "btnDdhChuaPN";
+            this.btnDdhChuaPN.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDdhChuaPN_ItemClick);
             // 
             // ribbonPageLogin
             // 
@@ -237,7 +244,8 @@
             this.ribbonPageGroup1,
             this.ribbonPageGroup2,
             this.ribbonPageGroup4,
-            this.ribbonPageGroup5});
+            this.ribbonPageGroup5,
+            this.ribbonPageGroup6});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Báo cáo";
             // 
@@ -258,6 +266,12 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.btnDsVTRP);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Báo cáo";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.btnDdhChuaPN);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "Báo cáo";
             // 
             // ribbonPage4
             // 
@@ -303,20 +317,19 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
-            // ribbonPageGroup5
+            // ribbonPageGroup6
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.btnDdhChuaPN);
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.Text = "Báo cáo";
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnNXThang);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.Text = "Báo cáo";
             // 
-            // btnDdhChuaPN
+            // btnNXThang
             // 
-            this.btnDdhChuaPN.Caption = "Đơn đặt hàng chưa có phiếu nhập";
-            this.btnDdhChuaPN.Id = 33;
-            this.btnDdhChuaPN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnDdhChuaPN.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnDdhChuaPN.Name = "btnDdhChuaPN";
-            this.btnDdhChuaPN.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDdhChuaPN_ItemClick);
+            this.btnNXThang.Caption = "Bảng kê chi tiết nhập xuất theo tháng";
+            this.btnNXThang.Id = 34;
+            this.btnNXThang.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnNXThang.ImageOptions.SvgImage")));
+            this.btnNXThang.Name = "btnNXThang";
+            this.btnNXThang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNXThang_ItemClick);
             // 
             // formMain
             // 
@@ -376,6 +389,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem btnDdhChuaPN;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
+        private DevExpress.XtraBars.BarButtonItem btnNXThang;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
     }
 }
 

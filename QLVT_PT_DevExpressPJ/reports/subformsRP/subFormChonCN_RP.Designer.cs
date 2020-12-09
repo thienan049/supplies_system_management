@@ -61,16 +61,18 @@
             // cbxTenCN
             // 
             this.cbxTenCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTenCN.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxTenCN.FormattingEnabled = true;
             this.cbxTenCN.Location = new System.Drawing.Point(109, 3);
             this.cbxTenCN.Margin = new System.Windows.Forms.Padding(4);
             this.cbxTenCN.Name = "cbxTenCN";
-            this.cbxTenCN.Size = new System.Drawing.Size(265, 21);
+            this.cbxTenCN.Size = new System.Drawing.Size(265, 22);
             this.cbxTenCN.TabIndex = 2;
             this.cbxTenCN.SelectedIndexChanged += new System.EventHandler(this.cbxTenCN_SelectedIndexChanged);
             // 
             // btnThoat
             // 
+            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.Location = new System.Drawing.Point(321, 90);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 23);
@@ -81,6 +83,7 @@
             // 
             // btnXem
             // 
+            this.btnXem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXem.Location = new System.Drawing.Point(199, 90);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
