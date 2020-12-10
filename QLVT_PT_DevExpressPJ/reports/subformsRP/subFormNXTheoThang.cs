@@ -16,6 +16,7 @@ namespace QLVT_PT_DevExpressPJ.reports.subformsRP
         public subFormNXTheoThang()
         {
             InitializeComponent();
+            this.CancelButton = this.btnThoat;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -52,9 +53,27 @@ namespace QLVT_PT_DevExpressPJ.reports.subformsRP
                 int namTruoc = int.Parse(this.cbxNamTruoc.Text);
                 int thangSau = int.Parse(this.cbxThangSau.Text);
                 int namSau = int.Parse(this.cbxNamSau.Text);
-                NhapXuatTheoThangRP rp = new NhapXuatTheoThangRP(loaiPhieu, new DateTime(namTruoc, thangTruoc, 1), new DateTime(namSau, thangSau, 1));
-                rp.lblTitle.Text = "CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ HÀNG " + this.cbxLoaiPhieu.Text.Substring(6).ToUpper() + 
-                                   " TỪ THÁNG " + thangTruoc + "-" + namTruoc + " ĐẾN THÁNG " + thangSau + "-" + namSau;
+                NhapXuatTheoThangRP rp = null;
+                string title = null;
+                if (Program.mChinhanh == 0)
+                {
+                    title = " CHI NHÁNH 1";
+                }
+                else if (Program.mChinhanh == 1)
+                {
+                    title = " CHI NHÁNH 2";
+                }
+                if (Program.mGroup == "CONGTY")
+                {
+                    rp = new NhapXuatTheoThangRP("CT", loaiPhieu, new DateTime(namTruoc, thangTruoc, 1), new DateTime(namSau, thangSau, 1));
+                    rp.lblTitle.Text = "CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ HÀNG " + this.cbxLoaiPhieu.Text.Substring(6).ToUpper() +
+                                       " \nTỪ THÁNG " + thangTruoc + "-" + namTruoc + " ĐẾN THÁNG " + thangSau + "-" + namSau + " CỦA CÔNG TY";
+                }else
+                {
+                    rp = new NhapXuatTheoThangRP("CN", loaiPhieu, new DateTime(namTruoc, thangTruoc, 1), new DateTime(namSau, thangSau, 1));
+                    rp.lblTitle.Text = "CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ HÀNG " + this.cbxLoaiPhieu.Text.Substring(6).ToUpper() +
+                                       " \nTỪ THÁNG " + thangTruoc + "-" + namTruoc + " ĐẾN THÁNG " + thangSau + "-" + namSau + " CỦA" + title;
+                }               
                 ReportPrintTool prTl = new ReportPrintTool(rp);
                 prTl.ShowPreviewDialog();
             }

@@ -310,7 +310,7 @@ namespace QLVT_PT_DevExpressPJ
                 }
             }
 
-            if (((checkEmptyCells || (this.qlvtDS.NhanVien.Count - 1) == this.khoBDS.Position) && this.isAdding == true) || (this.khoBDS.Position == editPosition && this.isEditing == true))
+            if (((checkEmptyCells || (this.qlvtDS.Kho.Count - 1) == this.khoBDS.Position) && this.isAdding == true) || (this.khoBDS.Position == editPosition && this.isEditing == true))
             {
                 writableKhoControl(1);
                 checkEmptyAndValid();
