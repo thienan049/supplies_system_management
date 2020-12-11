@@ -132,6 +132,12 @@
     <Compile Include="reports\DsVatTuRP.Designer.cs">
       <DependentUpon>DsVatTuRP.cs</DependentUpon>
     </Compile>
+    <Compile Include="reports\HoatDongNVRP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\HoatDongNVRP.Designer.cs">
+      <DependentUpon>HoatDongNVRP.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\NhapXuatTheoThangRP.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -172,6 +178,12 @@
     </Compile>
     <Compile Include="reports\subformsRP\subFormChonCN_RP.Designer.cs">
       <DependentUpon>subFormChonCN_RP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reports\subformsRP\subFormHDNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reports\subformsRP\subFormHDNV.Designer.cs">
+      <DependentUpon>subFormHDNV.cs</DependentUpon>
     </Compile>
     <Compile Include="reports\subformsRP\subFormNXTheoThang.cs">
       <SubType>Form</SubType>
@@ -248,6 +260,9 @@
     <EmbeddedResource Include="reports\DsVatTuRP.resx">
       <DependentUpon>DsVatTuRP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="reports\HoatDongNVRP.resx">
+      <DependentUpon>HoatDongNVRP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="reports\NhapXuatTheoThangRP.resx">
       <DependentUpon>NhapXuatTheoThangRP.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reports\subformsRP\subFormChonCN_RP.resx">
       <DependentUpon>subFormChonCN_RP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\subformsRP\subFormHDNV.resx">
+      <DependentUpon>subFormHDNV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\subformsRP\subFormNXTheoThang.resx">
       <DependentUpon>subFormNXTheoThang.cs</DependentUpon>

@@ -250,6 +250,18 @@ namespace QLVT_PT_DevExpressPJ
                 sfNXTT.ShowDialog();
             }
         }
+
+        private void btnHDNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(subFormHDNV));
+            if (frm != null) frm.Activate();
+            else
+            {
+                subFormHDNV sfHDNV = new subFormHDNV();
+                sfHDNV.Owner = Program.formChinh;
+                sfHDNV.ShowDialog();
+            }
+        }
     }
 
 

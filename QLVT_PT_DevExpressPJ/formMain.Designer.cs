@@ -41,6 +41,7 @@
             this.btnDsNVRP = new DevExpress.XtraBars.BarButtonItem();
             this.btnDsVTRP = new DevExpress.XtraBars.BarButtonItem();
             this.btnDdhChuaPN = new DevExpress.XtraBars.BarButtonItem();
+            this.btnNXThang = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageLogin = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonLoginGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonLogoutGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -54,6 +55,7 @@
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -61,8 +63,8 @@
             this.sttLblHoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.sttLblNhom = new System.Windows.Forms.ToolStripStatusLabel();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnNXThang = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnHDNV = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -84,10 +86,11 @@
             this.btnDsNVRP,
             this.btnDsVTRP,
             this.btnDdhChuaPN,
-            this.btnNXThang});
+            this.btnNXThang,
+            this.btnHDNV});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 35;
+            this.ribbonControl1.MaxItemId = 36;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 440;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -95,7 +98,7 @@
             this.ribbonPageQT,
             this.ribbonPage1});
             this.ribbonControl1.ShowQatLocationSelector = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(782, 158);
+            this.ribbonControl1.Size = new System.Drawing.Size(844, 158);
             this.ribbonControl1.TransparentEditorsMode = DevExpress.Utils.DefaultBoolean.False;
             // 
             // btnDangNhap
@@ -184,6 +187,14 @@
             this.btnDdhChuaPN.Name = "btnDdhChuaPN";
             this.btnDdhChuaPN.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDdhChuaPN_ItemClick);
             // 
+            // btnNXThang
+            // 
+            this.btnNXThang.Caption = "Bảng kê chi tiết nhập xuất theo tháng";
+            this.btnNXThang.Id = 34;
+            this.btnNXThang.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnNXThang.ImageOptions.SvgImage")));
+            this.btnNXThang.Name = "btnNXThang";
+            this.btnNXThang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNXThang_ItemClick);
+            // 
             // ribbonPageLogin
             // 
             this.ribbonPageLogin.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -245,7 +256,8 @@
             this.ribbonPageGroup2,
             this.ribbonPageGroup4,
             this.ribbonPageGroup5,
-            this.ribbonPageGroup6});
+            this.ribbonPageGroup6,
+            this.ribbonPageGroup7});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Báo cáo";
             // 
@@ -273,6 +285,12 @@
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Báo cáo";
             // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnNXThang);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.Text = "Báo cáo";
+            // 
             // ribbonPage4
             // 
             this.ribbonPage4.Name = "ribbonPage4";
@@ -290,7 +308,7 @@
             this.sttLblNhom});
             this.statusStrip1.Location = new System.Drawing.Point(0, 459);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(782, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(844, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -317,26 +335,26 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
-            // ribbonPageGroup6
+            // ribbonPageGroup7
             // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnNXThang);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Báo cáo";
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnHDNV);
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
+            this.ribbonPageGroup7.Text = "Báo cáo";
             // 
-            // btnNXThang
+            // btnHDNV
             // 
-            this.btnNXThang.Caption = "Bảng kê chi tiết nhập xuất theo tháng";
-            this.btnNXThang.Id = 34;
-            this.btnNXThang.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnNXThang.ImageOptions.SvgImage")));
-            this.btnNXThang.Name = "btnNXThang";
-            this.btnNXThang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNXThang_ItemClick);
+            this.btnHDNV.Caption = "Hoạt động của nhân viên theo tháng";
+            this.btnHDNV.Id = 35;
+            this.btnHDNV.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnHDNV.Name = "btnHDNV";
+            this.btnHDNV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHDNV_ItemClick);
             // 
             // formMain
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 481);
+            this.ClientSize = new System.Drawing.Size(844, 481);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbonControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -391,6 +409,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.BarButtonItem btnNXThang;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraBars.BarButtonItem btnHDNV;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
     }
 }
 
