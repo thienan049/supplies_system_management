@@ -138,10 +138,19 @@ namespace QLVT_PT_DevExpressPJ
             Program.formChinh.btnDangNhap.Enabled = false;
             
             Program.formChinh.btnDangXuat.Enabled = true;
-            Program.formChinh.btnNV.Enabled = true;
-            Program.formChinh.btnVT.Enabled = true;
-            Program.formChinh.btnKho.Enabled = true;
-            Program.formChinh.btnDDHPNPX.Enabled = true;
+            //Program.formChinh.btnNV.Enabled = true;
+            //Program.formChinh.btnVT.Enabled = true;
+            //Program.formChinh.btnKho.Enabled = true;
+            //Program.formChinh.btnDDHPNPX.Enabled = true;
+
+            //Program.formChinh.btnPhLapTheoLoaiRP.Enabled = true;
+            //Program.formChinh.btnDsNVRP.Enabled = true;
+            //Program.formChinh.btnDsVTRP.Enabled = true;
+            //Program.formChinh.btnDdhChuaPN.Enabled = true;
+            //Program.formChinh.btnNXThang.Enabled = true;
+            //Program.formChinh.btnHDNV.Enabled = true;
+            Program.formChinh.rbPgDanhMuc.Visible = true;
+            Program.formChinh.rbPgBaoCao.Visible = true;
         }
 
         private void btnThoatDN_Click(object sender, EventArgs e)

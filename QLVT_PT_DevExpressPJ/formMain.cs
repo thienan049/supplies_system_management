@@ -27,12 +27,22 @@ namespace QLVT_PT_DevExpressPJ
                 f.MdiParent = this;
                 f.Show();
             }
+
+            //this.btnDangXuat.Enabled = false;
+            //this.btnNV.Enabled = false;
+            //this.btnVT.Enabled = false;
+            //this.btnKho.Enabled = false;
+            //this.btnDDHPNPX.Enabled = false;
+
+            //this.btnPhLapTheoLoaiRP.Enabled = false;
+            //this.btnDsNVRP.Enabled = false;
+            //this.btnDsVTRP.Enabled = false;
+            //this.btnDdhChuaPN.Enabled = false;
+            //this.btnNXThang.Enabled = false;
+            //this.btnHDNV.Enabled = false;
+            this.rbPgDanhMuc.Visible = false;
+            this.rbPgBaoCao.Visible = false;
             
-            this.btnDangXuat.Enabled = false;
-            this.btnNV.Enabled = false;
-            this.btnVT.Enabled = false;
-            this.btnKho.Enabled = false;
-            this.btnDDHPNPX.Enabled = false;
             this.KeyPreview = true;
         }
 
@@ -87,10 +97,19 @@ namespace QLVT_PT_DevExpressPJ
         {
             this.btnDangNhap.Enabled = true;
             this.btnDangXuat.Enabled = false;
-            this.btnNV.Enabled = false;
-            this.btnVT.Enabled = false;
-            this.btnKho.Enabled = false;
-            this.btnDDHPNPX.Enabled = false;
+            //this.btnNV.Enabled = false;
+            //this.btnVT.Enabled = false;
+            //this.btnKho.Enabled = false;
+            //this.btnDDHPNPX.Enabled = false;
+
+            //this.btnPhLapTheoLoaiRP.Enabled = false;
+            //this.btnDsNVRP.Enabled = false;
+            //this.btnDsVTRP.Enabled = false;
+            //this.btnDdhChuaPN.Enabled = false;
+            //this.btnNXThang.Enabled = false;
+            //this.btnHDNV.Enabled = false;
+            this.rbPgDanhMuc.Visible = false;
+            this.rbPgBaoCao.Visible = false;
 
             foreach (Form f in this.MdiChildren)
                 f.Close();

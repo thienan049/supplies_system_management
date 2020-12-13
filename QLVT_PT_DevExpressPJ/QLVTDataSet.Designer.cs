@@ -48,35 +48,43 @@ namespace QLVT_PT_DevExpressPJ {
         
         private SP_LAYTHONGTINVATTUDATHANGDataTable tableSP_LAYTHONGTINVATTUDATHANG;
         
-        private global::System.Data.DataRelation relationFK_CTDDH_VatTu;
+        private HoTenNVDataTable tableHoTenNV;
         
         private global::System.Data.DataRelation relationFK_CTDDH_DatHang;
         
-        private global::System.Data.DataRelation relationFK_CTPN_VatTu;
+        private global::System.Data.DataRelation relationFK_CTDDH_VatTu;
         
-        private global::System.Data.DataRelation relationFK_CTPX_VatTu;
+        private global::System.Data.DataRelation relationFK_CTPN_VatTu;
         
         private global::System.Data.DataRelation relationFK_CTPX_PX;
         
-        private global::System.Data.DataRelation relationFK_DatHang_Kho;
+        private global::System.Data.DataRelation relationFK_CTPX_VatTu;
         
         private global::System.Data.DataRelation relationFK_DatHang_NhanVien;
+        
+        private global::System.Data.DataRelation relationFK_DatHang_Kho;
         
         private global::System.Data.DataRelation relationFK_Kho_Kho;
         
         private global::System.Data.DataRelation relationFK_NhanVien_ChiNhanh;
         
-        private global::System.Data.DataRelation relationFK_PhieuNhap_Kho;
+        private global::System.Data.DataRelation relationFK_PhieuNhap_DatHang;
         
         private global::System.Data.DataRelation relationFK_PhieuNhap_NhanVien;
         
-        private global::System.Data.DataRelation relationFK_PhieuNhap_DatHang;
-        
-        private global::System.Data.DataRelation relationFK_PX_NhanVien;
+        private global::System.Data.DataRelation relationFK_PhieuNhap_Kho;
         
         private global::System.Data.DataRelation relationFK_PX_Kho;
         
+        private global::System.Data.DataRelation relationFK_PX_NhanVien;
+        
         private global::System.Data.DataRelation relationFK_CTPN_PhieuNhap;
+        
+        private global::System.Data.DataRelation relationFK_DatHang_NhanVien1;
+        
+        private global::System.Data.DataRelation relationFK_PhieuNhap_NhanVien1;
+        
+        private global::System.Data.DataRelation relationFK_PX_NhanVien1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -141,6 +149,9 @@ namespace QLVT_PT_DevExpressPJ {
                 }
                 if ((ds.Tables["SP_LAYTHONGTINVATTUDATHANG"] != null)) {
                     base.Tables.Add(new SP_LAYTHONGTINVATTUDATHANGDataTable(ds.Tables["SP_LAYTHONGTINVATTUDATHANG"]));
+                }
+                if ((ds.Tables["HoTenNV"] != null)) {
+                    base.Tables.Add(new HoTenNVDataTable(ds.Tables["HoTenNV"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -282,6 +293,16 @@ namespace QLVT_PT_DevExpressPJ {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public HoTenNVDataTable HoTenNV {
+            get {
+                return this.tableHoTenNV;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -382,6 +403,9 @@ namespace QLVT_PT_DevExpressPJ {
                 }
                 if ((ds.Tables["SP_LAYTHONGTINVATTUDATHANG"] != null)) {
                     base.Tables.Add(new SP_LAYTHONGTINVATTUDATHANGDataTable(ds.Tables["SP_LAYTHONGTINVATTUDATHANG"]));
+                }
+                if ((ds.Tables["HoTenNV"] != null)) {
+                    base.Tables.Add(new HoTenNVDataTable(ds.Tables["HoTenNV"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -488,21 +512,30 @@ namespace QLVT_PT_DevExpressPJ {
                     this.tableSP_LAYTHONGTINVATTUDATHANG.InitVars();
                 }
             }
-            this.relationFK_CTDDH_VatTu = this.Relations["FK_CTDDH_VatTu"];
+            this.tableHoTenNV = ((HoTenNVDataTable)(base.Tables["HoTenNV"]));
+            if ((initTable == true)) {
+                if ((this.tableHoTenNV != null)) {
+                    this.tableHoTenNV.InitVars();
+                }
+            }
             this.relationFK_CTDDH_DatHang = this.Relations["FK_CTDDH_DatHang"];
+            this.relationFK_CTDDH_VatTu = this.Relations["FK_CTDDH_VatTu"];
             this.relationFK_CTPN_VatTu = this.Relations["FK_CTPN_VatTu"];
-            this.relationFK_CTPX_VatTu = this.Relations["FK_CTPX_VatTu"];
             this.relationFK_CTPX_PX = this.Relations["FK_CTPX_PX"];
-            this.relationFK_DatHang_Kho = this.Relations["FK_DatHang_Kho"];
+            this.relationFK_CTPX_VatTu = this.Relations["FK_CTPX_VatTu"];
             this.relationFK_DatHang_NhanVien = this.Relations["FK_DatHang_NhanVien"];
+            this.relationFK_DatHang_Kho = this.Relations["FK_DatHang_Kho"];
             this.relationFK_Kho_Kho = this.Relations["FK_Kho_Kho"];
             this.relationFK_NhanVien_ChiNhanh = this.Relations["FK_NhanVien_ChiNhanh"];
-            this.relationFK_PhieuNhap_Kho = this.Relations["FK_PhieuNhap_Kho"];
-            this.relationFK_PhieuNhap_NhanVien = this.Relations["FK_PhieuNhap_NhanVien"];
             this.relationFK_PhieuNhap_DatHang = this.Relations["FK_PhieuNhap_DatHang"];
-            this.relationFK_PX_NhanVien = this.Relations["FK_PX_NhanVien"];
+            this.relationFK_PhieuNhap_NhanVien = this.Relations["FK_PhieuNhap_NhanVien"];
+            this.relationFK_PhieuNhap_Kho = this.Relations["FK_PhieuNhap_Kho"];
             this.relationFK_PX_Kho = this.Relations["FK_PX_Kho"];
+            this.relationFK_PX_NhanVien = this.Relations["FK_PX_NhanVien"];
             this.relationFK_CTPN_PhieuNhap = this.Relations["FK_CTPN_PhieuNhap"];
+            this.relationFK_DatHang_NhanVien1 = this.Relations["FK_DatHang_NhanVien1"];
+            this.relationFK_PhieuNhap_NhanVien1 = this.Relations["FK_PhieuNhap_NhanVien1"];
+            this.relationFK_PX_NhanVien1 = this.Relations["FK_PX_NhanVien1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -537,17 +570,19 @@ namespace QLVT_PT_DevExpressPJ {
             base.Tables.Add(this.tableV_DS_DDHCHUACOPN);
             this.tableSP_LAYTHONGTINVATTUDATHANG = new SP_LAYTHONGTINVATTUDATHANGDataTable();
             base.Tables.Add(this.tableSP_LAYTHONGTINVATTUDATHANG);
+            this.tableHoTenNV = new HoTenNVDataTable();
+            base.Tables.Add(this.tableHoTenNV);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_CTDDH_VatTu", new global::System.Data.DataColumn[] {
-                        this.tableVattu.MAVTColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCTDDH.MAVTColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_CTDDH_DatHang", new global::System.Data.DataColumn[] {
+                        this.tableDatHang.MasoDDHColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCTDDH.MasoDDHColumn});
             this.tableCTDDH.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_CTDDH_DatHang", new global::System.Data.DataColumn[] {
-                        this.tableDatHang.MasoDDHColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCTDDH.MasoDDHColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_CTDDH_VatTu", new global::System.Data.DataColumn[] {
+                        this.tableVattu.MAVTColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCTDDH.MAVTColumn});
             this.tableCTDDH.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
@@ -559,13 +594,6 @@ namespace QLVT_PT_DevExpressPJ {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_CTPX_VatTu", new global::System.Data.DataColumn[] {
-                        this.tableVattu.MAVTColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCTPX.MAVTColumn});
-            this.tableCTPX.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.None;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_CTPX_PX", new global::System.Data.DataColumn[] {
                         this.tablePhieuXuat.MAPXColumn}, new global::System.Data.DataColumn[] {
                         this.tableCTPX.MAPXColumn});
@@ -573,16 +601,23 @@ namespace QLVT_PT_DevExpressPJ {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_DatHang_Kho", new global::System.Data.DataColumn[] {
-                        this.tableKho.MAKHOColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDatHang.MAKHOColumn});
-            this.tableDatHang.Constraints.Add(fkc);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_CTPX_VatTu", new global::System.Data.DataColumn[] {
+                        this.tableVattu.MAVTColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCTPX.MAVTColumn});
+            this.tableCTPX.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_DatHang_NhanVien", new global::System.Data.DataColumn[] {
                         this.tableNhanVien.MANVColumn}, new global::System.Data.DataColumn[] {
                         this.tableDatHang.MANVColumn});
+            this.tableDatHang.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DatHang_Kho", new global::System.Data.DataColumn[] {
+                        this.tableKho.MAKHOColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDatHang.MAKHOColumn});
             this.tableDatHang.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
@@ -601,9 +636,9 @@ namespace QLVT_PT_DevExpressPJ {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_PhieuNhap_Kho", new global::System.Data.DataColumn[] {
-                        this.tableKho.MAKHOColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePhieuNhap.MAKHOColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_PhieuNhap_DatHang", new global::System.Data.DataColumn[] {
+                        this.tableDatHang.MasoDDHColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePhieuNhap.MasoDDHColumn});
             this.tablePhieuNhap.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
@@ -615,17 +650,10 @@ namespace QLVT_PT_DevExpressPJ {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_PhieuNhap_DatHang", new global::System.Data.DataColumn[] {
-                        this.tableDatHang.MasoDDHColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePhieuNhap.MasoDDHColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_PhieuNhap_Kho", new global::System.Data.DataColumn[] {
+                        this.tableKho.MAKHOColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePhieuNhap.MAKHOColumn});
             this.tablePhieuNhap.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.None;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_PX_NhanVien", new global::System.Data.DataColumn[] {
-                        this.tableNhanVien.MANVColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePhieuXuat.MANVColumn});
-            this.tablePhieuXuat.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
@@ -636,34 +664,41 @@ namespace QLVT_PT_DevExpressPJ {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_CTDDH_VatTu = new global::System.Data.DataRelation("FK_CTDDH_VatTu", new global::System.Data.DataColumn[] {
-                        this.tableVattu.MAVTColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCTDDH.MAVTColumn}, false);
-            this.Relations.Add(this.relationFK_CTDDH_VatTu);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_PX_NhanVien", new global::System.Data.DataColumn[] {
+                        this.tableNhanVien.MANVColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePhieuXuat.MANVColumn});
+            this.tablePhieuXuat.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_CTDDH_DatHang = new global::System.Data.DataRelation("FK_CTDDH_DatHang", new global::System.Data.DataColumn[] {
                         this.tableDatHang.MasoDDHColumn}, new global::System.Data.DataColumn[] {
                         this.tableCTDDH.MasoDDHColumn}, false);
             this.Relations.Add(this.relationFK_CTDDH_DatHang);
+            this.relationFK_CTDDH_VatTu = new global::System.Data.DataRelation("FK_CTDDH_VatTu", new global::System.Data.DataColumn[] {
+                        this.tableVattu.MAVTColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCTDDH.MAVTColumn}, false);
+            this.Relations.Add(this.relationFK_CTDDH_VatTu);
             this.relationFK_CTPN_VatTu = new global::System.Data.DataRelation("FK_CTPN_VatTu", new global::System.Data.DataColumn[] {
                         this.tableVattu.MAVTColumn}, new global::System.Data.DataColumn[] {
                         this.tableCTPN.MAVTColumn}, false);
             this.Relations.Add(this.relationFK_CTPN_VatTu);
-            this.relationFK_CTPX_VatTu = new global::System.Data.DataRelation("FK_CTPX_VatTu", new global::System.Data.DataColumn[] {
-                        this.tableVattu.MAVTColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCTPX.MAVTColumn}, false);
-            this.Relations.Add(this.relationFK_CTPX_VatTu);
             this.relationFK_CTPX_PX = new global::System.Data.DataRelation("FK_CTPX_PX", new global::System.Data.DataColumn[] {
                         this.tablePhieuXuat.MAPXColumn}, new global::System.Data.DataColumn[] {
                         this.tableCTPX.MAPXColumn}, false);
             this.Relations.Add(this.relationFK_CTPX_PX);
-            this.relationFK_DatHang_Kho = new global::System.Data.DataRelation("FK_DatHang_Kho", new global::System.Data.DataColumn[] {
-                        this.tableKho.MAKHOColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDatHang.MAKHOColumn}, false);
-            this.Relations.Add(this.relationFK_DatHang_Kho);
+            this.relationFK_CTPX_VatTu = new global::System.Data.DataRelation("FK_CTPX_VatTu", new global::System.Data.DataColumn[] {
+                        this.tableVattu.MAVTColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCTPX.MAVTColumn}, false);
+            this.Relations.Add(this.relationFK_CTPX_VatTu);
             this.relationFK_DatHang_NhanVien = new global::System.Data.DataRelation("FK_DatHang_NhanVien", new global::System.Data.DataColumn[] {
                         this.tableNhanVien.MANVColumn}, new global::System.Data.DataColumn[] {
                         this.tableDatHang.MANVColumn}, false);
             this.Relations.Add(this.relationFK_DatHang_NhanVien);
+            this.relationFK_DatHang_Kho = new global::System.Data.DataRelation("FK_DatHang_Kho", new global::System.Data.DataColumn[] {
+                        this.tableKho.MAKHOColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDatHang.MAKHOColumn}, false);
+            this.Relations.Add(this.relationFK_DatHang_Kho);
             this.relationFK_Kho_Kho = new global::System.Data.DataRelation("FK_Kho_Kho", new global::System.Data.DataColumn[] {
                         this.tableChiNhanh.MACNColumn}, new global::System.Data.DataColumn[] {
                         this.tableKho.MACNColumn}, false);
@@ -672,30 +707,42 @@ namespace QLVT_PT_DevExpressPJ {
                         this.tableChiNhanh.MACNColumn}, new global::System.Data.DataColumn[] {
                         this.tableNhanVien.MACNColumn}, false);
             this.Relations.Add(this.relationFK_NhanVien_ChiNhanh);
-            this.relationFK_PhieuNhap_Kho = new global::System.Data.DataRelation("FK_PhieuNhap_Kho", new global::System.Data.DataColumn[] {
-                        this.tableKho.MAKHOColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePhieuNhap.MAKHOColumn}, false);
-            this.Relations.Add(this.relationFK_PhieuNhap_Kho);
-            this.relationFK_PhieuNhap_NhanVien = new global::System.Data.DataRelation("FK_PhieuNhap_NhanVien", new global::System.Data.DataColumn[] {
-                        this.tableNhanVien.MANVColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePhieuNhap.MANVColumn}, false);
-            this.Relations.Add(this.relationFK_PhieuNhap_NhanVien);
             this.relationFK_PhieuNhap_DatHang = new global::System.Data.DataRelation("FK_PhieuNhap_DatHang", new global::System.Data.DataColumn[] {
                         this.tableDatHang.MasoDDHColumn}, new global::System.Data.DataColumn[] {
                         this.tablePhieuNhap.MasoDDHColumn}, false);
             this.Relations.Add(this.relationFK_PhieuNhap_DatHang);
-            this.relationFK_PX_NhanVien = new global::System.Data.DataRelation("FK_PX_NhanVien", new global::System.Data.DataColumn[] {
+            this.relationFK_PhieuNhap_NhanVien = new global::System.Data.DataRelation("FK_PhieuNhap_NhanVien", new global::System.Data.DataColumn[] {
                         this.tableNhanVien.MANVColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePhieuXuat.MANVColumn}, false);
-            this.Relations.Add(this.relationFK_PX_NhanVien);
+                        this.tablePhieuNhap.MANVColumn}, false);
+            this.Relations.Add(this.relationFK_PhieuNhap_NhanVien);
+            this.relationFK_PhieuNhap_Kho = new global::System.Data.DataRelation("FK_PhieuNhap_Kho", new global::System.Data.DataColumn[] {
+                        this.tableKho.MAKHOColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePhieuNhap.MAKHOColumn}, false);
+            this.Relations.Add(this.relationFK_PhieuNhap_Kho);
             this.relationFK_PX_Kho = new global::System.Data.DataRelation("FK_PX_Kho", new global::System.Data.DataColumn[] {
                         this.tableKho.MAKHOColumn}, new global::System.Data.DataColumn[] {
                         this.tablePhieuXuat.MAKHOColumn}, false);
             this.Relations.Add(this.relationFK_PX_Kho);
+            this.relationFK_PX_NhanVien = new global::System.Data.DataRelation("FK_PX_NhanVien", new global::System.Data.DataColumn[] {
+                        this.tableNhanVien.MANVColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePhieuXuat.MANVColumn}, false);
+            this.Relations.Add(this.relationFK_PX_NhanVien);
             this.relationFK_CTPN_PhieuNhap = new global::System.Data.DataRelation("FK_CTPN_PhieuNhap", new global::System.Data.DataColumn[] {
                         this.tablePhieuNhap.MAPNColumn}, new global::System.Data.DataColumn[] {
                         this.tableCTPN.MAPNColumn}, false);
             this.Relations.Add(this.relationFK_CTPN_PhieuNhap);
+            this.relationFK_DatHang_NhanVien1 = new global::System.Data.DataRelation("FK_DatHang_NhanVien1", new global::System.Data.DataColumn[] {
+                        this.tableHoTenNV.MANVColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDatHang.MANVColumn}, false);
+            this.Relations.Add(this.relationFK_DatHang_NhanVien1);
+            this.relationFK_PhieuNhap_NhanVien1 = new global::System.Data.DataRelation("FK_PhieuNhap_NhanVien1", new global::System.Data.DataColumn[] {
+                        this.tableHoTenNV.MANVColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePhieuNhap.MANVColumn}, false);
+            this.Relations.Add(this.relationFK_PhieuNhap_NhanVien1);
+            this.relationFK_PX_NhanVien1 = new global::System.Data.DataRelation("FK_PX_NhanVien1", new global::System.Data.DataColumn[] {
+                        this.tableHoTenNV.MANVColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePhieuXuat.MANVColumn}, false);
+            this.Relations.Add(this.relationFK_PX_NhanVien1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -767,6 +814,12 @@ namespace QLVT_PT_DevExpressPJ {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeSP_LAYTHONGTINVATTUDATHANG() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeHoTenNV() {
             return false;
         }
         
@@ -860,6 +913,9 @@ namespace QLVT_PT_DevExpressPJ {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void SP_LAYTHONGTINVATTUDATHANGRowChangeEventHandler(object sender, SP_LAYTHONGTINVATTUDATHANGRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void HoTenNVRowChangeEventHandler(object sender, HoTenNVRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -4649,6 +4705,280 @@ namespace QLVT_PT_DevExpressPJ {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class HoTenNVDataTable : global::System.Data.TypedTableBase<HoTenNVRow> {
+            
+            private global::System.Data.DataColumn columnMANV;
+            
+            private global::System.Data.DataColumn columnHOTEN;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public HoTenNVDataTable() {
+                this.TableName = "HoTenNV";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal HoTenNVDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected HoTenNVDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MANVColumn {
+                get {
+                    return this.columnMANV;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HOTENColumn {
+                get {
+                    return this.columnHOTEN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public HoTenNVRow this[int index] {
+                get {
+                    return ((HoTenNVRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event HoTenNVRowChangeEventHandler HoTenNVRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event HoTenNVRowChangeEventHandler HoTenNVRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event HoTenNVRowChangeEventHandler HoTenNVRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event HoTenNVRowChangeEventHandler HoTenNVRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddHoTenNVRow(HoTenNVRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public HoTenNVRow AddHoTenNVRow(int MANV, string HOTEN) {
+                HoTenNVRow rowHoTenNVRow = ((HoTenNVRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        MANV,
+                        HOTEN};
+                rowHoTenNVRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowHoTenNVRow);
+                return rowHoTenNVRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public HoTenNVRow FindByMANV(int MANV) {
+                return ((HoTenNVRow)(this.Rows.Find(new object[] {
+                            MANV})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                HoTenNVDataTable cln = ((HoTenNVDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new HoTenNVDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnMANV = base.Columns["MANV"];
+                this.columnHOTEN = base.Columns["HOTEN"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnMANV = new global::System.Data.DataColumn("MANV", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMANV);
+                this.columnHOTEN = new global::System.Data.DataColumn("HOTEN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHOTEN);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnMANV}, true));
+                this.columnMANV.AllowDBNull = false;
+                this.columnMANV.Unique = true;
+                this.columnHOTEN.ReadOnly = true;
+                this.columnHOTEN.MaxLength = 51;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public HoTenNVRow NewHoTenNVRow() {
+                return ((HoTenNVRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new HoTenNVRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(HoTenNVRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.HoTenNVRowChanged != null)) {
+                    this.HoTenNVRowChanged(this, new HoTenNVRowChangeEvent(((HoTenNVRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.HoTenNVRowChanging != null)) {
+                    this.HoTenNVRowChanging(this, new HoTenNVRowChangeEvent(((HoTenNVRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.HoTenNVRowDeleted != null)) {
+                    this.HoTenNVRowDeleted(this, new HoTenNVRowChangeEvent(((HoTenNVRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.HoTenNVRowDeleting != null)) {
+                    this.HoTenNVRowDeleting(this, new HoTenNVRowChangeEvent(((HoTenNVRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveHoTenNVRow(HoTenNVRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                QLVTDataSet ds = new QLVTDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "HoTenNVDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ChiNhanhRow : global::System.Data.DataRow {
@@ -4799,23 +5129,23 @@ namespace QLVT_PT_DevExpressPJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VattuRow VattuRow {
-                get {
-                    return ((VattuRow)(this.GetParentRow(this.Table.ParentRelations["FK_CTDDH_VatTu"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_CTDDH_VatTu"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DatHangRow DatHangRow {
                 get {
                     return ((DatHangRow)(this.GetParentRow(this.Table.ParentRelations["FK_CTDDH_DatHang"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_CTDDH_DatHang"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VattuRow VattuRow {
+                get {
+                    return ((VattuRow)(this.GetParentRow(this.Table.ParentRelations["FK_CTDDH_VatTu"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_CTDDH_VatTu"]);
                 }
             }
             
@@ -4985,23 +5315,23 @@ namespace QLVT_PT_DevExpressPJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VattuRow VattuRow {
-                get {
-                    return ((VattuRow)(this.GetParentRow(this.Table.ParentRelations["FK_CTPX_VatTu"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_CTPX_VatTu"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PhieuXuatRow PhieuXuatRow {
                 get {
                     return ((PhieuXuatRow)(this.GetParentRow(this.Table.ParentRelations["FK_CTPX_PX"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_CTPX_PX"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VattuRow VattuRow {
+                get {
+                    return ((VattuRow)(this.GetParentRow(this.Table.ParentRelations["FK_CTPX_VatTu"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_CTPX_VatTu"]);
                 }
             }
         }
@@ -5077,6 +5407,17 @@ namespace QLVT_PT_DevExpressPJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NhanVienRow NhanVienRow {
+                get {
+                    return ((NhanVienRow)(this.GetParentRow(this.Table.ParentRelations["FK_DatHang_NhanVien"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DatHang_NhanVien"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public KhoRow KhoRow {
                 get {
                     return ((KhoRow)(this.GetParentRow(this.Table.ParentRelations["FK_DatHang_Kho"])));
@@ -5088,12 +5429,12 @@ namespace QLVT_PT_DevExpressPJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NhanVienRow NhanVienRow {
+            public HoTenNVRow HoTenNVRow {
                 get {
-                    return ((NhanVienRow)(this.GetParentRow(this.Table.ParentRelations["FK_DatHang_NhanVien"])));
+                    return ((HoTenNVRow)(this.GetParentRow(this.Table.ParentRelations["FK_DatHang_NhanVien1"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_DatHang_NhanVien"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DatHang_NhanVien1"]);
                 }
             }
             
@@ -5566,12 +5907,12 @@ namespace QLVT_PT_DevExpressPJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public KhoRow KhoRow {
+            public DatHangRow DatHangRow {
                 get {
-                    return ((KhoRow)(this.GetParentRow(this.Table.ParentRelations["FK_PhieuNhap_Kho"])));
+                    return ((DatHangRow)(this.GetParentRow(this.Table.ParentRelations["FK_PhieuNhap_DatHang"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_PhieuNhap_Kho"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PhieuNhap_DatHang"]);
                 }
             }
             
@@ -5588,12 +5929,23 @@ namespace QLVT_PT_DevExpressPJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DatHangRow DatHangRow {
+            public KhoRow KhoRow {
                 get {
-                    return ((DatHangRow)(this.GetParentRow(this.Table.ParentRelations["FK_PhieuNhap_DatHang"])));
+                    return ((KhoRow)(this.GetParentRow(this.Table.ParentRelations["FK_PhieuNhap_Kho"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_PhieuNhap_DatHang"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PhieuNhap_Kho"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public HoTenNVRow HoTenNVRow {
+                get {
+                    return ((HoTenNVRow)(this.GetParentRow(this.Table.ParentRelations["FK_PhieuNhap_NhanVien1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PhieuNhap_NhanVien1"]);
                 }
             }
             
@@ -5680,6 +6032,17 @@ namespace QLVT_PT_DevExpressPJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public KhoRow KhoRow {
+                get {
+                    return ((KhoRow)(this.GetParentRow(this.Table.ParentRelations["FK_PX_Kho"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PX_Kho"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NhanVienRow NhanVienRow {
                 get {
                     return ((NhanVienRow)(this.GetParentRow(this.Table.ParentRelations["FK_PX_NhanVien"])));
@@ -5691,12 +6054,12 @@ namespace QLVT_PT_DevExpressPJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public KhoRow KhoRow {
+            public HoTenNVRow HoTenNVRow {
                 get {
-                    return ((KhoRow)(this.GetParentRow(this.Table.ParentRelations["FK_PX_Kho"])));
+                    return ((HoTenNVRow)(this.GetParentRow(this.Table.ParentRelations["FK_PX_NhanVien1"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_PX_Kho"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PX_NhanVien1"]);
                 }
             }
             
@@ -5970,6 +6333,93 @@ namespace QLVT_PT_DevExpressPJ {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetSOLUONGNull() {
                 this[this.tableSP_LAYTHONGTINVATTUDATHANG.SOLUONGColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class HoTenNVRow : global::System.Data.DataRow {
+            
+            private HoTenNVDataTable tableHoTenNV;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal HoTenNVRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableHoTenNV = ((HoTenNVDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int MANV {
+                get {
+                    return ((int)(this[this.tableHoTenNV.MANVColumn]));
+                }
+                set {
+                    this[this.tableHoTenNV.MANVColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HOTEN {
+                get {
+                    try {
+                        return ((string)(this[this.tableHoTenNV.HOTENColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HOTEN\' in table \'HoTenNV\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHoTenNV.HOTENColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHOTENNull() {
+                return this.IsNull(this.tableHoTenNV.HOTENColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHOTENNull() {
+                this[this.tableHoTenNV.HOTENColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DatHangRow[] GetDatHangRows() {
+                if ((this.Table.ChildRelations["FK_DatHang_NhanVien1"] == null)) {
+                    return new DatHangRow[0];
+                }
+                else {
+                    return ((DatHangRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DatHang_NhanVien1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PhieuNhapRow[] GetPhieuNhapRows() {
+                if ((this.Table.ChildRelations["FK_PhieuNhap_NhanVien1"] == null)) {
+                    return new PhieuNhapRow[0];
+                }
+                else {
+                    return ((PhieuNhapRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PhieuNhap_NhanVien1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PhieuXuatRow[] GetPhieuXuatRows() {
+                if ((this.Table.ChildRelations["FK_PX_NhanVien1"] == null)) {
+                    return new PhieuXuatRow[0];
+                }
+                else {
+                    return ((PhieuXuatRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PX_NhanVien1"])));
+                }
             }
         }
         
@@ -6367,6 +6817,40 @@ namespace QLVT_PT_DevExpressPJ {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SP_LAYTHONGTINVATTUDATHANGRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class HoTenNVRowChangeEvent : global::System.EventArgs {
+            
+            private HoTenNVRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public HoTenNVRowChangeEvent(HoTenNVRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public HoTenNVRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -10712,6 +11196,296 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class HoTenNVTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public HoTenNVTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "HoTenNV";
+            tableMapping.ColumnMappings.Add("MANV", "MANV");
+            tableMapping.ColumnMappings.Add("HOTEN", "HOTEN");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [NhanVien] WHERE (([MANV] = @Original_MANV))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MANV", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MANV", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [NhanVien] ([MANV]) VALUES (@MANV);\r\nSELECT MANV, HO + \' \' + TEN AS H" +
+                "OTEN FROM NhanVien WHERE (MANV = @MANV)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MANV", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MANV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [NhanVien] SET [MANV] = @MANV WHERE (([MANV] = @Original_MANV));\r\nSELECT M" +
+                "ANV, HO + \' \' + TEN AS HOTEN FROM NhanVien WHERE (MANV = @MANV)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MANV", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MANV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MANV", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MANV", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::QLVT_PT_DevExpressPJ.Properties.Settings.Default.QLVTConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        MANV, HO + \' \' + TEN AS HOTEN\r\nFROM            NhanVien";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(QLVTDataSet.HoTenNVDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual QLVTDataSet.HoTenNVDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            QLVTDataSet.HoTenNVDataTable dataTable = new QLVTDataSet.HoTenNVDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(QLVTDataSet.HoTenNVDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(QLVTDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "HoTenNV");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_MANV) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_MANV));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int MANV) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(MANV));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int MANV, int Original_MANV) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(MANV));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_MANV));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int Original_MANV) {
+            return this.Update(Original_MANV, Original_MANV);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10742,6 +11516,8 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
         private PhieuXuatTableAdapter _phieuXuatTableAdapter;
         
         private VattuTableAdapter _vattuTableAdapter;
+        
+        private HoTenNVTableAdapter _hoTenNVTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -10900,6 +11676,20 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public HoTenNVTableAdapter HoTenNVTableAdapter {
+            get {
+                return this._hoTenNVTableAdapter;
+            }
+            set {
+                this._hoTenNVTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -10957,6 +11747,10 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
                             && (this._vattuTableAdapter.Connection != null))) {
                     return this._vattuTableAdapter.Connection;
                 }
+                if (((this._hoTenNVTableAdapter != null) 
+                            && (this._hoTenNVTableAdapter.Connection != null))) {
+                    return this._hoTenNVTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -11000,6 +11794,9 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
                 if ((this._vattuTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._hoTenNVTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -11035,6 +11832,15 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._nhanVienTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._hoTenNVTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.HoTenNV.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._hoTenNVTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11132,6 +11938,14 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._nhanVienTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._hoTenNVTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.HoTenNV.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._hoTenNVTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11257,6 +12071,14 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._hoTenNVTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.HoTenNV.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._hoTenNVTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._nhanVienTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.NhanVien.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -11367,6 +12189,11 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
             }
             if (((this._vattuTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._vattuTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._hoTenNVTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._hoTenNVTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -11492,6 +12319,15 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._vattuTableAdapter.Adapter);
                     }
                 }
+                if ((this._hoTenNVTableAdapter != null)) {
+                    revertConnections.Add(this._hoTenNVTableAdapter, this._hoTenNVTableAdapter.Connection);
+                    this._hoTenNVTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._hoTenNVTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._hoTenNVTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._hoTenNVTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._hoTenNVTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -11589,6 +12425,10 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)";
                 if ((this._vattuTableAdapter != null)) {
                     this._vattuTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._vattuTableAdapter]));
                     this._vattuTableAdapter.Transaction = null;
+                }
+                if ((this._hoTenNVTableAdapter != null)) {
+                    this._hoTenNVTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._hoTenNVTableAdapter]));
+                    this._hoTenNVTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

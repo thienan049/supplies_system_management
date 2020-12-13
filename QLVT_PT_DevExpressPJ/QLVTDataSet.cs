@@ -4,6 +4,10 @@
 
     partial class QLVTDataSet
     {
+        partial class HoTenNVDataTable
+        {
+        }
+
         partial class KhoDataTable
         {
         }
