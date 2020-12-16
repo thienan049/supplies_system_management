@@ -45,15 +45,15 @@
             this.lblPassWord = new System.Windows.Forms.Label();
             this.lblLoginName = new System.Windows.Forms.Label();
             this.cbxTenCN = new System.Windows.Forms.ComboBox();
-            this.bdsVDsPM = new System.Windows.Forms.BindingSource(this.components);
-            this.qLVTPhMDataSet = new QLVT_PT_DevExpressPJ.QLVTPhMDataSet();
+            this.dsPM_BDS = new System.Windows.Forms.BindingSource(this.components);
+            this.qlvt_PM_DS = new QLVT_PT_DevExpressPJ.QLVTPhMDataSet();
             this.v_DS_PHANMANHTableAdapter = new QLVT_PT_DevExpressPJ.QLVTPhMDataSetTableAdapters.V_DS_PHANMANHTableAdapter();
             this.tableAdapterManager = new QLVT_PT_DevExpressPJ.QLVTPhMDataSetTableAdapters.TableAdapterManager();
             lblTenCN = new System.Windows.Forms.Label();
             this.grbDangNhap.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsVDsPM)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLVTPhMDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPM_BDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qlvt_PM_DS)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTenCN
@@ -222,7 +222,7 @@
             // 
             // cbxTenCN
             // 
-            this.cbxTenCN.DataSource = this.bdsVDsPM;
+            this.cbxTenCN.DataSource = this.dsPM_BDS;
             this.cbxTenCN.DisplayMember = "TENCN";
             this.cbxTenCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTenCN.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -234,15 +234,15 @@
             this.cbxTenCN.ValueMember = "TENSERVER";
             this.cbxTenCN.SelectedIndexChanged += new System.EventHandler(this.cboxTenCN_SelectedIndexChanged);
             // 
-            // bdsVDsPM
+            // dsPM_BDS
             // 
-            this.bdsVDsPM.DataMember = "V_DS_PHANMANH";
-            this.bdsVDsPM.DataSource = this.qLVTPhMDataSet;
+            this.dsPM_BDS.DataMember = "V_DS_PHANMANH";
+            this.dsPM_BDS.DataSource = this.qlvt_PM_DS;
             // 
-            // qLVTPhMDataSet
+            // qlvt_PM_DS
             // 
-            this.qLVTPhMDataSet.DataSetName = "QLVTPhMDataSet";
-            this.qLVTPhMDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.qlvt_PM_DS.DataSetName = "QLVTPhMDataSet";
+            this.qlvt_PM_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // v_DS_PHANMANHTableAdapter
             // 
@@ -271,8 +271,8 @@
             this.grbDangNhap.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsVDsPM)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLVTPhMDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPM_BDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qlvt_PM_DS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,8 +280,8 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grbDangNhap;
-        private QLVTPhMDataSet qLVTPhMDataSet;
-        private System.Windows.Forms.BindingSource bdsVDsPM;
+        private QLVTPhMDataSet qlvt_PM_DS;
+        private System.Windows.Forms.BindingSource dsPM_BDS;
         private QLVTPhMDataSetTableAdapters.V_DS_PHANMANHTableAdapter v_DS_PHANMANHTableAdapter;
         private QLVTPhMDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.ComboBox cbxTenCN;

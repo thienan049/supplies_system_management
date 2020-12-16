@@ -101,12 +101,15 @@ namespace QLVT_PT_DevExpressPJ
             try
             {
                 Sqlcmd.ExecuteNonQuery(); conn.Close();
+                MessageBox.Show("Tạo tài khoản thành công!", "Thành công");
                 return 0;
             }
             catch (SqlException ex)
             {
-                if (ex.Message.Contains("Error converting data type varchar to int"))
-                    MessageBox.Show("Bạn format Cell lại cột \"Ngày Thi\" qua kiểu Number hoặc mở File Excel.");
+                if (ex.Message.Contains("The server principal"))
+                    MessageBox.Show("Tài khoản đã tồn tại!", "Lỗi tạo tài khoản");
+                else if (ex.Message.Contains("User, group, or role"))
+                    MessageBox.Show("Nhân viên đã có id(username)!", "Lỗi tạo tài khoản");
                 else MessageBox.Show(ex.Message);
                 conn.Close();
                 return ex.State; // trang thai lỗi gởi từ RAISERROR trong SQL Server qua

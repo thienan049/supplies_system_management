@@ -23,13 +23,13 @@ namespace QLVT_PT_DevExpressPJ
         private void formDangNhap_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'qLVTPhMDataSet.V_DS_PHANMANH' table. You can move, or remove it, as needed.
-            this.v_DS_PHANMANHTableAdapter.Fill(this.qLVTPhMDataSet.V_DS_PHANMANH);
+            this.v_DS_PHANMANHTableAdapter.Fill(this.qlvt_PM_DS.V_DS_PHANMANH);
             this.chbxCN.Checked = true;
             lastChecked = chbxCN;
             cbxTenCN.SelectedIndex = 1;
             cbxTenCN.SelectedIndex = 0;
-            Program.bds_dspm.DataSource = bdsVDsPM.DataSource;
-            Program.bds_dspm.DataMember = bdsVDsPM.DataMember;
+            Program.bds_dspm.DataSource = dsPM_BDS.DataSource;
+            Program.bds_dspm.DataMember = dsPM_BDS.DataMember;
 
             this.AcceptButton = this.btnDangNhap;           
         }
@@ -126,17 +126,21 @@ namespace QLVT_PT_DevExpressPJ
             if(Program.mGroup == "CONGTY")
             {
                 Program.formChinh.sttLblNhom.Text = "Nhóm: " + "Công ty";
-            }else if(Program.mGroup == "CHINHANH")
+                Program.formChinh.btnTaoTaiKhoan.Enabled = true;
+            }
+            else if(Program.mGroup == "CHINHANH")
             {
                 Program.formChinh.sttLblNhom.Text = "Nhóm: " + "Chi nhánh";
-            }else if(Program.mGroup == "USER")
+                Program.formChinh.btnTaoTaiKhoan.Enabled = true;
+            }
+            else if(Program.mGroup == "USER")
             {
                 Program.formChinh.sttLblNhom.Text = "Nhóm: " + "User";
+                Program.formChinh.btnTaoTaiKhoan.Enabled = false;
             }
 
             this.Visible = false;
-            Program.formChinh.btnDangNhap.Enabled = false;
-            
+            Program.formChinh.btnDangNhap.Enabled = false;            
             Program.formChinh.btnDangXuat.Enabled = true;
             //Program.formChinh.btnNV.Enabled = true;
             //Program.formChinh.btnVT.Enabled = true;

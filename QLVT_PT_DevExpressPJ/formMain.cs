@@ -28,7 +28,8 @@ namespace QLVT_PT_DevExpressPJ
                 f.Show();
             }
 
-            //this.btnDangXuat.Enabled = false;
+            this.btnDangXuat.Enabled = false;
+            this.btnTaoTaiKhoan.Enabled = false;
             //this.btnNV.Enabled = false;
             //this.btnVT.Enabled = false;
             //this.btnKho.Enabled = false;
@@ -97,6 +98,7 @@ namespace QLVT_PT_DevExpressPJ
         {
             this.btnDangNhap.Enabled = true;
             this.btnDangXuat.Enabled = false;
+            this.btnTaoTaiKhoan.Enabled = false;
             //this.btnNV.Enabled = false;
             //this.btnVT.Enabled = false;
             //this.btnKho.Enabled = false;
@@ -118,7 +120,19 @@ namespace QLVT_PT_DevExpressPJ
                 Program.conn.Close();
         }
 
-         private void btnNV_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnTaoTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(formTaoTaiKhoan));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formTaoTaiKhoan f = new formTaoTaiKhoan();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnNV_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Form frm = this.CheckExists(typeof(formNhanVien));
             if (frm != null) frm.Activate();
@@ -280,7 +294,7 @@ namespace QLVT_PT_DevExpressPJ
                 sfHDNV.Owner = Program.formChinh;
                 sfHDNV.ShowDialog();
             }
-        }
+        }       
     }
 
 

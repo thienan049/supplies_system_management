@@ -43,9 +43,11 @@
             this.btnDdhChuaPN = new DevExpress.XtraBars.BarButtonItem();
             this.btnNXThang = new DevExpress.XtraBars.BarButtonItem();
             this.btnHDNV = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTaoTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
             this.rbPgLogin = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonLoginGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonLogoutGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbGrLogin = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbGrLogout = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbGrSignup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPgDanhMuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rbPgGrNV = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPgGr = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -87,10 +89,11 @@
             this.btnDsVTRP,
             this.btnDdhChuaPN,
             this.btnNXThang,
-            this.btnHDNV});
+            this.btnHDNV,
+            this.btnTaoTaiKhoan});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 36;
+            this.ribbonControl1.MaxItemId = 37;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 440;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -203,25 +206,41 @@
             this.btnHDNV.Name = "btnHDNV";
             this.btnHDNV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHDNV_ItemClick);
             // 
+            // btnTaoTaiKhoan
+            // 
+            this.btnTaoTaiKhoan.Caption = "Tạo tài khoản";
+            this.btnTaoTaiKhoan.Id = 36;
+            this.btnTaoTaiKhoan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTaoTaiKhoan.ImageOptions.Image")));
+            this.btnTaoTaiKhoan.Name = "btnTaoTaiKhoan";
+            this.btnTaoTaiKhoan.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnTaoTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTaoTaiKhoan_ItemClick);
+            // 
             // rbPgLogin
             // 
             this.rbPgLogin.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonLoginGroup,
-            this.ribbonLogoutGroup});
+            this.rbGrLogin,
+            this.rbGrLogout,
+            this.rbGrSignup});
             this.rbPgLogin.Name = "rbPgLogin";
             this.rbPgLogin.Text = "Login";
             // 
-            // ribbonLoginGroup
+            // rbGrLogin
             // 
-            this.ribbonLoginGroup.ItemLinks.Add(this.btnDangNhap);
-            this.ribbonLoginGroup.Name = "ribbonLoginGroup";
-            this.ribbonLoginGroup.Text = "Login";
+            this.rbGrLogin.ItemLinks.Add(this.btnDangNhap);
+            this.rbGrLogin.Name = "rbGrLogin";
+            this.rbGrLogin.Text = "Login";
             // 
-            // ribbonLogoutGroup
+            // rbGrLogout
             // 
-            this.ribbonLogoutGroup.ItemLinks.Add(this.btnDangXuat);
-            this.ribbonLogoutGroup.Name = "ribbonLogoutGroup";
-            this.ribbonLogoutGroup.Text = "Logout";
+            this.rbGrLogout.ItemLinks.Add(this.btnDangXuat);
+            this.rbGrLogout.Name = "rbGrLogout";
+            this.rbGrLogout.Text = "Logout";
+            // 
+            // rbGrSignup
+            // 
+            this.rbGrSignup.ItemLinks.Add(this.btnTaoTaiKhoan);
+            this.rbGrSignup.Name = "rbGrSignup";
+            this.rbGrSignup.Text = "Signup";
             // 
             // rbPgDanhMuc
             // 
@@ -378,7 +397,7 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPgLogin;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonLoginGroup;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbGrLogin;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -387,7 +406,7 @@
         public System.Windows.Forms.ToolStripStatusLabel sttLblNhom;
         public DevExpress.XtraBars.BarButtonItem btnDangNhap;
         public DevExpress.XtraBars.BarButtonItem btnDangXuat;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonLogoutGroup;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbGrLogout;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         public DevExpress.XtraBars.BarButtonItem btnNV;
         public DevExpress.XtraBars.BarButtonItem btnVT;
@@ -411,6 +430,8 @@
         public DevExpress.XtraBars.BarButtonItem btnHDNV;
         public DevExpress.XtraBars.Ribbon.RibbonPage rbPgBaoCao;
         public DevExpress.XtraBars.Ribbon.RibbonPage rbPgDanhMuc;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbGrSignup;
+        public DevExpress.XtraBars.BarButtonItem btnTaoTaiKhoan;
     }
 }
 
