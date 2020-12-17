@@ -43,6 +43,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.txtbMaPX.Select(0, this.txtbMaPX.Text.Length);
             this.txtbMaNV.Text = Program.username;
             this.dateEdNgayLap.EditValue = DateTime.Today;
+            this.dateEdNgayLap.Properties.MaxValue= DateTime.Today;
             this.dateEdNgayLap.Select(0, this.dateEdNgayLap.Text.Length);
             this.txtbMaNV.Text = Program.username;
         }   
@@ -67,6 +68,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 pxBDS.EndEdit();
                 this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuXuatTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().PhieuXuat);
+                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                 this.Close();
             }
         }

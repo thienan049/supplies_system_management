@@ -16,6 +16,7 @@ namespace QLVT_PT_DevExpressPJ
         public formTaoTaiKhoan()
         {
             InitializeComponent();
+            this.AcceptButton = this.btnTaoTaiKhoan;
         }
 
         private void formTaoTaiKhoan_Load(object sender, EventArgs e)
@@ -42,6 +43,36 @@ namespace QLVT_PT_DevExpressPJ
                 {
                     this.v_DSRoles_BDS.RemoveAt(v_DSRoles_BDS.Find("GIATRI", "CONGTY"));
                 }
+            }
+        }
+
+        private void cbxTenCN_TTK_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbxTenCN_TTK.SelectedValue.ToString() == "System.Data.DataRowView")
+                {
+                    return;
+                }
+                Program.servername = cbxTenCN_TTK.SelectedValue.ToString();
+            }
+            catch (Exception ex) { Console.Write(ex.Message); }
+
+            if (cbxTenCN_TTK.SelectedIndex != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
+                return;
             }
         }
 
@@ -146,5 +177,7 @@ namespace QLVT_PT_DevExpressPJ
             conflictErr = string.Empty;
             return false;
         }
+
+        
     }
 }

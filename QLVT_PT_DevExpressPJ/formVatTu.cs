@@ -14,10 +14,13 @@ namespace QLVT_PT_DevExpressPJ
     public partial class formVatTu : Form
     {
         bool isAdding = false;
+        string maVTThem = null;
+
         bool isEditing = false;
+        int editPosition = -1;
         string maVTSua = null;
         string tenVTSua = null;
-        int editPosition = -1;
+        
         ErrorProvider err = new ErrorProvider();
         Stack<DataTable> tableStates = new Stack<DataTable>();
 
@@ -76,15 +79,32 @@ namespace QLVT_PT_DevExpressPJ
                 }
             }
         }
+
+        private void formVatTu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Program.formVTClose == false)
+            {
+                if (MessageBox.Show("Có thay đổi chưa được lưu hoặc tác vụ chưa hoàn thành, bạn muốn thoát?", "Xác nhận thoát", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    Program.formVTClose = true;
+                }
+            }
+        }
         #endregion        
 
         #region action buttons event handling
         private void btnThemVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.isAdding = true;
+            Program.formVTClose = false;
             this.vtBDS.AddNew();
             
             this.btnThemVT.Enabled = this.btnSuaVT.Enabled = this.btnXoaVT.Enabled = false;
+            this.btnPhucHoiVT.Enabled = true;
             writableVTControl(1);
             this.cbxDonVi.Items.Insert(0, "--Chọn--");
             this.cbxDonVi.SelectedIndex = 0;
@@ -94,11 +114,13 @@ namespace QLVT_PT_DevExpressPJ
         private void btnSuaVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.isEditing = true;
+            Program.formVTClose = false;
             maVTSua = ((DataRowView)vtBDS[vtBDS.Position])["MAVT"].ToString().Trim();
             tenVTSua = ((DataRowView)vtBDS[vtBDS.Position])["TENVT"].ToString().Trim();
 
             this.editPosition = vtBDS.Position;
             this.btnThemVT.Enabled = this.btnSuaVT.Enabled = this.btnXoaVT.Enabled = false;
+            this.btnPhucHoiVT.Enabled = true;
             writableVTControl(1);
             checkEmptyAndValid();
         }
@@ -112,10 +134,21 @@ namespace QLVT_PT_DevExpressPJ
             }
             else
             {
+                if(this.maVTThem == null)
+                {
+                    this.maVTThem = this.txtbMaVT.Text.Trim();
+                }
                 vtBDS.EndEdit();
                 this.vatTuTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.vatTuTableAdapter.Update(this.qlvtDS.Vattu);
-                this.btnReloadVT.PerformClick();              
+                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                this.btnReloadVT.PerformClick();
+                this.maVTThem = null;
+                if (editPosition != -1)
+                {
+                    this.vtBDS.Position = this.editPosition;
+                    this.editPosition = -1;
+                }
             }                      
         }
    
@@ -162,7 +195,47 @@ namespace QLVT_PT_DevExpressPJ
 
         private void btnPhucHoiVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (this.isAdding == true || this.isEditing == true)
+            {
+                this.vtBDS.CancelEdit();
+                this.qlvtDS.Vattu.RejectChanges();
+                writableVTControl(0);
 
+                if (Program.mGroup != "CONGTY")
+                {
+                    this.btnGhiVT.Enabled = false;
+                    this.btnThemVT.Enabled = true;
+                    this.btnSuaVT.Enabled = true;
+                    this.btnXoaVT.Enabled = true;
+
+                    if (tableStates.Count != 0)
+                    {
+                        // this.btnPhucHoiNV.Enabled = true;
+                    }
+                    else
+                    {
+                        // this.btnPhucHoiNV.Enabled = false;
+                    }
+
+                    if (this.isAdding == true)
+                    {
+                        this.isAdding = false;
+                    }
+                    if (this.isEditing == true)
+                    {
+                        this.isEditing = false;
+                    }
+
+                    if (this.cbxDonVi.GetItemText(this.cbxDonVi.Items[0]) == "--Chọn--")
+                    {
+                        this.cbxDonVi.Items.RemoveAt(0);
+                    }
+
+                    this.editPosition = -1;
+                    this.maVTSua = null;
+                    Program.formVTClose = true;
+                }
+            }
         }
 
         private void btnReloadVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -210,9 +283,14 @@ namespace QLVT_PT_DevExpressPJ
                     this.cbxDonVi.Items.RemoveAt(0);
                 }
 
-                this.editPosition = -1;
+                if (this.maVTThem != null)
+                {
+                    this.vtBDS.Position = this.vtBDS.Find("MAVT", this.maVTThem);
+                }
+
                 this.maVTSua = null;
                 this.tenVTSua = null;
+                Program.formVTClose = true;
             }       
             this.err.Dispose();    
         }
@@ -337,7 +415,7 @@ namespace QLVT_PT_DevExpressPJ
             }
             if (tableStates.Count != 0)
             {
-                    this.btnPhucHoiVT.Enabled = true;
+                //this.btnPhucHoiVT.Enabled = true;
             }
 
             
@@ -440,7 +518,7 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnGhiVT.Enabled = false;
                 if (tableStates.Count == 0)
                 {
-                    this.btnPhucHoiVT.Enabled = false;
+                   // this.btnPhucHoiVT.Enabled = false;
                 }
             }
             else
@@ -448,7 +526,7 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnGhiVT.Enabled = true;
                 if (tableStates.Count != 0)
                 {
-                    this.btnPhucHoiVT.Enabled = true;
+                   // this.btnPhucHoiVT.Enabled = true;
                 }
             }
         }
@@ -474,6 +552,8 @@ namespace QLVT_PT_DevExpressPJ
             DataTable copied = this.qlvtDS.Vattu.Copy();
             tableStates.Push(copied);
         }
-        #endregion       
+        #endregion
+
+        
     }
 }

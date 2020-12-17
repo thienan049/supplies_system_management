@@ -279,6 +279,7 @@
             this.tableAdapterManager.CTPNTableAdapter = null;
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = null;
+            this.tableAdapterManager.HoTenNVTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
@@ -534,6 +535,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "formVatTu";
             this.Text = "Quản lý vật tư";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formVatTu_FormClosing);
             this.Load += new System.EventHandler(this.formVatTu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();

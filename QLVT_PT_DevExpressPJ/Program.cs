@@ -35,6 +35,10 @@ namespace QLVT_PT_DevExpressPJ
         public static formMain formChinh;
         public static formDDHPNPX formDDHPNPX;
 
+        public static bool formNVClose = true;
+        public static bool formVTClose = true;
+        public static bool formKhoClose = true;
+
         public static string namePattern = "^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ']+\\s?)+$";
         public static string maKhoPattern(string num) {
             return "^[A-Z]\\d+N" + num + "$";

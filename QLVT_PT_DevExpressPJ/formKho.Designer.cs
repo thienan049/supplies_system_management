@@ -293,6 +293,7 @@
             this.tableAdapterManager.CTPNTableAdapter = null;
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = null;
+            this.tableAdapterManager.HoTenNVTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = this.khoTableAdapter;
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
@@ -560,6 +561,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "formKho";
             this.Text = "Quản lý kho";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formKho_FormClosing);
             this.Load += new System.EventHandler(this.formKho_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();

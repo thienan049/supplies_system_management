@@ -47,6 +47,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.txtbMaPN.Select(0, this.txtbMaPN.Text.Length);
             this.txtbMaNV.Text = Program.username;
             this.dateEdNgayLap.EditValue = DateTime.Today;
+            this.dateEdNgayLap.Properties.MaxValue = DateTime.Today;
             this.dateEdNgayLap.Select(0, this.dateEdNgayLap.Text.Length);
             int found = this.pnBDS.Find("MASODDH", ((DataRowView)Program.formDDHPNPX.getFormDDHPNPX_dhBDS()[Program.formDDHPNPX.getFormDDHPNPX_dhBDS().Position])["MASODDH"].ToString());
             if (found <= -1)
@@ -77,6 +78,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 pnBDS.EndEdit();
                 this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuNhapTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().PhieuNhap);
+                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                 this.Close();
             }
         }

@@ -148,6 +148,7 @@
             this.tableAdapterManager.CTPNTableAdapter = null;
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = this.datHangTableAdapter;
+            this.tableAdapterManager.HoTenNVTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
@@ -181,6 +182,9 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdNgayDat.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.dateEdNgayDat.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdNgayDat.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.dateEdNgayDat.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dateEdNgayDat.Properties.MaxValue = new System.DateTime(2020, 12, 18, 0, 20, 8, 0);
             this.dateEdNgayDat.Size = new System.Drawing.Size(122, 22);
             this.dateEdNgayDat.TabIndex = 4;
             this.dateEdNgayDat.TextChanged += new System.EventHandler(this.dateEdNgayDat_TextChanged);

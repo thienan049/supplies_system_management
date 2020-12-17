@@ -18,6 +18,7 @@ namespace QLVT_PT_DevExpressPJ
         public formDangNhap()
         {
             InitializeComponent();
+            this.AcceptButton = this.btnDangNhap;
         }
 
         private void formDangNhap_Load(object sender, EventArgs e)
@@ -29,9 +30,7 @@ namespace QLVT_PT_DevExpressPJ
             cbxTenCN.SelectedIndex = 1;
             cbxTenCN.SelectedIndex = 0;
             Program.bds_dspm.DataSource = dsPM_BDS.DataSource;
-            Program.bds_dspm.DataMember = dsPM_BDS.DataMember;
-
-            this.AcceptButton = this.btnDangNhap;           
+            Program.bds_dspm.DataMember = dsPM_BDS.DataMember;                      
         }
        
         private void cboxTenCN_SelectedIndexChanged(object sender, EventArgs e)

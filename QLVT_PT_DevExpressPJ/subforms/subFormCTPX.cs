@@ -67,6 +67,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                     ctpxBDS.EndEdit();
                     this.ctpxTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.ctpxTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().CTPX);
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                     this.Close();
                     Program.formDDHPNPX.reloadPX();
                 }catch(Exception ex) { MessageBox.Show(ex.Message); }

@@ -34,6 +34,8 @@
             this.eyesImageList = new System.Windows.Forms.ImageList(this.components);
             this.grbDangNhap = new System.Windows.Forms.GroupBox();
             this.cbxRoles = new System.Windows.Forms.ComboBox();
+            this.v_DSRoles_BDS = new System.Windows.Forms.BindingSource(this.components);
+            this.qlvtDS = new QLVT_PT_DevExpressPJ.QLVTDataSet();
             this.label2 = new System.Windows.Forms.Label();
             this.numUDUserID = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,14 +47,12 @@
             this.lblPassWord = new System.Windows.Forms.Label();
             this.lblLoginName = new System.Windows.Forms.Label();
             this.cbxTenCN_TTK = new System.Windows.Forms.ComboBox();
-            this.qlvtDS = new QLVT_PT_DevExpressPJ.QLVTDataSet();
-            this.v_DSRoles_BDS = new System.Windows.Forms.BindingSource(this.components);
             this.v_DS_ROLESTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.V_DS_ROLESTableAdapter();
             lblTenCN = new System.Windows.Forms.Label();
             this.grbDangNhap.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numUDUserID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSRoles_BDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDUserID)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTenCN
@@ -109,6 +109,16 @@
             this.cbxRoles.Size = new System.Drawing.Size(136, 24);
             this.cbxRoles.TabIndex = 13;
             this.cbxRoles.ValueMember = "GIATRI";
+            // 
+            // v_DSRoles_BDS
+            // 
+            this.v_DSRoles_BDS.DataMember = "V_DS_ROLES";
+            this.v_DSRoles_BDS.DataSource = this.qlvtDS;
+            // 
+            // qlvtDS
+            // 
+            this.qlvtDS.DataSetName = "QLVTDataSet";
+            this.qlvtDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label2
             // 
@@ -242,16 +252,7 @@
             this.cbxTenCN_TTK.Size = new System.Drawing.Size(305, 23);
             this.cbxTenCN_TTK.TabIndex = 1;
             this.cbxTenCN_TTK.ValueMember = "TENSERVER";
-            // 
-            // qlvtDS
-            // 
-            this.qlvtDS.DataSetName = "QLVTDataSet";
-            this.qlvtDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // v_DSRoles_BDS
-            // 
-            this.v_DSRoles_BDS.DataMember = "V_DS_ROLES";
-            this.v_DSRoles_BDS.DataSource = this.qlvtDS;
+            this.cbxTenCN_TTK.SelectedIndexChanged += new System.EventHandler(this.cbxTenCN_TTK_SelectedIndexChanged);
             // 
             // v_DS_ROLESTableAdapter
             // 
@@ -270,9 +271,9 @@
             this.Load += new System.EventHandler(this.formTaoTaiKhoan_Load);
             this.grbDangNhap.ResumeLayout(false);
             this.grbDangNhap.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numUDUserID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSRoles_BDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDUserID)).EndInit();
             this.ResumeLayout(false);
 
         }

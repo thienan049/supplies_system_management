@@ -16,10 +16,13 @@ namespace QLVT_PT_DevExpressPJ
     public partial class formNhanVien : Form
     {
         bool isAdding = false;
+        int maNVThem = -1;
+
         bool isEditing = false;
         int maNVSua = -1;
         int editPosition = -1;
         public String maCNThem = string.Empty;
+
         ErrorProvider err = new ErrorProvider();
         Stack<DataTable> tableStates = new Stack<DataTable>();
 
@@ -92,13 +95,29 @@ namespace QLVT_PT_DevExpressPJ
 
                 }
             }
-        }       
+        }
+
+        private void formNhanVien_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Program.formNVClose == false)
+            {
+                if (MessageBox.Show("Có thay đổi chưa được lưu hoặc tác vụ chưa hoàn thành, bạn muốn thoát?", "Xác nhận thoát", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    Program.formNVClose = true;
+                }
+            }
+        }
         #endregion
 
         #region action buttons event handling
         private void btnThemNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.isAdding = true;
+            Program.formNVClose = false;
             string maNVMoi = preparedMaNV();
             this.nvBDS.AddNew();
             this.txtbMaCN_NV.Text = maCNThem;
@@ -107,6 +126,7 @@ namespace QLVT_PT_DevExpressPJ
 
             this.lblHint.Visible = true;
             this.btnThemNV.Enabled = this.btnSuaNV.Enabled = this.btnXoaNV.Enabled = false;
+            this.btnPhucHoiNV.Enabled = true;
             writableNVControl(1);
             checkEmptyAndValid();
         }
@@ -114,10 +134,12 @@ namespace QLVT_PT_DevExpressPJ
         private void btnSuaNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.isEditing = true;
+            Program.formNVClose = false;
             int.TryParse(((DataRowView)nvBDS[nvBDS.Position])["MANV"].ToString(), out maNVSua);
 
             this.editPosition = nvBDS.Position;
             this.btnThemNV.Enabled = this.btnSuaNV.Enabled = this.btnXoaNV.Enabled = false;
+            this.btnPhucHoiNV.Enabled = true;
             writableNVControl(1);
             checkEmptyAndValid();
         }
@@ -133,10 +155,21 @@ namespace QLVT_PT_DevExpressPJ
             else
             {
                // storeDtTbState();
+               if(this.maNVThem == -1)
+                {
+                    int.TryParse(this.txtbMaNV.Text.Trim(), out maNVThem);
+                }
                 nvBDS.EndEdit();
                 this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.nhanVienTableAdapter.Update(this.qlvtDS.NhanVien);
-                this.btnReloadNV.PerformClick();          
+                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                this.btnReloadNV.PerformClick();
+                this.maNVThem = -1;
+                if (editPosition != -1)
+                {
+                    this.nvBDS.Position = this.editPosition;
+                    this.editPosition = -1;
+                }
             }
         }
 
@@ -182,16 +215,52 @@ namespace QLVT_PT_DevExpressPJ
 
         private void btnPhucHoiNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(tableStates.Count != 0)
+            //if(tableStates.Count != 0)
+            //{
+            //    this.qlvtDS.NhanVien.Clear();
+            //    this.qlvtDS.NhanVien.Merge(tableStates.Pop());
+            //    this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+            //    this.nhanVienTableAdapter.Update(this.qlvtDS.NhanVien);
+            //}else
+            //{
+            //    this.btnPhucHoiNV.Enabled = false;
+            //}
+            if(this.isAdding == true || this.isEditing == true)
             {
-                this.qlvtDS.NhanVien.Clear();
-                this.qlvtDS.NhanVien.Merge(tableStates.Pop());
-                this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.nhanVienTableAdapter.Update(this.qlvtDS.NhanVien);
-            }else
-            {
-                this.btnPhucHoiNV.Enabled = false;
-            }
+                this.nvBDS.CancelEdit();
+                this.qlvtDS.NhanVien.RejectChanges();
+                writableNVControl(0);
+
+                if (Program.mGroup != "CONGTY")
+                {
+                    this.btnGhiNV.Enabled = false;
+                    this.btnThemNV.Enabled = true;
+                    this.btnSuaNV.Enabled = true;
+                    this.btnXoaNV.Enabled = true;
+
+                    if (tableStates.Count != 0)
+                    {
+                        // this.btnPhucHoiNV.Enabled = true;
+                    }
+                    else
+                    {
+                        // this.btnPhucHoiNV.Enabled = false;
+                    }
+
+                    if (this.isAdding == true)
+                    {
+                        this.isAdding = false;
+                    }
+                    if (this.isEditing == true)
+                    {
+                        this.isEditing = false;
+                    }
+
+                    this.editPosition = -1;
+                    this.maNVSua = -1;
+                    Program.formNVClose = true;
+                }
+            }            
         }
         
         private void btnReloadNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -244,8 +313,13 @@ namespace QLVT_PT_DevExpressPJ
                     this.isEditing = false;
                 }
 
-                this.editPosition = -1;
+                if (this.maNVThem != -1)
+                {
+                    this.nvBDS.Position = this.nvBDS.Find("MANV", this.maNVThem);
+                }
+               
                 this.maNVSua = -1;
+                Program.formNVClose = true;
             }
             this.err.Dispose();          
         }
@@ -453,7 +527,7 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnGhiNV.Enabled = false;
                 if (tableStates.Count == 0)
                 {
-                    this.btnPhucHoiNV.Enabled = false;
+                  //  this.btnPhucHoiNV.Enabled = false;
                 }
             }
             else
@@ -461,7 +535,7 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnGhiNV.Enabled = true;
                 if(tableStates.Count != 0)
                 {
-                    this.btnPhucHoiNV.Enabled = true;
+                 //   this.btnPhucHoiNV.Enabled = true;
                 }                
             }
         }
@@ -613,6 +687,6 @@ namespace QLVT_PT_DevExpressPJ
             DataTable copied = this.qlvtDS.NhanVien.Copy();
             tableStates.Push(copied);
         }
-        #endregion
+        #endregion       
     }
 }

@@ -313,6 +313,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdNgayLap.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.dateEdNgayLap.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdNgayLap.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.dateEdNgayLap.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.dateEdNgayLap.Size = new System.Drawing.Size(122, 22);
             this.dateEdNgayLap.TabIndex = 4;
             this.dateEdNgayLap.EditValueChanged += new System.EventHandler(this.dateEdNgayLap_EditValueChanged);
@@ -340,6 +342,7 @@
             this.tableAdapterManager.CTPNTableAdapter = null;
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = null;
+            this.tableAdapterManager.HoTenNVTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = this.khoTableAdapter;
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;

@@ -15,11 +15,14 @@ namespace QLVT_PT_DevExpressPJ
     public partial class formKho : Form
     {
         bool isAdding = false;
-        bool isEditing = false;
-        string pattern = null;
+        string maKhoThem = null;
+
+        bool isEditing = false;       
         string maKhoSua = null;
         string tenKhoSua = null;
         int editPosition = -1;
+
+        string pattern = null;
         public String maCNThem = "";
         ErrorProvider err = new ErrorProvider();      
         Stack<DataTable> tableStates = new Stack<DataTable>();
@@ -91,12 +94,27 @@ namespace QLVT_PT_DevExpressPJ
                 pattern = Program.maKhoPattern("2");
             }
         }
+
+        private void formKho_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Program.formKhoClose == false)
+            {
+                if(MessageBox.Show("Có thay đổi chưa được lưu hoặc tác vụ chưa hoàn thành, bạn muốn thoát?", "Xác nhận thoát", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }else
+                {
+                    Program.formKhoClose = true;
+                }
+            }
+        }
         #endregion
-       
+
         #region action buttons event handling
         private void btnThemKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.isAdding = true;
+            Program.formKhoClose = false;
             //Console.WriteLine(this.qlvtDS.NhanVien.Count);
             //Console.WriteLine(this.nvBDS.Position);
             string maKhoMoi = preparedMaKho();
@@ -105,6 +123,7 @@ namespace QLVT_PT_DevExpressPJ
             this.txtbMaKho.Text = maKhoMoi;
             
             this.btnThemKho.Enabled = this.btnSuaKho.Enabled = this.btnXoaKho.Enabled = false;
+            this.btnPhucHoiKho.Enabled = true;
             writableKhoControl(1);
             checkEmptyAndValid();
             this.txtbMaKho.Select(0, this.txtbMaKho.Text.Length);
@@ -113,11 +132,13 @@ namespace QLVT_PT_DevExpressPJ
         private void btnSuaKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.isEditing = true;
+            Program.formKhoClose = false;
             maKhoSua = ((DataRowView)khoBDS[khoBDS.Position])["MAKHO"].ToString().Trim();
             tenKhoSua = ((DataRowView)khoBDS[khoBDS.Position])["TENKHO"].ToString().Trim();
 
             this.editPosition = khoBDS.Position;
             this.btnThemKho.Enabled = this.btnSuaKho.Enabled = this.btnXoaKho.Enabled = false;
+            this.btnPhucHoiKho.Enabled = true;
             writableKhoControl(1);
             checkEmptyAndValid();
         }
@@ -132,10 +153,21 @@ namespace QLVT_PT_DevExpressPJ
             else
             {
                 //storeDtTbState();
+                if (this.maKhoThem == null)
+                {
+                    this.maKhoThem = this.txtbMaKho.Text.Trim();
+                }
                 khoBDS.EndEdit();
                 this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.khoTableAdapter.Update(this.qlvtDS.Kho);
+                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                 this.btnReloadKho.PerformClick();
+                this.maKhoThem = null;
+                if (editPosition != -1)
+                {
+                    this.khoBDS.Position = this.editPosition;
+                    this.editPosition = -1;
+                }
             }
         }
 
@@ -182,7 +214,42 @@ namespace QLVT_PT_DevExpressPJ
 
         private void btnPhucHoiKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (this.isAdding == true || this.isEditing == true)
+            {
+                this.khoBDS.CancelEdit();
+                this.qlvtDS.Kho.RejectChanges();
+                writableKhoControl(0);
 
+                if (Program.mGroup != "CONGTY")
+                {
+                    this.btnGhiKho.Enabled = false;
+                    this.btnThemKho.Enabled = true;
+                    this.btnSuaKho.Enabled = true;
+                    this.btnXoaKho.Enabled = true;
+
+                    if (tableStates.Count != 0)
+                    {
+                        // this.btnPhucHoiNV.Enabled = true;
+                    }
+                    else
+                    {
+                        // this.btnPhucHoiNV.Enabled = false;
+                    }
+
+                    if (this.isAdding == true)
+                    {
+                        this.isAdding = false;
+                    }
+                    if (this.isEditing == true)
+                    {
+                        this.isEditing = false;
+                    }
+
+                    this.editPosition = -1;
+                    this.maKhoSua = null;
+                    Program.formKhoClose = true;
+                }
+            }
         }
 
         private void btnReloadKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -225,9 +292,15 @@ namespace QLVT_PT_DevExpressPJ
                 {
                     this.isEditing = false;
                 }
-                this.editPosition = -1;
+
+                if (this.maKhoThem != null)
+                {
+                    this.khoBDS.Position = this.khoBDS.Find("MAKHO", this.maKhoThem);
+                }
+              
                 this.maKhoSua = null;
                 this.tenKhoSua = null;
+                Program.formKhoClose = true;
             }
         }
 
@@ -323,7 +396,7 @@ namespace QLVT_PT_DevExpressPJ
 
             if (tableStates.Count != 0)
             {
-                this.btnPhucHoiKho.Enabled = true;
+              //  this.btnPhucHoiKho.Enabled = true;
             }
         }
 
@@ -343,7 +416,7 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnGhiKho.Enabled = false;
                 if (tableStates.Count == 0)
                 {
-                    this.btnPhucHoiKho.Enabled = false;
+                    //this.btnPhucHoiKho.Enabled = false;
                 }
             }
             else
@@ -351,7 +424,7 @@ namespace QLVT_PT_DevExpressPJ
                 this.btnGhiKho.Enabled = true;
                 if (tableStates.Count != 0)
                 {
-                    this.btnPhucHoiKho.Enabled = true;
+                   // this.btnPhucHoiKho.Enabled = true;
                 }
             }
         }
@@ -499,5 +572,7 @@ namespace QLVT_PT_DevExpressPJ
             return string.Empty;
         }
         #endregion
+
+        
     }
 }

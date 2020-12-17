@@ -44,6 +44,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.txtbMaSoDDH.Select(0, this.txtbMaSoDDH.Text.Length);
             this.txtbMaNV.Text = Program.username;
             this.dateEdNgayDat.EditValue = DateTime.Today;
+            this.dateEdNgayDat.Properties.MaxValue = DateTime.Today;
             this.dateEdNgayDat.Select(0, this.dateEdNgayDat.Text.Length);
         }
 
@@ -68,6 +69,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 dhBDS.EndEdit();
                 this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.datHangTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().DatHang);
+                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                 this.Close();
             }
         }

@@ -574,6 +574,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdNgaySinh.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.dateEdNgaySinh.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdNgaySinh.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+            this.dateEdNgaySinh.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdNgaySinh.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.dateEdNgaySinh.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.dateEdNgaySinh.Properties.MaxValue = new System.DateTime(2003, 12, 31, 0, 0, 0, 0);
             this.dateEdNgaySinh.Properties.MinValue = new System.DateTime(1960, 1, 1, 0, 0, 0, 0);
             this.dateEdNgaySinh.Properties.ReadOnly = true;
@@ -593,6 +597,7 @@
             this.tableAdapterManager.CTPNTableAdapter = null;
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = null;
+            this.tableAdapterManager.HoTenNVTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = this.nhanVienTableAdapter;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
@@ -797,6 +802,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formNhanVien";
             this.Text = "Quản lý nhân viên";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formNhanVien_FormClosing);
             this.Load += new System.EventHandler(this.formNV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlCN)).EndInit();
