@@ -44,6 +44,7 @@
             this.colTENVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grBxForm_ThemCTPN = new System.Windows.Forms.GroupBox();
             this.numUDDonGia = new System.Windows.Forms.NumericUpDown();
             this.ctpnBDS = new System.Windows.Forms.BindingSource(this.components);
@@ -52,9 +53,9 @@
             this.txtbMaPN = new System.Windows.Forms.TextBox();
             this.btnThemCTPN = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.ctpnTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTPNTableAdapter();
             this.tableAdapterManager = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.sp_LayttvtdhTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.SP_LAYTHONGTINVATTUDATHANGTableAdapter();
             dONGIALabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
@@ -119,7 +120,7 @@
             this.grBxVattu_ThemCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grBxVattu_ThemCTPN.Location = new System.Drawing.Point(314, 0);
             this.grBxVattu_ThemCTPN.Name = "grBxVattu_ThemCTPN";
-            this.grBxVattu_ThemCTPN.Size = new System.Drawing.Size(527, 268);
+            this.grBxVattu_ThemCTPN.Size = new System.Drawing.Size(527, 261);
             this.grBxVattu_ThemCTPN.TabIndex = 18;
             this.grBxVattu_ThemCTPN.TabStop = false;
             // 
@@ -129,7 +130,7 @@
             this.grCtrlVT_ThemCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grCtrlVT_ThemCTPN.Location = new System.Drawing.Point(3, 16);
             this.grCtrlVT_ThemCTPN.Name = "grCtrlVT_ThemCTPN";
-            this.grCtrlVT_ThemCTPN.Size = new System.Drawing.Size(521, 249);
+            this.grCtrlVT_ThemCTPN.Size = new System.Drawing.Size(521, 242);
             this.grCtrlVT_ThemCTPN.TabIndex = 0;
             this.grCtrlVT_ThemCTPN.Text = "Danh sách vật tư đã đặt hàng của đơn đặt hàng này";
             // 
@@ -140,7 +141,7 @@
             this.grdCtrlVT.Location = new System.Drawing.Point(2, 23);
             this.grdCtrlVT.MainView = this.grdVwVattu;
             this.grdCtrlVT.Name = "grdCtrlVT";
-            this.grdCtrlVT.Size = new System.Drawing.Size(517, 224);
+            this.grdCtrlVT.Size = new System.Drawing.Size(517, 217);
             this.grdCtrlVT.TabIndex = 0;
             this.grdCtrlVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdVwVattu});
@@ -161,12 +162,11 @@
             this.colMAVT,
             this.colTENVT,
             this.colDVT,
-            this.colSOLUONG});
+            this.colSOLUONG,
+            this.colDONGIA});
             this.grdVwVattu.GridControl = this.grdCtrlVT;
             this.grdVwVattu.Name = "grdVwVattu";
             this.grdVwVattu.OptionsBehavior.Editable = false;
-            this.grdVwVattu.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colDVT, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.grdVwVattu.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.grdVwVattu_RowClick);
             // 
             // colMAVT
@@ -176,7 +176,7 @@
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 0;
-            this.colMAVT.Width = 102;
+            this.colMAVT.Width = 77;
             // 
             // colTENVT
             // 
@@ -185,7 +185,7 @@
             this.colTENVT.Name = "colTENVT";
             this.colTENVT.Visible = true;
             this.colTENVT.VisibleIndex = 1;
-            this.colTENVT.Width = 361;
+            this.colTENVT.Width = 284;
             // 
             // colDVT
             // 
@@ -194,18 +194,33 @@
             this.colDVT.Name = "colDVT";
             this.colDVT.Visible = true;
             this.colDVT.VisibleIndex = 2;
-            this.colDVT.Width = 86;
+            this.colDVT.Width = 76;
             // 
             // colSOLUONG
             // 
             this.colSOLUONG.AppearanceHeader.Options.UseTextOptions = true;
             this.colSOLUONG.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colSOLUONG.Caption = "Số lượng";
+            this.colSOLUONG.DisplayFormat.FormatString = "#,#";
+            this.colSOLUONG.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSOLUONG.FieldName = "SOLUONG";
             this.colSOLUONG.Name = "colSOLUONG";
             this.colSOLUONG.Visible = true;
             this.colSOLUONG.VisibleIndex = 3;
-            this.colSOLUONG.Width = 136;
+            this.colSOLUONG.Width = 82;
+            // 
+            // colDONGIA
+            // 
+            this.colDONGIA.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDONGIA.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colDONGIA.Caption = "Đơn giá";
+            this.colDONGIA.DisplayFormat.FormatString = "#,#";
+            this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDONGIA.FieldName = "DONGIA";
+            this.colDONGIA.Name = "colDONGIA";
+            this.colDONGIA.Visible = true;
+            this.colDONGIA.VisibleIndex = 4;
+            this.colDONGIA.Width = 166;
             // 
             // grBxForm_ThemCTPN
             // 
@@ -222,7 +237,7 @@
             this.grBxForm_ThemCTPN.Dock = System.Windows.Forms.DockStyle.Left;
             this.grBxForm_ThemCTPN.Location = new System.Drawing.Point(0, 0);
             this.grBxForm_ThemCTPN.Name = "grBxForm_ThemCTPN";
-            this.grBxForm_ThemCTPN.Size = new System.Drawing.Size(314, 268);
+            this.grBxForm_ThemCTPN.Size = new System.Drawing.Size(314, 261);
             this.grBxForm_ThemCTPN.TabIndex = 17;
             this.grBxForm_ThemCTPN.TabStop = false;
             // 
@@ -304,6 +319,13 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Thêm chi tiết phiếu nhập";
             // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(0, 0);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.TabIndex = 0;
+            // 
             // ctpnTableAdapter
             // 
             this.ctpnTableAdapter.ClearBeforeFill = true;
@@ -316,19 +338,13 @@
             this.tableAdapterManager.CTPNTableAdapter = this.ctpnTableAdapter;
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = null;
+            this.tableAdapterManager.HoTenNVTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Location = new System.Drawing.Point(0, 0);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(75, 23);
-            this.btnThoat.TabIndex = 0;
             // 
             // sp_LayttvtdhTableAdapter
             // 
@@ -338,7 +354,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 268);
+            this.ClientSize = new System.Drawing.Size(841, 261);
             this.Controls.Add(this.grBxVattu_ThemCTPN);
             this.Controls.Add(this.grBxForm_ThemCTPN);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -374,12 +390,12 @@
         private System.Windows.Forms.TextBox txtbMaPN;
         private System.Windows.Forms.Button btnThemCTPN;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnThoat;
+        private DevExpress.XtraEditors.GroupControl grCtrlVT_ThemCTPN;
         private QLVTDataSet qlvtDS;
         private System.Windows.Forms.BindingSource ctpnBDS;
         private QLVTDataSetTableAdapters.CTPNTableAdapter ctpnTableAdapter;
         private QLVTDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private DevExpress.XtraEditors.GroupControl grCtrlVT_ThemCTPN;
-        private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.BindingSource sp_LayttvtdhBDS;
         private QLVTDataSetTableAdapters.SP_LAYTHONGTINVATTUDATHANGTableAdapter sp_LayttvtdhTableAdapter;
         private DevExpress.XtraGrid.GridControl grdCtrlVT;
@@ -388,5 +404,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTENVT;
         private DevExpress.XtraGrid.Columns.GridColumn colDVT;
         private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG;
+        private DevExpress.XtraGrid.Columns.GridColumn colDONGIA;
     }
 }

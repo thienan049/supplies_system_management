@@ -68,7 +68,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 pxBDS.EndEdit();
                 this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuXuatTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().PhieuXuat);
-                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                //MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                 this.Close();
             }
         }

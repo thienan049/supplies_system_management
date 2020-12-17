@@ -68,7 +68,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 this.txtbMaSoDDH.Text = finalMaSoDDH;
                 dhBDS.EndEdit();
                 this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.datHangTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().DatHang);
+                //this.datHangTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().DatHang);
                 MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                 this.Close();
             }

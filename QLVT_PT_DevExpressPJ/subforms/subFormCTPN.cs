@@ -26,10 +26,10 @@ namespace QLVT_PT_DevExpressPJ.subforms
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
         private void subFormCTPN_Load(object sender, EventArgs e)
-        {
+        {          
             this.qlvtDS.EnforceConstraints = false;
             this.ctpnBDS.DataSource = Program.formDDHPNPX.getFormDDHPNPX_ctpnBDS();
-            
+
             string masoDDH = ((DataRowView)Program.formDDHPNPX.getFormDDHPNPX_pnBDS()[Program.formDDHPNPX.getFormDDHPNPX_pnBDS().Position])["MASODDH"].ToString().Trim();
             this.sp_LayttvtdhTableAdapter.Connection.ConnectionString = Program.connstr;
             this.sp_LayttvtdhTableAdapter.Fill(this.qlvtDS.SP_LAYTHONGTINVATTUDATHANG, masoDDH);
@@ -68,10 +68,11 @@ namespace QLVT_PT_DevExpressPJ.subforms
                     ctpnBDS.EndEdit();
                     this.ctpnTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.ctpnTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().CTPN);
-                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    // MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                     this.Close();
                     Program.formDDHPNPX.reloadPN();
-                }catch(Exception ex) { MessageBox.Show(ex.Message); }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
         #endregion
@@ -108,6 +109,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
         {
             this.txtbMaVT.Text = ((DataRowView)sp_LayttvtdhBDS[sp_LayttvtdhBDS.Position])["MAVT"].ToString().Trim();
             this.numUDSoluong.Maximum = int.Parse(((DataRowView)sp_LayttvtdhBDS[sp_LayttvtdhBDS.Position])["SOLUONG"].ToString().Trim());
+            this.numUDDonGia.Value = int.Parse(((DataRowView)sp_LayttvtdhBDS[sp_LayttvtdhBDS.Position])["DONGIA"].ToString().Trim());
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -156,6 +158,8 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 this.btnThemCTPN.Enabled = true;
             }
         }
-        #endregion        
+        #endregion
+
+        
     }
 }

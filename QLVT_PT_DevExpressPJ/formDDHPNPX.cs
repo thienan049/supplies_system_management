@@ -330,6 +330,14 @@ namespace QLVT_PT_DevExpressPJ
             }
         }
 
+        private void grdVwPN_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (this.chbxTimDDH.Checked == true && this.pnBDS.Position != -1)
+            {
+                this.dhBDS.Position = dhBDS.Find("MASODDH", ((DataRowView)pnBDS[pnBDS.Position])["MASODDH"].ToString().Trim());
+            }
+        }
+
         private void xoaPhieuNhap()
         {
             if (ctpnBDS_PN.Count > 0)
@@ -606,6 +614,9 @@ namespace QLVT_PT_DevExpressPJ
                 this.pxBDS.Position = currentPositionPX;
             }
         }
-        #endregion       
+
+        #endregion
+
+       
     }
 }

@@ -37,6 +37,7 @@
             this.btnPNPXSubItem = new DevExpress.XtraBars.BarSubItem();
             this.btnPhieuNhap = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuXuat = new DevExpress.XtraBars.BarButtonItem();
+            this.chbxTimDDH = new DevExpress.XtraBars.BarCheckItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -194,9 +195,10 @@
             this.btnThoat,
             this.btnPNPXSubItem,
             this.btnPhieuNhap,
-            this.btnPhieuXuat});
+            this.btnPhieuXuat,
+            this.chbxTimDDH});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 11;
+            this.barManager1.MaxItemId = 12;
             // 
             // bar2
             // 
@@ -207,7 +209,8 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPNPXSubItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPNPXSubItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.chbxTimDDH)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -254,6 +257,13 @@
             this.btnPhieuXuat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPhieuXuat.ImageOptions.LargeImage")));
             this.btnPhieuXuat.Name = "btnPhieuXuat";
             this.btnPhieuXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhieuXuat_ItemClick);
+            // 
+            // chbxTimDDH
+            // 
+            this.chbxTimDDH.Caption = "Tìm DDH";
+            this.chbxTimDDH.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            this.chbxTimDDH.Id = 11;
+            this.chbxTimDDH.Name = "chbxTimDDH";
             // 
             // barDockControlTop
             // 
@@ -339,6 +349,7 @@
             this.tableAdapterManager.CTPNTableAdapter = null;
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = this.datHangTableAdapter;
+            this.tableAdapterManager.HoTenNVTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = this.phieuNhapTableAdapter;
@@ -491,6 +502,7 @@
             this.grdVwPN.GridControl = this.grdCtrlPN;
             this.grdVwPN.Name = "grdVwPN";
             this.grdVwPN.OptionsBehavior.Editable = false;
+            this.grdVwPN.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grdVwPN_FocusedRowChanged);
             // 
             // colMAPN
             // 
@@ -1222,5 +1234,6 @@
         private System.Windows.Forms.ToolStripMenuItem xoaCTPXMenuItem;
         private System.Windows.Forms.ToolStripMenuItem themCTPN_CTPNMenuItem;
         private System.Windows.Forms.ToolStripMenuItem themCTPX_PXMenuItem;
+        private DevExpress.XtraBars.BarCheckItem chbxTimDDH;
     }
 }
