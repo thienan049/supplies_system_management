@@ -275,7 +275,7 @@
             new DevExpress.XtraReports.UI.GroupField("MasoDDH", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)});
             this.GroupHeader2.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
             this.GroupHeader2.HeightF = 32.00001F;
-            this.GroupHeader2.Level = 1;
+            this.GroupHeader2.Level = 2;
             this.GroupHeader2.Name = "GroupHeader2";
             // 
             // table2
@@ -342,7 +342,7 @@
             this.table3});
             this.GroupHeader3.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
             this.GroupHeader3.HeightF = 28F;
-            this.GroupHeader3.Level = 2;
+            this.GroupHeader3.Level = 1;
             this.GroupHeader3.Name = "GroupHeader3";
             // 
             // table3
@@ -385,7 +385,7 @@
             this.tableCell6.StylePriority.UseFont = false;
             this.tableCell6.StylePriority.UseTextAlignment = false;
             this.tableCell6.Text = "Nhà cung cấp";
-            this.tableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.tableCell6.Weight = 0.18872564057676863D;
             // 
             // tableCell7
@@ -396,7 +396,7 @@
             this.tableCell7.StylePriority.UseFont = false;
             this.tableCell7.StylePriority.UseTextAlignment = false;
             this.tableCell7.Text = "Tên vật tư";
-            this.tableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.tableCell7.Weight = 0.35510482583055342D;
             // 
             // tableCell8
@@ -407,7 +407,7 @@
             this.tableCell8.StylePriority.UseFont = false;
             this.tableCell8.StylePriority.UseTextAlignment = false;
             this.tableCell8.Text = "Số lượng";
-            this.tableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tableCell8.Weight = 0.11858431458708349D;
             // 
             // tableCell9
@@ -418,7 +418,7 @@
             this.tableCell9.StylePriority.UseFont = false;
             this.tableCell9.StylePriority.UseTextAlignment = false;
             this.tableCell9.Text = "Đơn giá";
-            this.tableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tableCell9.Weight = 0.21484536756986969D;
             // 
             // Detail

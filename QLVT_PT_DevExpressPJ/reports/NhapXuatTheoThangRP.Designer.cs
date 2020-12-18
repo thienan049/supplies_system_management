@@ -258,7 +258,7 @@
             this.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
             this.GroupHeader1.HeightF = 32F;
             this.GroupHeader1.KeepTogether = true;
-            this.GroupHeader1.Level = 1;
+            this.GroupHeader1.Level = 2;
             this.GroupHeader1.Name = "GroupHeader1";
             // 
             // table1
@@ -307,9 +307,8 @@
             this.GroupHeader2.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
             this.GroupHeader2.HeightF = 30F;
             this.GroupHeader2.KeepTogether = true;
-            this.GroupHeader2.Level = 2;
+            this.GroupHeader2.Level = 1;
             this.GroupHeader2.Name = "GroupHeader2";
-            this.GroupHeader2.RepeatEveryPage = true;
             // 
             // table2
             // 
@@ -351,7 +350,7 @@
             this.tableCell4.StylePriority.UseFont = false;
             this.tableCell4.StylePriority.UseTextAlignment = false;
             this.tableCell4.Text = "Số lượng";
-            this.tableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tableCell4.Weight = 0.13575403608020009D;
             // 
             // tableCell5
@@ -362,7 +361,7 @@
             this.tableCell5.StylePriority.UseFont = false;
             this.tableCell5.StylePriority.UseTextAlignment = false;
             this.tableCell5.Text = "Trị giá";
-            this.tableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tableCell5.Weight = 0.3150608965702576D;
             // 
             // Detail
@@ -461,11 +460,13 @@
             // 
             this.xrLabel1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([TRIGIA])")});
+            this.xrLabel1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(551.9999F, 8.250014F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(173.9999F, 23F);
+            this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseTextAlignment = false;
             xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
             this.xrLabel1.Summary = xrSummary1;

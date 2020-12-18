@@ -312,7 +312,7 @@
             new DevExpress.XtraReports.UI.GroupField("MANV", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)});
             this.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
             this.GroupHeader1.HeightF = 29.625F;
-            this.GroupHeader1.Level = 1;
+            this.GroupHeader1.Level = 2;
             this.GroupHeader1.Name = "GroupHeader1";
             // 
             // table1
@@ -321,7 +321,7 @@
             this.table1.Name = "table1";
             this.table1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow1});
-            this.table1.SizeF = new System.Drawing.SizeF(730.0001F, 24.37496F);
+            this.table1.SizeF = new System.Drawing.SizeF(730.0001F, 27.62496F);
             // 
             // tableRow1
             // 
@@ -386,7 +386,7 @@
             this.table2});
             this.GroupHeader2.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
             this.GroupHeader2.HeightF = 28F;
-            this.GroupHeader2.Level = 2;
+            this.GroupHeader2.Level = 1;
             this.GroupHeader2.Name = "GroupHeader2";
             // 
             // table2
@@ -396,7 +396,7 @@
             this.table2.Name = "table2";
             this.table2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow2});
-            this.table2.SizeF = new System.Drawing.SizeF(730.0001F, 28F);
+            this.table2.SizeF = new System.Drawing.SizeF(730F, 25F);
             this.table2.StylePriority.UseFont = false;
             // 
             // tableRow2
@@ -444,7 +444,7 @@
             this.tenvtTitleTbCell.StylePriority.UseFont = false;
             this.tenvtTitleTbCell.StylePriority.UseTextAlignment = false;
             this.tenvtTitleTbCell.Text = "Tên vật tư\r\n";
-            this.tenvtTitleTbCell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tenvtTitleTbCell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.tenvtTitleTbCell.Weight = 0.24878210970945461D;
             // 
             // soluongTitleTbCell
@@ -456,7 +456,7 @@
             this.soluongTitleTbCell.StylePriority.UseFont = false;
             this.soluongTitleTbCell.StylePriority.UseTextAlignment = false;
             this.soluongTitleTbCell.Text = "Số lượng\r\n";
-            this.soluongTitleTbCell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.soluongTitleTbCell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.soluongTitleTbCell.Weight = 0.086706218855368361D;
             // 
             // dongiaTitleTbCell
@@ -468,7 +468,7 @@
             this.dongiaTitleTbCell.StylePriority.UseFont = false;
             this.dongiaTitleTbCell.StylePriority.UseTextAlignment = false;
             this.dongiaTitleTbCell.Text = "Đơn giá\r\n";
-            this.dongiaTitleTbCell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.dongiaTitleTbCell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.dongiaTitleTbCell.Weight = 0.15090339727112176D;
             // 
             // trigiaTitleTbCell
@@ -480,7 +480,7 @@
             this.trigiaTitleTbCell.StylePriority.UseFont = false;
             this.trigiaTitleTbCell.StylePriority.UseTextAlignment = false;
             this.trigiaTitleTbCell.Text = "Trị giá\r\n";
-            this.trigiaTitleTbCell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.trigiaTitleTbCell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.trigiaTitleTbCell.Weight = 0.1824751096433006D;
             // 
             // Detail

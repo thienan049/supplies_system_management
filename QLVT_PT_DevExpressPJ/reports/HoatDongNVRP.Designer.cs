@@ -89,9 +89,9 @@
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
-            this.xrLabel15 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLine3 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel16 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLine3 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLabel15 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -600,7 +600,7 @@
             this.tableCell19.Name = "tableCell19";
             this.tableCell19.StyleName = "DetailData1";
             this.tableCell19.StylePriority.UseFont = false;
-            this.tableCell19.Weight = 0.14271487380569953D;
+            this.tableCell19.Weight = 0.13388041852018173D;
             // 
             // tableCell20
             // 
@@ -610,7 +610,7 @@
             this.tableCell20.Name = "tableCell20";
             this.tableCell20.StyleName = "DetailData1";
             this.tableCell20.StylePriority.UseFont = false;
-            this.tableCell20.Weight = 0.43402512991474568D;
+            this.tableCell20.Weight = 0.43418217832274769D;
             // 
             // tableCell21
             // 
@@ -620,7 +620,7 @@
             this.tableCell21.Name = "tableCell21";
             this.tableCell21.StyleName = "DetailData1";
             this.tableCell21.StylePriority.UseFont = false;
-            this.tableCell21.Weight = 0.23298194064095953D;
+            this.tableCell21.Weight = 0.23020819509657675D;
             // 
             // tableCell22
             // 
@@ -633,7 +633,7 @@
             this.tableCell22.StylePriority.UseTextAlignment = false;
             this.tableCell22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tableCell22.TextFormatString = "{0:#,#}";
-            this.tableCell22.Weight = 0.14022298629000676D;
+            this.tableCell22.Weight = 0.13855392663413224D;
             // 
             // tableCell23
             // 
@@ -646,7 +646,7 @@
             this.tableCell23.StylePriority.UseTextAlignment = false;
             this.tableCell23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tableCell23.TextFormatString = "{0:#,#}";
-            this.tableCell23.Weight = 0.1938365160114609D;
+            this.tableCell23.Weight = 0.19152872024971726D;
             // 
             // tableCell24
             // 
@@ -659,7 +659,7 @@
             this.tableCell24.StylePriority.UseTextAlignment = false;
             this.tableCell24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tableCell24.TextFormatString = "{0:#,#}";
-            this.tableCell24.Weight = 0.19243905427644883D;
+            this.tableCell24.Weight = 0.20786706211596556D;
             // 
             // calFieldThangNam
             // 
@@ -705,27 +705,6 @@
             this.GroupFooter1.HeightF = 24.58655F;
             this.GroupFooter1.Name = "GroupFooter1";
             // 
-            // xrLabel15
-            // 
-            this.xrLabel15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel15.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel15.LocationFloat = new DevExpress.Utils.PointFloat(675.5389F, 4.166636F);
-            this.xrLabel15.Name = "xrLabel15";
-            this.xrLabel15.SizeF = new System.Drawing.SizeF(47.92371F, 20.41655F);
-            this.xrLabel15.StyleName = "Title";
-            this.xrLabel15.StylePriority.UseFont = false;
-            this.xrLabel15.StylePriority.UseForeColor = false;
-            this.xrLabel15.StylePriority.UseTextAlignment = false;
-            this.xrLabel15.Text = "Tổng:";
-            this.xrLabel15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrLabel15.TextFormatString = "{0:MMMM yyyy}";
-            // 
-            // xrLine3
-            // 
-            this.xrLine3.LocationFloat = new DevExpress.Utils.PointFloat(101.6078F, 15.12483F);
-            this.xrLine3.Name = "xrLine3";
-            this.xrLine3.SizeF = new System.Drawing.SizeF(507.2802F, 9.45832F);
-            // 
             // xrLabel16
             // 
             this.xrLabel16.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
@@ -743,6 +722,27 @@
             this.xrLabel16.Summary = xrSummary1;
             this.xrLabel16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrLabel16.TextFormatString = "{0:#,#}";
+            // 
+            // xrLine3
+            // 
+            this.xrLine3.LocationFloat = new DevExpress.Utils.PointFloat(101.6078F, 15.12483F);
+            this.xrLine3.Name = "xrLine3";
+            this.xrLine3.SizeF = new System.Drawing.SizeF(507.2802F, 9.45832F);
+            // 
+            // xrLabel15
+            // 
+            this.xrLabel15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel15.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel15.LocationFloat = new DevExpress.Utils.PointFloat(675.5389F, 4.166636F);
+            this.xrLabel15.Name = "xrLabel15";
+            this.xrLabel15.SizeF = new System.Drawing.SizeF(47.92371F, 20.41655F);
+            this.xrLabel15.StyleName = "Title";
+            this.xrLabel15.StylePriority.UseFont = false;
+            this.xrLabel15.StylePriority.UseForeColor = false;
+            this.xrLabel15.StylePriority.UseTextAlignment = false;
+            this.xrLabel15.Text = "Tổng:";
+            this.xrLabel15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrLabel15.TextFormatString = "{0:MMMM yyyy}";
             // 
             // HoatDongNVRP
             // 
