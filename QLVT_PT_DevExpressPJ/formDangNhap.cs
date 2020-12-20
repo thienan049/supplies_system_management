@@ -15,6 +15,7 @@ namespace QLVT_PT_DevExpressPJ
     {
         CheckBox lastChecked;
 
+        #region form loading
         public formDangNhap()
         {
             InitializeComponent();
@@ -32,7 +33,9 @@ namespace QLVT_PT_DevExpressPJ
             Program.bds_dspm.DataSource = dsPM_BDS.DataSource;
             Program.bds_dspm.DataMember = dsPM_BDS.DataMember;                      
         }
-       
+        #endregion
+
+        #region additional events
         private void cboxTenCN_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -73,7 +76,6 @@ namespace QLVT_PT_DevExpressPJ
             {
                 Console.Write(ex.Message);
             }
-
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
@@ -141,17 +143,7 @@ namespace QLVT_PT_DevExpressPJ
             this.Visible = false;
             Program.formChinh.btnDangNhap.Enabled = false;            
             Program.formChinh.btnDangXuat.Enabled = true;
-            //Program.formChinh.btnNV.Enabled = true;
-            //Program.formChinh.btnVT.Enabled = true;
-            //Program.formChinh.btnKho.Enabled = true;
-            //Program.formChinh.btnDDHPNPX.Enabled = true;
 
-            //Program.formChinh.btnPhLapTheoLoaiRP.Enabled = true;
-            //Program.formChinh.btnDsNVRP.Enabled = true;
-            //Program.formChinh.btnDsVTRP.Enabled = true;
-            //Program.formChinh.btnDdhChuaPN.Enabled = true;
-            //Program.formChinh.btnNXThang.Enabled = true;
-            //Program.formChinh.btnHDNV.Enabled = true;
             Program.formChinh.rbPgDanhMuc.Visible = true;
             Program.formChinh.rbPgBaoCao.Visible = true;
         }
@@ -213,7 +205,9 @@ namespace QLVT_PT_DevExpressPJ
                 setLogin("thai2lg", "asd");
             }
         }
+        #endregion
 
+        #region additional functions
         private void checkChecked(object sender)
         {
             CheckBox activeCheckBox = sender as CheckBox;
@@ -227,5 +221,6 @@ namespace QLVT_PT_DevExpressPJ
             this.txtbLoginName.Text = login;
             this.txtbPassWord.Text = password;
         }
+        #endregion
     }
 }

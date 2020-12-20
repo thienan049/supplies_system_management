@@ -16,6 +16,7 @@ namespace QLVT_PT_DevExpressPJ.reports.subformsRP
         public subFormPhieuLap()
         {
             InitializeComponent();
+            this.AcceptButton = this.btnXem;
             this.CancelButton = this.btnThoat;
         }
 
@@ -33,14 +34,6 @@ namespace QLVT_PT_DevExpressPJ.reports.subformsRP
             else
             {
                 cbxTenCN.Enabled = false;
-                if (Program.mGroup == "CHINHANH")
-                {
-
-                }
-                else if (Program.mGroup == "USER")
-                {
-
-                }
             }
         }
 
@@ -102,8 +95,6 @@ namespace QLVT_PT_DevExpressPJ.reports.subformsRP
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        
+        }       
     }
 }

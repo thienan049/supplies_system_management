@@ -3426,6 +3426,30 @@
         UwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="barButtonItem1.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi41
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAPUDAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iQ3JlYXRlX0V4cGxvZGVkX1BpZV8zRF9DaGFydCIgc3R5bGU9ImVuYWJs
+        ZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJs
+        dWV7ZmlsbDojMTE3N0Q3O30KCS5SZWR7ZmlsbDojRDExQzFDO30KCS5zdDB7b3BhY2l0eTowLjY1O30K
+        CS5zdDF7b3BhY2l0eTowLjg1O30KPC9zdHlsZT4NCiAgPHBhdGggZD0iTTAsMTN2NnYwYzAsNSw2LjMs
+        OSwxNCw5YzMuOSwwLDcuMi0xLDkuNy0yLjZsMCwwdi02QzIxLjIsMjEsMTcuOSwyMiwxNCwyMkM2LjMs
+        MjIsMCwxOCwwLDEzeiIgY2xhc3M9IlJlZCIgLz4NCiAgPGcgY2xhc3M9InN0MCI+DQogICAgPHBhdGgg
+        ZD0iTTE4LDR2OWw5LjcsNi40YzIuNS0xLjYsNC4zLTMuOSw0LjMtNi40QzMyLDgsMjUuNyw0LDE4LDR6
+        IiBjbGFzcz0iQmx1ZSIgLz4NCiAgICA8cGF0aCBkPSJNMTQsNEM2LjMsNCwwLDgsMCwxM2MwLDUsNi4z
+        LDksMTQsOWMzLjksMCw3LjItMSw5LjctMi42TDE0LDEzVjR6IiBjbGFzcz0iUmVkIiAvPg0KICA8L2c+
+        DQogIDxnIGNsYXNzPSJzdDEiPg0KICAgIDxwb2x5Z29uIHBvaW50cz0iMjcuNywxOS40IDI3LjcsMTku
+        NCAxOCwxMyAxOCwxNS42IDIzLjcsMTkuNCAyMy43LDE5LjQgMjMuNywyMi43IDI3LjcsMjUuNCAyNy43
+        LDI1LjQgICIgY2xhc3M9IkJsdWUiIC8+DQogIDwvZz4NCiAgPHBhdGggZD0iTTI3LjcsMTkuNEMyNy43
+        LDE5LjQsMjcuNywxOS40LDI3LjcsMTkuNGwwLDZjMi41LTEuNiw0LjMtMy45LDQuMy02LjR2LTZDMzIs
+        MTUuNSwzMC4yLDE3LjcsMjcuNywxOS40eiIgY2xhc3M9IkJsdWUiIC8+DQo8L3N2Zz4L
+</value>
+  </data>
   <metadata name="xtraTabbedMdiManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>12, 35</value>
   </metadata>

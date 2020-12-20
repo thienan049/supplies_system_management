@@ -38,6 +38,9 @@
             this.btnPhieuNhap = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuXuat = new DevExpress.XtraBars.BarButtonItem();
             this.chbxTimDDH = new DevExpress.XtraBars.BarCheckItem();
+            this.btnCNSubItem = new DevExpress.XtraBars.BarSubItem();
+            this.btnCN1 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCN2 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -47,24 +50,16 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockingMenuItem1 = new DevExpress.XtraBars.BarDockingMenuItem();
             this.qlvtDS = new QLVT_PT_DevExpressPJ.QLVTDataSet();
-            this.dhBDS = new System.Windows.Forms.BindingSource(this.components);
-            this.datHangTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.DatHangTableAdapter();
             this.tableAdapterManager = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager();
             this.phieuNhapTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.PhieuNhapTableAdapter();
             this.phieuXuatTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.PhieuXuatTableAdapter();
-            this.grdCtrlDatHang = new DevExpress.XtraGrid.GridControl();
             this.ddhContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.themDDHMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.themCTDDH_DDHMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.themPN_DDHMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xoaDDHMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.grdVwDatHang = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMasoDDH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNhaCC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnBDS = new System.Windows.Forms.BindingSource(this.components);
             this.grdCtrlPN = new DevExpress.XtraGrid.GridControl();
             this.grdVwPN = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -85,16 +80,9 @@
             this.themPN_PNMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.themCTPN_CTPNMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xoaPNMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.grdCtrlCTDDH = new DevExpress.XtraGrid.GridControl();
             this.ctddhContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.themCTDDHMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xoaCTDDHMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctddhBDS_DDH = new System.Windows.Forms.BindingSource(this.components);
-            this.grdVwCTDDH = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMasoDDH1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMAVT2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSOLUONG2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDONGIA2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnBDS_DDH = new System.Windows.Forms.BindingSource(this.components);
             this.grdCtrlCTPN = new DevExpress.XtraGrid.GridControl();
             this.ctpnBDS_PN = new System.Windows.Forms.BindingSource(this.components);
@@ -110,12 +98,8 @@
             this.colMAVT1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOLUONG1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ctddhTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTDDHTableAdapter();
             this.ctpnTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTPNTableAdapter();
             this.ctpxTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTPXTableAdapter();
-            this.grBxDDH = new System.Windows.Forms.GroupBox();
-            this.grCtrlCTDDH = new DevExpress.XtraEditors.GroupControl();
-            this.grCtrlDDH = new DevExpress.XtraEditors.GroupControl();
             this.grBxPN = new System.Windows.Forms.GroupBox();
             this.grCtrlCTPN = new DevExpress.XtraEditors.GroupControl();
             this.ctpnContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -132,12 +116,29 @@
             this.themPXMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.themCTPX_PXMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xoaPXMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grBxDDH = new System.Windows.Forms.GroupBox();
+            this.grCtrlCTDDH = new DevExpress.XtraEditors.GroupControl();
+            this.grdCtrlCTDDH = new DevExpress.XtraGrid.GridControl();
+            this.ctddhBDS_DDH = new System.Windows.Forms.BindingSource(this.components);
+            this.dhBDS = new System.Windows.Forms.BindingSource(this.components);
+            this.grdVwCTDDH = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMasoDDH1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMAVT2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSOLUONG2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDONGIA2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grCtrlDDH = new DevExpress.XtraEditors.GroupControl();
+            this.grdCtrlDDH = new DevExpress.XtraGrid.GridControl();
+            this.grdVwDDH = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMasoDDH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNhaCC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.datHangTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.DatHangTableAdapter();
+            this.ctddhTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.CTDDHTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dhBDS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlDatHang)).BeginInit();
             this.ddhContextMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdVwDatHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwPN)).BeginInit();
@@ -145,10 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwPX)).BeginInit();
             this.pnContextMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlCTDDH)).BeginInit();
             this.ctddhContextMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS_DDH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdVwCTDDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnBDS_DDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctpnBDS_PN)).BeginInit();
@@ -156,11 +154,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cTPXGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctpxBDS_PX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            this.grBxDDH.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grCtrlCTDDH)).BeginInit();
-            this.grCtrlCTDDH.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grCtrlDDH)).BeginInit();
-            this.grCtrlDDH.SuspendLayout();
             this.grBxPN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlCTPN)).BeginInit();
             this.grCtrlCTPN.SuspendLayout();
@@ -174,6 +167,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlPX)).BeginInit();
             this.grCtrlPX.SuspendLayout();
             this.pxContextMenu.SuspendLayout();
+            this.grBxDDH.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlCTDDH)).BeginInit();
+            this.grCtrlCTDDH.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlCTDDH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS_DDH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dhBDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwCTDDH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlDDH)).BeginInit();
+            this.grCtrlDDH.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlDDH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwDDH)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -196,9 +200,13 @@
             this.btnPNPXSubItem,
             this.btnPhieuNhap,
             this.btnPhieuXuat,
-            this.chbxTimDDH});
+            this.chbxTimDDH,
+            this.btnCNSubItem,
+            this.barDockingMenuItem1,
+            this.btnCN1,
+            this.btnCN2});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 12;
+            this.barManager1.MaxItemId = 17;
             // 
             // bar2
             // 
@@ -209,8 +217,9 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPNPXSubItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.chbxTimDDH)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPNPXSubItem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.chbxTimDDH),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCNSubItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -265,6 +274,32 @@
             this.chbxTimDDH.Id = 11;
             this.chbxTimDDH.Name = "chbxTimDDH";
             // 
+            // btnCNSubItem
+            // 
+            this.btnCNSubItem.Caption = "Chi nhánh";
+            this.btnCNSubItem.Id = 12;
+            this.btnCNSubItem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
+            this.btnCNSubItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCN1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCN2)});
+            this.btnCNSubItem.Name = "btnCNSubItem";
+            // 
+            // btnCN1
+            // 
+            this.btnCN1.Caption = "Chi nhánh 1";
+            this.btnCN1.Id = 15;
+            this.btnCN1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCN1.ImageOptions.SvgImage")));
+            this.btnCN1.Name = "btnCN1";
+            this.btnCN1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCN1_ItemClick);
+            // 
+            // btnCN2
+            // 
+            this.btnCN2.Caption = "Chi nhánh 2";
+            this.btnCN2.Id = 16;
+            this.btnCN2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCN2.ImageOptions.SvgImage")));
+            this.btnCN2.Name = "btnCN2";
+            this.btnCN2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCN2_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -277,7 +312,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 701);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 732);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(962, 0);
             // 
@@ -287,7 +322,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 669);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 700);
             // 
             // barDockControlRight
             // 
@@ -295,7 +330,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(962, 32);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 669);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 700);
             // 
             // barButtonItem1
             // 
@@ -327,19 +362,16 @@
             this.barButtonItem5.Id = 4;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
+            // barDockingMenuItem1
+            // 
+            this.barDockingMenuItem1.Caption = "barDockingMenuItem1";
+            this.barDockingMenuItem1.Id = 14;
+            this.barDockingMenuItem1.Name = "barDockingMenuItem1";
+            // 
             // qlvtDS
             // 
             this.qlvtDS.DataSetName = "QLVTDataSet";
             this.qlvtDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dhBDS
-            // 
-            this.dhBDS.DataMember = "DatHang";
-            this.dhBDS.DataSource = this.qlvtDS;
-            // 
-            // datHangTableAdapter
-            // 
-            this.datHangTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
@@ -348,7 +380,7 @@
             this.tableAdapterManager.CTDDHTableAdapter = null;
             this.tableAdapterManager.CTPNTableAdapter = null;
             this.tableAdapterManager.CTPXTableAdapter = null;
-            this.tableAdapterManager.DatHangTableAdapter = this.datHangTableAdapter;
+            this.tableAdapterManager.DatHangTableAdapter = null;
             this.tableAdapterManager.HoTenNVTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = null;
@@ -364,20 +396,6 @@
             // phieuXuatTableAdapter
             // 
             this.phieuXuatTableAdapter.ClearBeforeFill = true;
-            // 
-            // grdCtrlDatHang
-            // 
-            this.grdCtrlDatHang.ContextMenuStrip = this.ddhContextMenu;
-            this.grdCtrlDatHang.DataSource = this.dhBDS;
-            this.grdCtrlDatHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdCtrlDatHang.Location = new System.Drawing.Point(2, 23);
-            this.grdCtrlDatHang.MainView = this.grdVwDatHang;
-            this.grdCtrlDatHang.MenuManager = this.barManager1;
-            this.grdCtrlDatHang.Name = "grdCtrlDatHang";
-            this.grdCtrlDatHang.Size = new System.Drawing.Size(585, 146);
-            this.grdCtrlDatHang.TabIndex = 5;
-            this.grdCtrlDatHang.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grdVwDatHang});
             // 
             // ddhContextMenu
             // 
@@ -418,60 +436,6 @@
             this.xoaDDHMenuItem.Name = "xoaDDHMenuItem";
             this.xoaDDHMenuItem.Size = new System.Drawing.Size(197, 22);
             this.xoaDDHMenuItem.Text = "Xóa đơn đặt hàng";
-            // 
-            // grdVwDatHang
-            // 
-            this.grdVwDatHang.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMasoDDH,
-            this.colNGAY,
-            this.colNhaCC,
-            this.colMANV,
-            this.colMAKHO});
-            this.grdVwDatHang.GridControl = this.grdCtrlDatHang;
-            this.grdVwDatHang.Name = "grdVwDatHang";
-            this.grdVwDatHang.OptionsBehavior.Editable = false;
-            // 
-            // colMasoDDH
-            // 
-            this.colMasoDDH.Caption = "Mã số DDH";
-            this.colMasoDDH.FieldName = "MasoDDH";
-            this.colMasoDDH.Name = "colMasoDDH";
-            this.colMasoDDH.Visible = true;
-            this.colMasoDDH.VisibleIndex = 0;
-            // 
-            // colNGAY
-            // 
-            this.colNGAY.Caption = "Ngày đặt";
-            this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colNGAY.FieldName = "NGAY";
-            this.colNGAY.Name = "colNGAY";
-            this.colNGAY.Visible = true;
-            this.colNGAY.VisibleIndex = 1;
-            // 
-            // colNhaCC
-            // 
-            this.colNhaCC.Caption = "Nhà cung cấp";
-            this.colNhaCC.FieldName = "NhaCC";
-            this.colNhaCC.Name = "colNhaCC";
-            this.colNhaCC.Visible = true;
-            this.colNhaCC.VisibleIndex = 2;
-            // 
-            // colMANV
-            // 
-            this.colMANV.Caption = "Mã nhân viên";
-            this.colMANV.FieldName = "MANV";
-            this.colMANV.Name = "colMANV";
-            this.colMANV.Visible = true;
-            this.colMANV.VisibleIndex = 3;
-            // 
-            // colMAKHO
-            // 
-            this.colMAKHO.Caption = "Mã kho";
-            this.colMAKHO.FieldName = "MAKHO";
-            this.colMAKHO.Name = "colMAKHO";
-            this.colMAKHO.Visible = true;
-            this.colMAKHO.VisibleIndex = 4;
             // 
             // pnBDS
             // 
@@ -532,6 +496,8 @@
             // 
             // colMANV1
             // 
+            this.colMANV1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMANV1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colMANV1.Caption = "Mã nhân viên";
             this.colMANV1.FieldName = "MANV";
             this.colMANV1.Name = "colMANV1";
@@ -604,6 +570,8 @@
             // 
             // colMANV2
             // 
+            this.colMANV2.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMANV2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colMANV2.Caption = "Mã nhân viên";
             this.colMANV2.FieldName = "MANV";
             this.colMANV2.Name = "colMANV2";
@@ -650,20 +618,6 @@
             this.xoaPNMenuItem.Size = new System.Drawing.Size(186, 22);
             this.xoaPNMenuItem.Text = "Xóa phiếu nhập";
             // 
-            // grdCtrlCTDDH
-            // 
-            this.grdCtrlCTDDH.ContextMenuStrip = this.ctddhContextMenu;
-            this.grdCtrlCTDDH.DataSource = this.ctddhBDS_DDH;
-            this.grdCtrlCTDDH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdCtrlCTDDH.Location = new System.Drawing.Point(2, 23);
-            this.grdCtrlCTDDH.MainView = this.grdVwCTDDH;
-            this.grdCtrlCTDDH.MenuManager = this.barManager1;
-            this.grdCtrlCTDDH.Name = "grdCtrlCTDDH";
-            this.grdCtrlCTDDH.Size = new System.Drawing.Size(369, 146);
-            this.grdCtrlCTDDH.TabIndex = 5;
-            this.grdCtrlCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grdVwCTDDH});
-            // 
             // ctddhContextMenu
             // 
             this.ctddhContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -687,63 +641,6 @@
             this.xoaCTDDHMenuItem.Name = "xoaCTDDHMenuItem";
             this.xoaCTDDHMenuItem.Size = new System.Drawing.Size(197, 22);
             this.xoaCTDDHMenuItem.Text = "Xóa CT đơn đặt hàng";
-            // 
-            // ctddhBDS_DDH
-            // 
-            this.ctddhBDS_DDH.DataMember = "FK_CTDDH_DatHang";
-            this.ctddhBDS_DDH.DataSource = this.dhBDS;
-            // 
-            // grdVwCTDDH
-            // 
-            this.grdVwCTDDH.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMasoDDH1,
-            this.colMAVT2,
-            this.colSOLUONG2,
-            this.colDONGIA2});
-            this.grdVwCTDDH.GridControl = this.grdCtrlCTDDH;
-            this.grdVwCTDDH.Name = "grdVwCTDDH";
-            this.grdVwCTDDH.OptionsBehavior.Editable = false;
-            // 
-            // colMasoDDH1
-            // 
-            this.colMasoDDH1.Caption = "Mã số DDH";
-            this.colMasoDDH1.FieldName = "MasoDDH";
-            this.colMasoDDH1.Name = "colMasoDDH1";
-            this.colMasoDDH1.Visible = true;
-            this.colMasoDDH1.VisibleIndex = 0;
-            // 
-            // colMAVT2
-            // 
-            this.colMAVT2.Caption = "Mã vật tư";
-            this.colMAVT2.FieldName = "MAVT";
-            this.colMAVT2.Name = "colMAVT2";
-            this.colMAVT2.Visible = true;
-            this.colMAVT2.VisibleIndex = 1;
-            // 
-            // colSOLUONG2
-            // 
-            this.colSOLUONG2.Caption = "Số lượng";
-            this.colSOLUONG2.DisplayFormat.FormatString = "#,#";
-            this.colSOLUONG2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colSOLUONG2.FieldName = "SOLUONG";
-            this.colSOLUONG2.Name = "colSOLUONG2";
-            this.colSOLUONG2.Visible = true;
-            this.colSOLUONG2.VisibleIndex = 2;
-            // 
-            // colDONGIA2
-            // 
-            this.colDONGIA2.Caption = "Đơn giá";
-            this.colDONGIA2.DisplayFormat.FormatString = "#,#";
-            this.colDONGIA2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colDONGIA2.FieldName = "DONGIA";
-            this.colDONGIA2.Name = "colDONGIA2";
-            this.colDONGIA2.Visible = true;
-            this.colDONGIA2.VisibleIndex = 3;
-            // 
-            // pnBDS_DDH
-            // 
-            this.pnBDS_DDH.DataMember = "FK_PhieuNhap_DatHang";
-            this.pnBDS_DDH.DataSource = this.dhBDS;
             // 
             // grdCtrlCTPN
             // 
@@ -792,6 +689,8 @@
             // 
             // colSOLUONG
             // 
+            this.colSOLUONG.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSOLUONG.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colSOLUONG.Caption = "Số lượng";
             this.colSOLUONG.DisplayFormat.FormatString = "#,#";
             this.colSOLUONG.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -802,6 +701,8 @@
             // 
             // colDONGIA
             // 
+            this.colDONGIA.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDONGIA.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colDONGIA.Caption = "Đơn giá";
             this.colDONGIA.DisplayFormat.FormatString = "#,#";
             this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -857,6 +758,8 @@
             // 
             // colSOLUONG1
             // 
+            this.colSOLUONG1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSOLUONG1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colSOLUONG1.Caption = "Số lượng";
             this.colSOLUONG1.DisplayFormat.FormatString = "#,#";
             this.colSOLUONG1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -867,6 +770,8 @@
             // 
             // colDONGIA1
             // 
+            this.colDONGIA1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDONGIA1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colDONGIA1.Caption = "Đơn giá";
             this.colDONGIA1.DisplayFormat.FormatString = "#,#";
             this.colDONGIA1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -875,10 +780,6 @@
             this.colDONGIA1.Visible = true;
             this.colDONGIA1.VisibleIndex = 3;
             // 
-            // ctddhTableAdapter
-            // 
-            this.ctddhTableAdapter.ClearBeforeFill = true;
-            // 
             // ctpnTableAdapter
             // 
             this.ctpnTableAdapter.ClearBeforeFill = true;
@@ -886,39 +787,6 @@
             // ctpxTableAdapter
             // 
             this.ctpxTableAdapter.ClearBeforeFill = true;
-            // 
-            // grBxDDH
-            // 
-            this.grBxDDH.Controls.Add(this.grCtrlCTDDH);
-            this.grBxDDH.Controls.Add(this.grCtrlDDH);
-            this.grBxDDH.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grBxDDH.Location = new System.Drawing.Point(0, 32);
-            this.grBxDDH.Margin = new System.Windows.Forms.Padding(0);
-            this.grBxDDH.Name = "grBxDDH";
-            this.grBxDDH.Padding = new System.Windows.Forms.Padding(0);
-            this.grBxDDH.Size = new System.Drawing.Size(962, 184);
-            this.grBxDDH.TabIndex = 18;
-            this.grBxDDH.TabStop = false;
-            // 
-            // grCtrlCTDDH
-            // 
-            this.grCtrlCTDDH.Controls.Add(this.grdCtrlCTDDH);
-            this.grCtrlCTDDH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grCtrlCTDDH.Location = new System.Drawing.Point(589, 13);
-            this.grCtrlCTDDH.Name = "grCtrlCTDDH";
-            this.grCtrlCTDDH.Size = new System.Drawing.Size(373, 171);
-            this.grCtrlCTDDH.TabIndex = 1;
-            this.grCtrlCTDDH.Text = "Chi tiết đơn đặt hàng";
-            // 
-            // grCtrlDDH
-            // 
-            this.grCtrlDDH.Controls.Add(this.grdCtrlDatHang);
-            this.grCtrlDDH.Dock = System.Windows.Forms.DockStyle.Left;
-            this.grCtrlDDH.Location = new System.Drawing.Point(0, 13);
-            this.grCtrlDDH.Name = "grCtrlDDH";
-            this.grCtrlDDH.Size = new System.Drawing.Size(589, 171);
-            this.grCtrlDDH.TabIndex = 0;
-            this.grCtrlDDH.Text = "Đơn đặt hàng";
             // 
             // grBxPN
             // 
@@ -1068,12 +936,194 @@
             this.xoaPXMenuItem.Size = new System.Drawing.Size(181, 22);
             this.xoaPXMenuItem.Text = "Xóa phiếu xuất";
             // 
+            // grBxDDH
+            // 
+            this.grBxDDH.Controls.Add(this.grCtrlCTDDH);
+            this.grBxDDH.Controls.Add(this.grCtrlDDH);
+            this.grBxDDH.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grBxDDH.Location = new System.Drawing.Point(0, 32);
+            this.grBxDDH.Margin = new System.Windows.Forms.Padding(0);
+            this.grBxDDH.Name = "grBxDDH";
+            this.grBxDDH.Padding = new System.Windows.Forms.Padding(0);
+            this.grBxDDH.Size = new System.Drawing.Size(962, 184);
+            this.grBxDDH.TabIndex = 33;
+            this.grBxDDH.TabStop = false;
+            // 
+            // grCtrlCTDDH
+            // 
+            this.grCtrlCTDDH.ContextMenuStrip = this.ctddhContextMenu;
+            this.grCtrlCTDDH.Controls.Add(this.grdCtrlCTDDH);
+            this.grCtrlCTDDH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grCtrlCTDDH.Location = new System.Drawing.Point(587, 13);
+            this.grCtrlCTDDH.Name = "grCtrlCTDDH";
+            this.grCtrlCTDDH.Size = new System.Drawing.Size(375, 171);
+            this.grCtrlCTDDH.TabIndex = 1;
+            this.grCtrlCTDDH.Text = "Chi tiết đơn đặt hàng";
+            // 
+            // grdCtrlCTDDH
+            // 
+            this.grdCtrlCTDDH.DataSource = this.ctddhBDS_DDH;
+            this.grdCtrlCTDDH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdCtrlCTDDH.Location = new System.Drawing.Point(2, 23);
+            this.grdCtrlCTDDH.MainView = this.grdVwCTDDH;
+            this.grdCtrlCTDDH.MenuManager = this.barManager1;
+            this.grdCtrlCTDDH.Name = "grdCtrlCTDDH";
+            this.grdCtrlCTDDH.Size = new System.Drawing.Size(371, 146);
+            this.grdCtrlCTDDH.TabIndex = 0;
+            this.grdCtrlCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdVwCTDDH});
+            // 
+            // ctddhBDS_DDH
+            // 
+            this.ctddhBDS_DDH.DataMember = "FK_CTDDH_DatHang";
+            this.ctddhBDS_DDH.DataSource = this.dhBDS;
+            // 
+            // dhBDS
+            // 
+            this.dhBDS.DataMember = "DatHang";
+            this.dhBDS.DataSource = this.qlvtDS;
+            // 
+            // grdVwCTDDH
+            // 
+            this.grdVwCTDDH.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMasoDDH1,
+            this.colMAVT2,
+            this.colSOLUONG2,
+            this.colDONGIA2});
+            this.grdVwCTDDH.GridControl = this.grdCtrlCTDDH;
+            this.grdVwCTDDH.Name = "grdVwCTDDH";
+            this.grdVwCTDDH.OptionsBehavior.Editable = false;
+            // 
+            // colMasoDDH1
+            // 
+            this.colMasoDDH1.Caption = "Mã số DDH";
+            this.colMasoDDH1.FieldName = "MasoDDH";
+            this.colMasoDDH1.Name = "colMasoDDH1";
+            this.colMasoDDH1.Visible = true;
+            this.colMasoDDH1.VisibleIndex = 0;
+            // 
+            // colMAVT2
+            // 
+            this.colMAVT2.Caption = "Mã vật tư";
+            this.colMAVT2.FieldName = "MAVT";
+            this.colMAVT2.Name = "colMAVT2";
+            this.colMAVT2.Visible = true;
+            this.colMAVT2.VisibleIndex = 1;
+            // 
+            // colSOLUONG2
+            // 
+            this.colSOLUONG2.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSOLUONG2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colSOLUONG2.Caption = "Số lượng";
+            this.colSOLUONG2.FieldName = "SOLUONG";
+            this.colSOLUONG2.Name = "colSOLUONG2";
+            this.colSOLUONG2.Visible = true;
+            this.colSOLUONG2.VisibleIndex = 2;
+            // 
+            // colDONGIA2
+            // 
+            this.colDONGIA2.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDONGIA2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colDONGIA2.Caption = "Đơn giá";
+            this.colDONGIA2.FieldName = "DONGIA";
+            this.colDONGIA2.Name = "colDONGIA2";
+            this.colDONGIA2.Visible = true;
+            this.colDONGIA2.VisibleIndex = 3;
+            // 
+            // grCtrlDDH
+            // 
+            this.grCtrlDDH.ContextMenuStrip = this.ddhContextMenu;
+            this.grCtrlDDH.Controls.Add(this.grdCtrlDDH);
+            this.grCtrlDDH.Dock = System.Windows.Forms.DockStyle.Left;
+            this.grCtrlDDH.Location = new System.Drawing.Point(0, 13);
+            this.grCtrlDDH.Name = "grCtrlDDH";
+            this.grCtrlDDH.Size = new System.Drawing.Size(587, 171);
+            this.grCtrlDDH.TabIndex = 0;
+            this.grCtrlDDH.Text = "Đơn đặt hàng";
+            // 
+            // grdCtrlDDH
+            // 
+            this.grdCtrlDDH.DataSource = this.dhBDS;
+            this.grdCtrlDDH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdCtrlDDH.Location = new System.Drawing.Point(2, 23);
+            this.grdCtrlDDH.MainView = this.grdVwDDH;
+            this.grdCtrlDDH.MenuManager = this.barManager1;
+            this.grdCtrlDDH.Name = "grdCtrlDDH";
+            this.grdCtrlDDH.Size = new System.Drawing.Size(583, 146);
+            this.grdCtrlDDH.TabIndex = 0;
+            this.grdCtrlDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdVwDDH});
+            // 
+            // grdVwDDH
+            // 
+            this.grdVwDDH.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMasoDDH,
+            this.colNGAY,
+            this.colNhaCC,
+            this.colMANV,
+            this.colMAKHO});
+            this.grdVwDDH.GridControl = this.grdCtrlDDH;
+            this.grdVwDDH.Name = "grdVwDDH";
+            this.grdVwDDH.OptionsBehavior.Editable = false;
+            // 
+            // colMasoDDH
+            // 
+            this.colMasoDDH.Caption = "Mã số DDH";
+            this.colMasoDDH.FieldName = "MasoDDH";
+            this.colMasoDDH.Name = "colMasoDDH";
+            this.colMasoDDH.Visible = true;
+            this.colMasoDDH.VisibleIndex = 0;
+            // 
+            // colNGAY
+            // 
+            this.colNGAY.Caption = "Ngày đặt";
+            this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colNGAY.FieldName = "NGAY";
+            this.colNGAY.Name = "colNGAY";
+            this.colNGAY.Visible = true;
+            this.colNGAY.VisibleIndex = 1;
+            // 
+            // colNhaCC
+            // 
+            this.colNhaCC.Caption = "Nhà cung cấp";
+            this.colNhaCC.FieldName = "NhaCC";
+            this.colNhaCC.Name = "colNhaCC";
+            this.colNhaCC.Visible = true;
+            this.colNhaCC.VisibleIndex = 2;
+            // 
+            // colMANV
+            // 
+            this.colMANV.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMANV.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colMANV.Caption = "Mã NV";
+            this.colMANV.FieldName = "MANV";
+            this.colMANV.Name = "colMANV";
+            this.colMANV.Visible = true;
+            this.colMANV.VisibleIndex = 3;
+            // 
+            // colMAKHO
+            // 
+            this.colMAKHO.Caption = "Mã kho";
+            this.colMAKHO.FieldName = "MAKHO";
+            this.colMAKHO.Name = "colMAKHO";
+            this.colMAKHO.Visible = true;
+            this.colMAKHO.VisibleIndex = 4;
+            // 
+            // datHangTableAdapter
+            // 
+            this.datHangTableAdapter.ClearBeforeFill = true;
+            // 
+            // ctddhTableAdapter
+            // 
+            this.ctddhTableAdapter.ClearBeforeFill = true;
+            // 
             // formDDHPNPX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(962, 701);
+            this.ClientSize = new System.Drawing.Size(962, 732);
             this.Controls.Add(this.grBxPX);
             this.Controls.Add(this.grBxPN);
             this.Controls.Add(this.grBxDDH);
@@ -1086,10 +1136,7 @@
             this.Load += new System.EventHandler(this.formDDHPNPX_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dhBDS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlDatHang)).EndInit();
             this.ddhContextMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdVwDatHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnBDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwPN)).EndInit();
@@ -1097,10 +1144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwPX)).EndInit();
             this.pnContextMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlCTDDH)).EndInit();
             this.ctddhContextMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS_DDH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdVwCTDDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnBDS_DDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctpnBDS_PN)).EndInit();
@@ -1108,11 +1152,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cTPXGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctpxBDS_PX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            this.grBxDDH.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grCtrlCTDDH)).EndInit();
-            this.grCtrlCTDDH.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grCtrlDDH)).EndInit();
-            this.grCtrlDDH.ResumeLayout(false);
             this.grBxPN.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlCTPN)).EndInit();
             this.grCtrlCTPN.ResumeLayout(false);
@@ -1126,6 +1165,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlPX)).EndInit();
             this.grCtrlPX.ResumeLayout(false);
             this.pxContextMenu.ResumeLayout(false);
+            this.grBxDDH.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlCTDDH)).EndInit();
+            this.grCtrlCTDDH.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlCTDDH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctddhBDS_DDH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dhBDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwCTDDH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grCtrlDDH)).EndInit();
+            this.grCtrlDDH.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdCtrlDDH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwDDH)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1146,11 +1196,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem btnReload;
         private DevExpress.XtraBars.BarButtonItem btnThoat;
-        private System.Windows.Forms.BindingSource dhBDS;
-        private QLVTDataSetTableAdapters.DatHangTableAdapter datHangTableAdapter;
         private QLVTDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private DevExpress.XtraGrid.GridControl grdCtrlDatHang;
-        private DevExpress.XtraGrid.Views.Grid.GridView grdVwDatHang;
         private QLVTDataSetTableAdapters.PhieuNhapTableAdapter phieuNhapTableAdapter;
         private System.Windows.Forms.BindingSource pnBDS;
         private DevExpress.XtraGrid.GridControl grdCtrlPN;
@@ -1159,7 +1205,6 @@
         private System.Windows.Forms.BindingSource pxBDS;
         private DevExpress.XtraGrid.GridControl grdCtrlPX;
         private DevExpress.XtraGrid.Views.Grid.GridView grdVwPX;
-        private System.Windows.Forms.BindingSource ctddhBDS_DDH;
         private System.Windows.Forms.BindingSource pnBDS_DDH;
         private DevExpress.XtraGrid.Columns.GridColumn colMAPX;
         private DevExpress.XtraGrid.Columns.GridColumn colNGAY2;
@@ -1171,14 +1216,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH2;
         private DevExpress.XtraGrid.Columns.GridColumn colMANV1;
         private DevExpress.XtraGrid.Columns.GridColumn colMAKHO1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
-        private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
-        private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
-        private DevExpress.XtraGrid.Columns.GridColumn colMANV;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAKHO;
-        private DevExpress.XtraGrid.GridControl grdCtrlCTDDH;
-        private DevExpress.XtraGrid.Views.Grid.GridView grdVwCTDDH;
-        private QLVTDataSetTableAdapters.CTDDHTableAdapter ctddhTableAdapter;
         private System.Windows.Forms.BindingSource ctpnBDS_PN;
         private QLVTDataSetTableAdapters.CTPNTableAdapter ctpnTableAdapter;
         private DevExpress.XtraGrid.GridControl grdCtrlCTPN;
@@ -1195,13 +1232,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT1;
         private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG1;
         private DevExpress.XtraGrid.Columns.GridColumn colDONGIA1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAVT2;
-        private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG2;
-        private DevExpress.XtraGrid.Columns.GridColumn colDONGIA2;
-        private System.Windows.Forms.GroupBox grBxDDH;
-        private DevExpress.XtraEditors.GroupControl grCtrlCTDDH;
-        private DevExpress.XtraEditors.GroupControl grCtrlDDH;
         private System.Windows.Forms.GroupBox grBxPN;
         private DevExpress.XtraEditors.GroupControl grCtrlCTPN;
         private DevExpress.XtraEditors.GroupControl grCtrlPN;
@@ -1235,5 +1265,29 @@
         private System.Windows.Forms.ToolStripMenuItem themCTPN_CTPNMenuItem;
         private System.Windows.Forms.ToolStripMenuItem themCTPX_PXMenuItem;
         private DevExpress.XtraBars.BarCheckItem chbxTimDDH;
+        private DevExpress.XtraBars.BarSubItem btnCNSubItem;
+        private DevExpress.XtraBars.BarButtonItem btnCN1;
+        private DevExpress.XtraBars.BarButtonItem btnCN2;
+        private DevExpress.XtraBars.BarDockingMenuItem barDockingMenuItem1;
+        private System.Windows.Forms.GroupBox grBxDDH;
+        private DevExpress.XtraEditors.GroupControl grCtrlCTDDH;
+        private DevExpress.XtraEditors.GroupControl grCtrlDDH;
+        private System.Windows.Forms.BindingSource dhBDS;
+        private QLVTDataSetTableAdapters.DatHangTableAdapter datHangTableAdapter;
+        private DevExpress.XtraGrid.GridControl grdCtrlDDH;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdVwDDH;
+        private System.Windows.Forms.BindingSource ctddhBDS_DDH;
+        private QLVTDataSetTableAdapters.CTDDHTableAdapter ctddhTableAdapter;
+        private DevExpress.XtraGrid.GridControl grdCtrlCTDDH;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdVwCTDDH;
+        private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH1;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAVT2;
+        private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG2;
+        private DevExpress.XtraGrid.Columns.GridColumn colDONGIA2;
+        private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
+        private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
+        private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
+        private DevExpress.XtraGrid.Columns.GridColumn colMANV;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAKHO;
     }
 }

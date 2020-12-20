@@ -30,17 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label masoDDHLabel;
-            System.Windows.Forms.Label nGAYLabel;
             System.Windows.Forms.Label nhaCCLabel;
             System.Windows.Forms.Label mANVLabel;
             System.Windows.Forms.Label mAKHOLabel;
+            System.Windows.Forms.Label nGAYLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(subFormDDH));
             this.qlvtDS = new QLVT_PT_DevExpressPJ.QLVTDataSet();
             this.dhBDS = new System.Windows.Forms.BindingSource(this.components);
             this.datHangTableAdapter = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.DatHangTableAdapter();
             this.tableAdapterManager = new QLVT_PT_DevExpressPJ.QLVTDataSetTableAdapters.TableAdapterManager();
             this.txtbMaSoDDH = new System.Windows.Forms.TextBox();
-            this.dateEdNgayDat = new DevExpress.XtraEditors.DateEdit();
             this.txtbNhaCC = new System.Windows.Forms.TextBox();
             this.txtbMaNV = new System.Windows.Forms.TextBox();
             this.txtbMaKho = new System.Windows.Forms.TextBox();
@@ -58,15 +57,14 @@
             this.grBxKho_ThemDDH = new System.Windows.Forms.GroupBox();
             this.grCtrlThemDDH = new DevExpress.XtraEditors.GroupControl();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.dateEdNgayDat = new DevExpress.XtraEditors.DateEdit();
             masoDDHLabel = new System.Windows.Forms.Label();
-            nGAYLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
             mANVLabel = new System.Windows.Forms.Label();
             mAKHOLabel = new System.Windows.Forms.Label();
+            nGAYLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dhBDS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdNgayDat.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdNgayDat.Properties)).BeginInit();
             this.gxBxForm_ThemDDH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.khoBDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlKho_ThemDDH)).BeginInit();
@@ -74,6 +72,8 @@
             this.grBxKho_ThemDDH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlThemDDH)).BeginInit();
             this.grCtrlThemDDH.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdNgayDat.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdNgayDat.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // masoDDHLabel
@@ -85,16 +85,6 @@
             masoDDHLabel.Size = new System.Drawing.Size(81, 16);
             masoDDHLabel.TabIndex = 1;
             masoDDHLabel.Text = "Mã số DDH:";
-            // 
-            // nGAYLabel
-            // 
-            nGAYLabel.AutoSize = true;
-            nGAYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nGAYLabel.Location = new System.Drawing.Point(50, 96);
-            nGAYLabel.Name = "nGAYLabel";
-            nGAYLabel.Size = new System.Drawing.Size(66, 16);
-            nGAYLabel.TabIndex = 3;
-            nGAYLabel.Text = "Ngày đặt:";
             // 
             // nhaCCLabel
             // 
@@ -168,27 +158,6 @@
             this.txtbMaSoDDH.TabIndex = 2;
             this.txtbMaSoDDH.TextChanged += new System.EventHandler(this.txtbMaSoDDH_TextChanged);
             // 
-            // dateEdNgayDat
-            // 
-            this.dateEdNgayDat.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dhBDS, "NGAY", true));
-            this.dateEdNgayDat.EditValue = null;
-            this.dateEdNgayDat.Location = new System.Drawing.Point(122, 93);
-            this.dateEdNgayDat.Name = "dateEdNgayDat";
-            this.dateEdNgayDat.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateEdNgayDat.Properties.Appearance.Options.UseFont = true;
-            this.dateEdNgayDat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdNgayDat.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdNgayDat.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.dateEdNgayDat.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdNgayDat.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.dateEdNgayDat.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.dateEdNgayDat.Properties.MaxValue = new System.DateTime(2020, 12, 18, 0, 20, 8, 0);
-            this.dateEdNgayDat.Size = new System.Drawing.Size(122, 22);
-            this.dateEdNgayDat.TabIndex = 4;
-            this.dateEdNgayDat.TextChanged += new System.EventHandler(this.dateEdNgayDat_TextChanged);
-            // 
             // txtbNhaCC
             // 
             this.txtbNhaCC.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dhBDS, "NhaCC", true));
@@ -232,6 +201,8 @@
             // 
             // gxBxForm_ThemDDH
             // 
+            this.gxBxForm_ThemDDH.Controls.Add(nGAYLabel);
+            this.gxBxForm_ThemDDH.Controls.Add(this.dateEdNgayDat);
             this.gxBxForm_ThemDDH.Controls.Add(this.btnThemDDH);
             this.gxBxForm_ThemDDH.Controls.Add(this.label1);
             this.gxBxForm_ThemDDH.Controls.Add(mAKHOLabel);
@@ -239,15 +210,13 @@
             this.gxBxForm_ThemDDH.Controls.Add(this.txtbMaKho);
             this.gxBxForm_ThemDDH.Controls.Add(this.txtbMaSoDDH);
             this.gxBxForm_ThemDDH.Controls.Add(mANVLabel);
-            this.gxBxForm_ThemDDH.Controls.Add(nGAYLabel);
             this.gxBxForm_ThemDDH.Controls.Add(this.txtbMaNV);
-            this.gxBxForm_ThemDDH.Controls.Add(this.dateEdNgayDat);
             this.gxBxForm_ThemDDH.Controls.Add(nhaCCLabel);
             this.gxBxForm_ThemDDH.Controls.Add(this.txtbNhaCC);
             this.gxBxForm_ThemDDH.Dock = System.Windows.Forms.DockStyle.Left;
             this.gxBxForm_ThemDDH.Location = new System.Drawing.Point(0, 0);
             this.gxBxForm_ThemDDH.Name = "gxBxForm_ThemDDH";
-            this.gxBxForm_ThemDDH.Size = new System.Drawing.Size(288, 281);
+            this.gxBxForm_ThemDDH.Size = new System.Drawing.Size(275, 283);
             this.gxBxForm_ThemDDH.TabIndex = 11;
             this.gxBxForm_ThemDDH.TabStop = false;
             // 
@@ -278,7 +247,7 @@
             this.grdCtrlKho_ThemDDH.Location = new System.Drawing.Point(2, 23);
             this.grdCtrlKho_ThemDDH.MainView = this.grdVwKho_ThemDDH;
             this.grdCtrlKho_ThemDDH.Name = "grdCtrlKho_ThemDDH";
-            this.grdCtrlKho_ThemDDH.Size = new System.Drawing.Size(543, 237);
+            this.grdCtrlKho_ThemDDH.Size = new System.Drawing.Size(556, 239);
             this.grdCtrlKho_ThemDDH.TabIndex = 11;
             this.grdCtrlKho_ThemDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdVwKho_ThemDDH});
@@ -294,6 +263,7 @@
             this.grdVwKho_ThemDDH.Name = "grdVwKho_ThemDDH";
             this.grdVwKho_ThemDDH.OptionsBehavior.Editable = false;
             this.grdVwKho_ThemDDH.OptionsView.ShowDetailButtons = false;
+            this.grdVwKho_ThemDDH.OptionsView.ShowFooter = true;
             this.grdVwKho_ThemDDH.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.grdVwKho_ThemDDH_RowClick);
             // 
             // colMAKHO
@@ -336,9 +306,9 @@
             // 
             this.grBxKho_ThemDDH.Controls.Add(this.grCtrlThemDDH);
             this.grBxKho_ThemDDH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grBxKho_ThemDDH.Location = new System.Drawing.Point(288, 0);
+            this.grBxKho_ThemDDH.Location = new System.Drawing.Point(275, 0);
             this.grBxKho_ThemDDH.Name = "grBxKho_ThemDDH";
-            this.grBxKho_ThemDDH.Size = new System.Drawing.Size(553, 281);
+            this.grBxKho_ThemDDH.Size = new System.Drawing.Size(566, 283);
             this.grBxKho_ThemDDH.TabIndex = 12;
             this.grBxKho_ThemDDH.TabStop = false;
             // 
@@ -348,7 +318,7 @@
             this.grCtrlThemDDH.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grCtrlThemDDH.Location = new System.Drawing.Point(3, 16);
             this.grCtrlThemDDH.Name = "grCtrlThemDDH";
-            this.grCtrlThemDDH.Size = new System.Drawing.Size(547, 262);
+            this.grCtrlThemDDH.Size = new System.Drawing.Size(560, 264);
             this.grCtrlThemDDH.TabIndex = 0;
             this.grCtrlThemDDH.Text = "Danh sách kho";
             // 
@@ -359,11 +329,40 @@
             this.btnThoat.Size = new System.Drawing.Size(75, 23);
             this.btnThoat.TabIndex = 0;
             // 
+            // nGAYLabel
+            // 
+            nGAYLabel.AutoSize = true;
+            nGAYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            nGAYLabel.Location = new System.Drawing.Point(50, 97);
+            nGAYLabel.Name = "nGAYLabel";
+            nGAYLabel.Size = new System.Drawing.Size(66, 16);
+            nGAYLabel.TabIndex = 11;
+            nGAYLabel.Text = "Ngày đặt:";
+            // 
+            // dateEdNgayDat
+            // 
+            this.dateEdNgayDat.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dhBDS, "NGAY", true));
+            this.dateEdNgayDat.EditValue = null;
+            this.dateEdNgayDat.Location = new System.Drawing.Point(122, 94);
+            this.dateEdNgayDat.Name = "dateEdNgayDat";
+            this.dateEdNgayDat.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.dateEdNgayDat.Properties.Appearance.Options.UseFont = true;
+            this.dateEdNgayDat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdNgayDat.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdNgayDat.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dateEdNgayDat.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdNgayDat.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.dateEdNgayDat.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dateEdNgayDat.Size = new System.Drawing.Size(122, 22);
+            this.dateEdNgayDat.TabIndex = 12;
+            // 
             // subFormDDH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 281);
+            this.ClientSize = new System.Drawing.Size(841, 283);
             this.Controls.Add(this.grBxKho_ThemDDH);
             this.Controls.Add(this.gxBxForm_ThemDDH);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -375,8 +374,6 @@
             this.Shown += new System.EventHandler(this.subFormDDH_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.qlvtDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dhBDS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdNgayDat.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdNgayDat.Properties)).EndInit();
             this.gxBxForm_ThemDDH.ResumeLayout(false);
             this.gxBxForm_ThemDDH.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.khoBDS)).EndInit();
@@ -385,6 +382,8 @@
             this.grBxKho_ThemDDH.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grCtrlThemDDH)).EndInit();
             this.grCtrlThemDDH.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdNgayDat.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdNgayDat.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -396,7 +395,6 @@
         private QLVTDataSetTableAdapters.DatHangTableAdapter datHangTableAdapter;
         private QLVTDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox txtbMaSoDDH;
-        private DevExpress.XtraEditors.DateEdit dateEdNgayDat;
         private System.Windows.Forms.TextBox txtbNhaCC;
         private System.Windows.Forms.TextBox txtbMaNV;
         private System.Windows.Forms.TextBox txtbMaKho;
@@ -414,5 +412,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMACN;
         private DevExpress.XtraEditors.GroupControl grCtrlThemDDH;
         private System.Windows.Forms.Button btnThoat;
+        private DevExpress.XtraEditors.DateEdit dateEdNgayDat;
     }
 }

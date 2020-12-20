@@ -416,9 +416,7 @@ namespace QLVT_PT_DevExpressPJ
             if (tableStates.Count != 0)
             {
                 //this.btnPhucHoiVT.Enabled = true;
-            }
-
-            
+            }           
         }
         #endregion
 
@@ -516,18 +514,18 @@ namespace QLVT_PT_DevExpressPJ
                this.cbxDonVi.GetItemText(this.cbxDonVi.SelectedItem) == "--Chọn--" || this.txtbMaVT.ReadOnly == true)
             {
                 this.btnGhiVT.Enabled = false;
-                if (tableStates.Count == 0)
-                {
-                   // this.btnPhucHoiVT.Enabled = false;
-                }
+                //if (tableStates.Count == 0)
+                //{
+                //    this.btnPhucHoiVT.Enabled = false;
+                //}
             }
             else
             {
                 this.btnGhiVT.Enabled = true;
-                if (tableStates.Count != 0)
-                {
-                   // this.btnPhucHoiVT.Enabled = true;
-                }
+                //if (tableStates.Count != 0)
+                //{
+                //    this.btnPhucHoiVT.Enabled = true;
+                //}
             }
         }
 
@@ -552,8 +550,6 @@ namespace QLVT_PT_DevExpressPJ
             DataTable copied = this.qlvtDS.Vattu.Copy();
             tableStates.Push(copied);
         }
-        #endregion
-
-        
+        #endregion       
     }
 }

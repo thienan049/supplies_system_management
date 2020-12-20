@@ -227,14 +227,14 @@ namespace QLVT_PT_DevExpressPJ
                     this.btnSuaKho.Enabled = true;
                     this.btnXoaKho.Enabled = true;
 
-                    if (tableStates.Count != 0)
-                    {
-                        // this.btnPhucHoiNV.Enabled = true;
-                    }
-                    else
-                    {
-                        // this.btnPhucHoiNV.Enabled = false;
-                    }
+                    //if (tableStates.Count != 0)
+                    //{
+                    //    // this.btnPhucHoiNV.Enabled = true;
+                    //}
+                    //else
+                    //{
+                    //    // this.btnPhucHoiNV.Enabled = false;
+                    //}
 
                     if (this.isAdding == true)
                     {
@@ -394,10 +394,10 @@ namespace QLVT_PT_DevExpressPJ
                 checkEmptyAndValid();
             }
 
-            if (tableStates.Count != 0)
-            {
-              //  this.btnPhucHoiKho.Enabled = true;
-            }
+            //if (tableStates.Count != 0)
+            //{
+            //  //  this.btnPhucHoiKho.Enabled = true;
+            //}
         }
 
         private void grCtrlDSKho_SizeChanged(object sender, EventArgs e)
@@ -414,18 +414,18 @@ namespace QLVT_PT_DevExpressPJ
                !Regex.IsMatch(this.txtbMaKho.Text, this.pattern))
             {
                 this.btnGhiKho.Enabled = false;
-                if (tableStates.Count == 0)
-                {
-                    //this.btnPhucHoiKho.Enabled = false;
-                }
+                //if (tableStates.Count == 0)
+                //{
+                //    //this.btnPhucHoiKho.Enabled = false;
+                //}
             }
             else
             {
                 this.btnGhiKho.Enabled = true;
-                if (tableStates.Count != 0)
-                {
-                   // this.btnPhucHoiKho.Enabled = true;
-                }
+                //if (tableStates.Count != 0)
+                //{
+                //   // this.btnPhucHoiKho.Enabled = true;
+                //}
             }
         }
 
@@ -529,14 +529,13 @@ namespace QLVT_PT_DevExpressPJ
                 this.txtbTenKho.ReadOnly = true;
                 this.txtbDiaChi.ReadOnly = true;
             }
-
         }
         
-        private void storeDtTbState()
-        {
-            DataTable copied = this.qlvtDS.Kho.Copy();
-            tableStates.Push(copied);
-        }
+        //private void storeDtTbState()
+        //{
+        //    DataTable copied = this.qlvtDS.Kho.Copy();
+        //    tableStates.Push(copied);
+        //}
 
         private string preparedMaKho() 
         {
@@ -571,8 +570,6 @@ namespace QLVT_PT_DevExpressPJ
             }
             return string.Empty;
         }
-        #endregion
-
-        
+        #endregion       
     }
 }

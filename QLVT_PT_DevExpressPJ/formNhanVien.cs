@@ -525,18 +525,18 @@ namespace QLVT_PT_DevExpressPJ
                !Regex.IsMatch(this.txtbTen.Text, Program.namePattern) || this.txtbMaNV.ReadOnly == true)
             {
                 this.btnGhiNV.Enabled = false;
-                if (tableStates.Count == 0)
-                {
-                  //  this.btnPhucHoiNV.Enabled = false;
-                }
+                //if (tableStates.Count == 0)
+                //{
+                //    this.btnPhucHoiNV.Enabled = false;
+                //}
             }
             else
             {
                 this.btnGhiNV.Enabled = true;
-                if(tableStates.Count != 0)
-                {
-                 //   this.btnPhucHoiNV.Enabled = true;
-                }                
+                //if(tableStates.Count != 0)
+                //{
+                //    this.btnPhucHoiNV.Enabled = true;
+                //}                
             }
         }
 

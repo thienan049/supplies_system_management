@@ -12,6 +12,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
 {
     public partial class subFormCTPN : Form
     {
+        #region form loading
         public subFormCTPN()
         {
             InitializeComponent();
@@ -21,10 +22,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.AcceptButton = this.btnThemCTPN;
             this.CancelButton = this.btnThoat;
         }
-
-        #region form's main processing
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
+               
         private void subFormCTPN_Load(object sender, EventArgs e)
         {          
             this.qlvtDS.EnforceConstraints = false;
@@ -52,7 +50,9 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.ctpnBDS.CancelEdit();
             Program.formDDHPNPX.Enabled = true;
         }
+        #endregion
 
+        #region additional events
         private void btnThemCTPN_Click(object sender, EventArgs e)
         {
             string conflictErr = string.Empty;
@@ -75,11 +75,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
-        #endregion
-
-        #region additional events
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional events  //////////////////////////////////////////////////////////////////////////////////
+             
         private void txtbMaVT_TextChanged(object sender, EventArgs e)
         {
             checkEmptyAndValid();
@@ -119,8 +115,6 @@ namespace QLVT_PT_DevExpressPJ.subforms
         #endregion
 
         #region additional funtions
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional functions  //////////////////////////////////////////////////////////////////////////////////
         private bool checkConflictedMaVT_CTPN(string maVTMoi, out string conflictErr)
         {
             try
@@ -158,8 +152,6 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 this.btnThemCTPN.Enabled = true;
             }
         }
-        #endregion
-
-        
+        #endregion        
     }
 }

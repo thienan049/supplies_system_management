@@ -14,6 +14,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
 {
     public partial class subFormPX : Form
     {
+        #region form loading
         public subFormPX()
         {
             InitializeComponent();
@@ -21,10 +22,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.AcceptButton = this.btnThemPX;
             this.CancelButton = this.btnThoat;           
         }
-
-        #region form's main processing
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
+       
         private void subFormPX_Load(object sender, EventArgs e)
         {
             this.qlvtDS.EnforceConstraints = false;
@@ -51,9 +49,12 @@ namespace QLVT_PT_DevExpressPJ.subforms
         private void subFormPX_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.pxBDS.CancelEdit();
+            Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().PhieuXuat.RejectChanges();
             Program.formDDHPNPX.Enabled = true;
         }
+        #endregion
 
+        #region additional events
         private void btnThemPN_Click(object sender, EventArgs e)
         {
             string conflictErr = string.Empty;
@@ -72,11 +73,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 this.Close();
             }
         }
-        #endregion
-
-        #region additional events
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional events  //////////////////////////////////////////////////////////////////////////////////
+       
         private void txtbMaPX_TextChanged(object sender, EventArgs e)
         {
             checkEmptyAndValid();
@@ -113,9 +110,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
         }
         #endregion
 
-        #region additional funtions
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional functions  //////////////////////////////////////////////////////////////////////////////////
+        #region additional funtions      
         private bool checkConflictedMaPX(string maPXMoi, out string conflictErr)
         {
             try

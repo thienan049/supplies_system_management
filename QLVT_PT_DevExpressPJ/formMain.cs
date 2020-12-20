@@ -30,17 +30,7 @@ namespace QLVT_PT_DevExpressPJ
 
             this.btnDangXuat.Enabled = false;
             this.btnTaoTaiKhoan.Enabled = false;
-            //this.btnNV.Enabled = false;
-            //this.btnVT.Enabled = false;
-            //this.btnKho.Enabled = false;
-            //this.btnDDHPNPX.Enabled = false;
 
-            //this.btnPhLapTheoLoaiRP.Enabled = false;
-            //this.btnDsNVRP.Enabled = false;
-            //this.btnDsVTRP.Enabled = false;
-            //this.btnDdhChuaPN.Enabled = false;
-            //this.btnNXThang.Enabled = false;
-            //this.btnHDNV.Enabled = false;
             this.rbPgDanhMuc.Visible = false;
             this.rbPgBaoCao.Visible = false;
             
@@ -99,17 +89,7 @@ namespace QLVT_PT_DevExpressPJ
             this.btnDangNhap.Enabled = true;
             this.btnDangXuat.Enabled = false;
             this.btnTaoTaiKhoan.Enabled = false;
-            //this.btnNV.Enabled = false;
-            //this.btnVT.Enabled = false;
-            //this.btnKho.Enabled = false;
-            //this.btnDDHPNPX.Enabled = false;
 
-            //this.btnPhLapTheoLoaiRP.Enabled = false;
-            //this.btnDsNVRP.Enabled = false;
-            //this.btnDsVTRP.Enabled = false;
-            //this.btnDdhChuaPN.Enabled = false;
-            //this.btnNXThang.Enabled = false;
-            //this.btnHDNV.Enabled = false;
             this.rbPgDanhMuc.Visible = false;
             this.rbPgBaoCao.Visible = false;
 
@@ -294,8 +274,18 @@ namespace QLVT_PT_DevExpressPJ
                 sfHDNV.Owner = Program.formChinh;
                 sfHDNV.ShowDialog();
             }
-        }       
+        }
+
+        private void btnTHNX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(subFormTongHopNX_RP));
+            if (frm != null) frm.Activate();
+            else
+            {
+                subFormTongHopNX_RP sfTHNX = new subFormTongHopNX_RP();
+                sfTHNX.Owner = Program.formChinh;
+                sfTHNX.ShowDialog();
+            }
+        }
     }
-
-
 }

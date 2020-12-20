@@ -34,6 +34,7 @@
             this.cbxTenCN = new System.Windows.Forms.ComboBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnXem = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelCN)).BeginInit();
             this.panelCN.SuspendLayout();
             this.SuspendLayout();
@@ -42,7 +43,7 @@
             // 
             this.panelCN.Controls.Add(this.label2);
             this.panelCN.Controls.Add(this.cbxTenCN);
-            this.panelCN.Location = new System.Drawing.Point(55, 43);
+            this.panelCN.Location = new System.Drawing.Point(52, 74);
             this.panelCN.Name = "panelCN";
             this.panelCN.Size = new System.Drawing.Size(383, 28);
             this.panelCN.TabIndex = 6;
@@ -73,7 +74,7 @@
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(321, 90);
+            this.btnThoat.Location = new System.Drawing.Point(318, 120);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 23);
             this.btnThoat.TabIndex = 10;
@@ -84,7 +85,7 @@
             // btnXem
             // 
             this.btnXem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXem.Location = new System.Drawing.Point(199, 90);
+            this.btnXem.Location = new System.Drawing.Point(196, 120);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 9;
@@ -92,11 +93,22 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(131, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(262, 31);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "CHỌN CHI NHÁNH";
+            // 
             // subFormChonCN_RP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 137);
+            this.ClientSize = new System.Drawing.Size(519, 160);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.panelCN);
@@ -109,6 +121,7 @@
             this.panelCN.ResumeLayout(false);
             this.panelCN.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -119,5 +132,6 @@
         private System.Windows.Forms.ComboBox cbxTenCN;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.Label label6;
     }
 }

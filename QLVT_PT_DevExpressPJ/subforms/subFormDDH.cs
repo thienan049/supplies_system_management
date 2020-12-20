@@ -14,6 +14,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
 {
     public partial class subFormDDH : Form
     {
+        #region form loading
         public subFormDDH()
         {
             InitializeComponent();
@@ -21,10 +22,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.AcceptButton = this.btnThemDDH;
             this.CancelButton = this.btnThoat;
         }
-
-        #region form's main processing
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
+     
         private void subFormDDH_Load(object sender, EventArgs e)
         {
             this.qlvtDS.EnforceConstraints = false;
@@ -51,33 +49,12 @@ namespace QLVT_PT_DevExpressPJ.subforms
         private void subFormDDH_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.dhBDS.CancelEdit();
+            Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().DatHang.RejectChanges();
             Program.formDDHPNPX.Enabled = true;
-        }
-
-        private void btnThemDDH_Click(object sender, EventArgs e)
-        {
-            string conflictErr = string.Empty;
-            string finalMaSoDDH;
-            if(checkConflictedMaDDH(this.txtbMaSoDDH.Text.Trim(), out conflictErr, out finalMaSoDDH))
-            {
-                MessageBox.Show(conflictErr, "Lỗi cơ sở dữ liệu", MessageBoxButtons.OK);
-                return;
-            }
-            if (MessageBox.Show("Thêm đơn đặt hàng này?", "Xác nhận thêm dữ liệu", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                this.txtbMaSoDDH.Text = finalMaSoDDH;
-                dhBDS.EndEdit();
-                this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
-                //this.datHangTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().DatHang);
-                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                this.Close();
-            }
         }
         #endregion
 
-        #region additional events
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional events  //////////////////////////////////////////////////////////////////////////////////
+        #region additional events        
         private void txtbMaSoDDH_TextChanged(object sender, EventArgs e)
         {
             checkEmptyAndValid();
@@ -107,11 +84,32 @@ namespace QLVT_PT_DevExpressPJ.subforms
         {
             this.Close();
         }
+        
+        private void btnThemDDH_Click(object sender, EventArgs e)
+        {
+            string conflictErr = string.Empty;
+            string finalMaSoDDH;
+            if(checkConflictedMaDDH(this.txtbMaSoDDH.Text.Trim(), out conflictErr, out finalMaSoDDH))
+            {
+                MessageBox.Show(conflictErr, "Lỗi cơ sở dữ liệu", MessageBoxButtons.OK);
+                return;
+            }
+            if (MessageBox.Show("Thêm đơn đặt hàng này?", "Xác nhận thêm dữ liệu", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    this.txtbMaSoDDH.Text = finalMaSoDDH;
+                    dhBDS.EndEdit();
+                    this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.datHangTableAdapter.Update(Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().DatHang);
+                    //MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    this.Close();
+                }catch(Exception ex) { MessageBox.Show(ex.Message, "Lỗi"); }
+            }
+        }
         #endregion
-
-        #region additional funtions
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional funtions  //////////////////////////////////////////////////////////////////////////////////
+       
+        #region additional funtions       
         private bool checkConflictedMaDDH(string maSoDDHMoi, out string conflictErr, out string finalMSDDH)
         {
             try

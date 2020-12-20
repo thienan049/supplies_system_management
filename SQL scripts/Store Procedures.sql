@@ -1,6 +1,86 @@
 USE [QLVT]
 GO
-/****** Object:  StoredProcedure [dbo].[SP_LAYMADDH]    Script Date: 12/6/2020 1:00:38 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_HOATDONGNHANVIEN]    Script Date: 12/20/2020 5:19:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_HOATDONGNHANVIEN] 
+@MANV int, @THANGDAU Date, @THANGSAU Date
+AS
+BEGIN
+	SELECT NV.MANV, NV.HO+' '+NV.TEN as HOTEN, CAST(NV.NGAYSINH as Date) as NGAYSINH, NV.DIACHI, NV.LUONG, 
+	   Phieu.NGAY, Phieu.PHIEU, Phieu.TENVT, Phieu.TENKHO, Phieu.SOLUONG, Phieu.DONGIA, Phieu.THANHTIEN
+	FROM NhanVien as NV,
+		 (SELECT PN.NGAY, PN.MAPN as PHIEU, VT.TENVT, Kho.TENKHO, CTPN.SOLUONG, CTPN.DONGIA, CTPN.SOLUONG * CTPN.DONGIA as THANHTIEN
+		  FROM NhanVien as NV, PhieuNhap as PN, Vattu as VT, CTPN, Kho
+		  WHERE NV.MANV = @MANV AND NV.MANV = PN.MANV AND PN.MAPN = CTPN.MAPN AND VT.MAVT = CTPN.MAVT AND Kho.MAKHO = PN.MAKHO
+		  UNION ALL
+		  SELECT PX.NGAY, PX.MAPX as PHIEU, VT.TENVT, Kho.TENKHO, CTPX.SOLUONG, CTPX.DONGIA, CTPX.SOLUONG * CTPX.DONGIA as THANHTIEN
+		  FROM NhanVien as NV, PhieuXuat as PX, Vattu as VT, CTPX, Kho
+		  WHERE NV.MANV = @MANV AND NV.MANV = PX.MANV AND PX.MAPX = CTPX.MAPX AND VT.MAVT = CTPX.MAVT AND Kho.MAKHO = PX.MAKHO) as Phieu
+	WHERE NV.MANV = @MANV AND Phieu.NGAY >= CAST(CONVERT(nvarchar(2), MONTH(@THANGDAU)) + '/1/' + CONVERT(nvarchar(4), YEAR(@THANGDAU)) as Date) AND Phieu.NGAY <= EOMONTH(@THANGSAU)
+	ORDER BY PHIEU, NGAY
+				
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_KEKHAINHAPXUATTHEOTHANG]    Script Date: 12/20/2020 5:19:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_KEKHAINHAPXUATTHEOTHANG] 
+@NHOM nchar(2), @LOAI nchar(2), @THANGDAU Date, @THANGSAU Date
+AS
+BEGIN
+IF(@NHOM = 'CT')
+	IF(@LOAI = 'PN')
+		SELECT CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date) as THANG, TENVT, SUM(Soluong) as SOLUONG, Sum(soluong*dongia) as TRIGIA
+		FROM PhieuNhap, Vattu, CTPN
+		WHERE PhieuNhap.MAPN = CTPN.MAPN AND CTPN.MAVT = Vattu.MAVT 
+		AND PhieuNhap.NGAY >= CAST(CONVERT(nvarchar(2), MONTH(@THANGDAU)) + '/1/' + CONVERT(nvarchar(4), YEAR(@THANGDAU)) as Date) AND PhieuNhap.NGAY <= EOMONTH(@THANGSAU)
+		GROUP BY CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date), TENVT		
+		UNION ALL
+		SELECT CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date) as THANG, TENVT, SUM(Soluong) as SOLUONG, Sum(soluong*dongia) as TRIGIA
+		FROM LINKEDSERVER.QLVT.dbo.PhieuNhap, LINKEDSERVER.QLVT.dbo.Vattu, LINKEDSERVER.QLVT.dbo.CTPN
+		WHERE PhieuNhap.MAPN = CTPN.MAPN AND CTPN.MAVT = Vattu.MAVT 
+		AND PhieuNhap.NGAY >= CAST(CONVERT(nvarchar(2), MONTH(@THANGDAU)) + '/1/' + CONVERT(nvarchar(4), YEAR(@THANGDAU)) as Date) AND PhieuNhap.NGAY <= EOMONTH(@THANGSAU)
+		GROUP BY CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date), TENVT
+		ORDER BY THANG
+	ELSE IF (@LOAI = 'PX')
+		SELECT CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date) as THANG, TENVT, SUM(Soluong) as SOLUONG, Sum(soluong*dongia) as TRIGIA
+		FROM PhieuXuat, Vattu, CTPX
+		WHERE PhieuXuat.MAPX = CTPX.MAPX AND CTPX.MAVT = Vattu.MAVT 
+		AND PhieuXuat.NGAY >= CAST(CONVERT(nvarchar(2), MONTH(@THANGDAU)) + '/1/' + CONVERT(nvarchar(4), YEAR(@THANGDAU)) as Date) AND PhieuXuat.NGAY <= EOMONTH(@THANGSAU)
+		GROUP BY CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date), TENVT
+		UNION ALL
+		SELECT CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date) as THANG, TENVT, SUM(Soluong) as SOLUONG, Sum(soluong*dongia) as TRIGIA
+		FROM LINKEDSERVER.QLVT.dbo.PhieuXuat, LINKEDSERVER.QLVT.dbo.Vattu, LINKEDSERVER.QLVT.dbo.CTPX
+		WHERE PhieuXuat.MAPX = CTPX.MAPX AND CTPX.MAVT = Vattu.MAVT 
+		AND PhieuXuat.NGAY >= CAST(CONVERT(nvarchar(2), MONTH(@THANGDAU)) + '/1/' + CONVERT(nvarchar(4), YEAR(@THANGDAU)) as Date) AND PhieuXuat.NGAY <= EOMONTH(@THANGSAU)
+		GROUP BY CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date), TENVT
+		ORDER BY THANG
+IF (@NHOM = 'CN')
+	IF(@LOAI = 'PN')
+		SELECT CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date) as THANG, TENVT, SUM(Soluong) as SOLUONG, Sum(soluong*dongia) as TRIGIA
+		FROM PhieuNhap, Vattu, CTPN
+		WHERE PhieuNhap.MAPN = CTPN.MAPN AND CTPN.MAVT = Vattu.MAVT 
+		AND PhieuNhap.NGAY >= CAST(CONVERT(nvarchar(2), MONTH(@THANGDAU)) + '/1/' + CONVERT(nvarchar(4), YEAR(@THANGDAU)) as Date) AND PhieuNhap.NGAY <= EOMONTH(@THANGSAU)
+		GROUP BY CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date), TENVT
+		ORDER BY THANG
+		/*CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date)*/
+	ELSE IF (@LOAI = 'PX')
+		SELECT CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date) as THANG, TENVT, SUM(Soluong) as SOLUONG, Sum(soluong*dongia) as TRIGIA
+		FROM PhieuXuat, Vattu, CTPX
+		WHERE PhieuXuat.MAPX = CTPX.MAPX AND CTPX.MAVT = Vattu.MAVT 
+		AND PhieuXuat.NGAY >= CAST(CONVERT(nvarchar(2), MONTH(@THANGDAU)) + '/1/' + CONVERT(nvarchar(4), YEAR(@THANGDAU)) as Date) AND PhieuXuat.NGAY <= EOMONTH(@THANGSAU)
+		GROUP BY CAST(RIGHT('0' + CONVERT(nvarchar(2), MONTH(NGAY)), 2) + '/1/' + CONVERT(nvarchar(4), YEAR(NGAY)) as Date), TENVT
+		ORDER BY THANG
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LAYMADDH]    Script Date: 12/20/2020 5:19:33 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,7 +98,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[SP_LAYMAKHO]    Script Date: 12/6/2020 1:00:38 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_LAYMAKHO]    Script Date: 12/20/2020 5:19:33 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -42,7 +122,7 @@ BEGIN
 		SELECT 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_LAYMANV]    Script Date: 12/6/2020 1:00:38 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_LAYMANV]    Script Date: 12/20/2020 5:19:33 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -64,7 +144,7 @@ BEGIN
 		SELECT 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_LAYMAPNPX]    Script Date: 12/6/2020 1:00:38 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_LAYMAPNPX]    Script Date: 12/20/2020 5:19:33 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -89,7 +169,7 @@ BEGIN
 			SELECT 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_LAYMAVT]    Script Date: 12/6/2020 1:00:38 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_LAYMAVT]    Script Date: 12/20/2020 5:19:33 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,7 +193,7 @@ BEGIN
 		SELECT 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_LAYTHONGTINVATTUDATHANG]    Script Date: 12/6/2020 1:00:38 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_LAYTHONGTINVATTUDATHANG]    Script Date: 12/20/2020 5:19:33 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -127,13 +207,13 @@ CREATE PROCEDURE [dbo].[SP_LAYTHONGTINVATTUDATHANG]
 @MADDH nchar(8)
 AS
 BEGIN
-	SELECT CTDDH.MAVT, Vattu.TENVT, Vattu.DVT, CTDDH.SOLUONG
+	SELECT CTDDH.MAVT, Vattu.TENVT, Vattu.DVT, CTDDH.SOLUONG, CTDDH.DONGIA
 	FROM CTDDH INNER JOIN Vattu ON CTDDH.MAVT = Vattu.MAVT
 	WHERE CTDDH.MasoDDH = @MADDH	
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[SP_PHIEULAPTRONGNAMTHEOLOAI]    Script Date: 12/6/2020 1:00:38 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_PHIEULAPTRONGNAMTHEOLOAI]    Script Date: 12/20/2020 5:19:33 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,7 +241,7 @@ BEGIN
 		ORDER BY NGAY
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_TAOTAIKHOAN]    Script Date: 12/6/2020 1:00:38 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_TAOTAIKHOAN]    Script Date: 12/20/2020 5:19:33 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -189,7 +269,7 @@ AS
     EXEC sp_addsrvrolemember @LGNAME, 'SecurityAdmin'
 RETURN 0  -- THANH CONG
 GO
-/****** Object:  StoredProcedure [dbo].[SP_THONGTINDANGNHAP]    Script Date: 12/6/2020 1:00:38 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_THONGTINDANGNHAP]    Script Date: 12/20/2020 5:19:33 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,4 +287,31 @@ SELECT @UserId= UId ,@TENUSER=NAME FROM sys.sysusers WHERE sid = SUSER_SID(@TENL
                  FROM SYS.SYSMEMBERS 
                    WHERE MEMBERUID= @UserId
                )
+GO
+/****** Object:  StoredProcedure [dbo].[SP_TONGHOPNHAPXUAT]    Script Date: 12/20/2020 5:19:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_TONGHOPNHAPXUAT] 
+@THANGDAU Date, @THANGSAU Date
+AS
+BEGIN
+	SELECT ISNULL(NHAP.NGAY, XUAT.NGAY) AS NGAY, ISNULL(NHAP.TONGNHAP, 0) AS NHAP , ISNULL(XUAT.TONGXUAT, 0) AS XUAT 
+	FROM
+		(SELECT PN.NGAY, SUM(CTPN.SOLUONG * CTPN.DONGIA) as TONGNHAP
+		FROM PhieuNhap as PN, CTPN
+		WHERE PN.MAPN = CTPN.MAPN AND PN.NGAY BETWEEN @THANGDAU AND @THANGSAU
+		GROUP BY PN.NGAY
+		) as NHAP
+		FULL JOIN 
+		(SELECT PX.NGAY, SUM(CTPX.SOLUONG * CTPX.DONGIA) as TONGXUAT
+		FROM PhieuXuat as PX, CTPX
+		WHERE PX.MAPX = CTPX.MAPX AND PX.NGAY BETWEEN @THANGDAU AND @THANGSAU
+		GROUP BY PX.NGAY
+		) as XUAT
+		ON XUAT.NGAY = NHAP.NGAY	
+	ORDER BY NGAY 
+END
+
 GO

@@ -16,6 +16,7 @@ namespace QLVT_PT_DevExpressPJ.reports.subformsRP
         public subFormNXTheoThang()
         {
             InitializeComponent();
+            this.AcceptButton = this.btnXem;
             this.CancelButton = this.btnThoat;
         }
 

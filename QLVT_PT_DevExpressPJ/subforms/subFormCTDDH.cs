@@ -13,6 +13,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
 {
     public partial class subFormCTDDH : Form
     {
+        #region form loading
         public subFormCTDDH()
         {        
             InitializeComponent();
@@ -22,10 +23,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.AcceptButton = this.btnThemCTDDH;
             this.CancelButton = this.btnThoat;
         }
-
-        #region form's main processing
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
+        
         private void subFormCTDDH_Load(object sender, EventArgs e)
         {
             this.qlvtDS.EnforceConstraints = false;
@@ -50,7 +48,9 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.ctddhBDS.CancelEdit();
             Program.formDDHPNPX.Enabled = true;
         }
+        #endregion
 
+        #region additional events
         private void btnThemCTDDH_Click(object sender, EventArgs e)
         {
             string conflictErr = string.Empty;
@@ -69,11 +69,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 Program.formDDHPNPX.reloadDDH();
             }
         }
-        #endregion
 
-        #region additional events
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional events  //////////////////////////////////////////////////////////////////////////////////              
         private void txtbMaVT_TextChanged(object sender, EventArgs e)
         {
             checkEmptyAndValid();

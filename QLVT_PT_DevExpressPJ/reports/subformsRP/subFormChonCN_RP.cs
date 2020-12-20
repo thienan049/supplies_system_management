@@ -16,6 +16,7 @@ namespace QLVT_PT_DevExpressPJ.reports.subformsRP
         public subFormChonCN_RP()
         {
             InitializeComponent();
+            this.AcceptButton = this.btnXem;
             this.CancelButton = this.btnThoat;
         }
 
@@ -91,8 +92,6 @@ namespace QLVT_PT_DevExpressPJ.reports.subformsRP
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        
+        }        
     }
 }

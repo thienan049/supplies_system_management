@@ -19,14 +19,12 @@ namespace QLVT_PT_DevExpressPJ
         //bool isLoadedPN = false;
         bool isLoadedPX = false;
 
+        #region form loading
         public formDDHPNPX()
         {
             InitializeComponent();
         }
-
-        #region form's main processing
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
+       
         private void formDDHPNPX_Load(object sender, EventArgs e)
         {
             qlvtDS.EnforceConstraints = false;
@@ -58,6 +56,7 @@ namespace QLVT_PT_DevExpressPJ
                 this.ctpnContextMenu.Enabled = false;
                 this.pxContextMenu.Enabled = false;
                 this.ctpxContextMenu.Enabled = false;
+                this.btnCNSubItem.Enabled = true;
             }
             else
             {
@@ -67,17 +66,12 @@ namespace QLVT_PT_DevExpressPJ
                 this.ctpnContextMenu.Enabled = true;
                 this.pxContextMenu.Enabled = true;
                 this.ctpxContextMenu.Enabled = true;
-                if (Program.mGroup == "CHINHANH")
-                {
-
-                }
-                else if (Program.mGroup == "USER")
-                {
-
-                }
+                this.btnCNSubItem.Enabled = false;
             }
         }
+        #endregion
 
+        #region action buttons event handling
         private void btnPhieuNhap_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.grBxDDH.Dock = DockStyle.Top;
@@ -93,7 +87,7 @@ namespace QLVT_PT_DevExpressPJ
                 this.grBxDDH.Dock = DockStyle.Fill;
             }
         }
-
+        
         private void btnPhieuXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.grBxDDH.Dock = DockStyle.Top;
@@ -151,11 +145,57 @@ namespace QLVT_PT_DevExpressPJ
         {
             this.Close();
         }
+
+        private void btnCN1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int index = 0;
+            Program.bds_dspm.Position = index;
+            if (index != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+
+            Program.servername = ((DataRowView)Program.bds_dspm[index])["TENSERVER"].ToString();
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
+            }
+
+            loadData();
+        }
+
+        private void btnCN2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int index = 1;
+            Program.bds_dspm.Position = index;
+            if (index != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+
+            Program.servername = ((DataRowView)Program.bds_dspm[index])["TENSERVER"].ToString();
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối đến chi nhánh!", "", MessageBoxButtons.OK);
+            }
+
+            loadData();
+        }
         #endregion
 
         #region don dat hang
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Đơn đặt hàng  //////////////////////////////////////////////////////////////////////////////////
         private void ddhContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             this.ddhContextMenu.Close();
@@ -233,8 +273,6 @@ namespace QLVT_PT_DevExpressPJ
         #endregion
 
         #region chi tiet don dat hang
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Chi tiết đơn đặt hàng  //////////////////////////////////////////////////////////////////////////////////
         private void ctddhContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             this.ctddhContextMenu.Close();
@@ -294,8 +332,6 @@ namespace QLVT_PT_DevExpressPJ
         #endregion
 
         #region phieu nhap
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Phiếu nhập  //////////////////////////////////////////////////////////////////////////////////
         private void pnContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             this.pnContextMenu.Close();
@@ -367,8 +403,6 @@ namespace QLVT_PT_DevExpressPJ
         #endregion
 
         #region chi tiet phieu nhap
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Chi tiết phiếu nhập  //////////////////////////////////////////////////////////////////////////////////
         private void ctpnContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             this.ctpnContextMenu.Close();
@@ -423,8 +457,6 @@ namespace QLVT_PT_DevExpressPJ
         #endregion
 
         #region phieu xuat
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Phiếu xuất  //////////////////////////////////////////////////////////////////////////////////
         private void pxContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             this.pxContextMenu.Close();
@@ -488,8 +520,6 @@ namespace QLVT_PT_DevExpressPJ
         #endregion
 
         #region chi tiet phieu xuat
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Chi tiết phiếu xuất  //////////////////////////////////////////////////////////////////////////////////
         private void ctpxContextMenu_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
         {
             this.ctpxContextMenu.Close();
@@ -544,8 +574,6 @@ namespace QLVT_PT_DevExpressPJ
         #endregion
 
         #region get binding sources/dataset
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Get binding sources/ dataset  //////////////////////////////////////////////////////////////////////////////////
         public BindingSource getFormDDHPNPX_dhBDS()
         {
             return this.dhBDS;
@@ -583,8 +611,6 @@ namespace QLVT_PT_DevExpressPJ
         #endregion
 
         #region additional functions
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional functions  //////////////////////////////////////////////////////////////////////////////////
         public void reloadDDH()
         {
             this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -614,9 +640,30 @@ namespace QLVT_PT_DevExpressPJ
                 this.pxBDS.Position = currentPositionPX;
             }
         }
+             
+        private void loadData()
+        {
+            // TODO: This line of code loads data into the 'qLVTDataSet.DatHang' table.
+            this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.datHangTableAdapter.Fill(this.qlvtDS.DatHang);
+            // TODO: This line of code loads data into the 'qlvtDS.CTDDH' table. 
+            this.ctddhTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.ctddhTableAdapter.Fill(this.qlvtDS.CTDDH);
 
+            // TODO: This line of code loads data into the 'qlvtDS.PhieuNhap' table.
+            this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.phieuNhapTableAdapter.Fill(this.qlvtDS.PhieuNhap);
+            // TODO: This line of code loads data into the 'qlvtDS.CTPN' table.
+            this.ctpnTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.ctpnTableAdapter.Fill(this.qlvtDS.CTPN);
+
+            // TODO: This line of code loads data into the 'qlvtDS.PhieuXuat' table.
+            this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.phieuXuatTableAdapter.Fill(this.qlvtDS.PhieuXuat);
+            // TODO: This line of code loads data into the 'qlvtDS.CTPX' table.
+            this.ctpxTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.ctpxTableAdapter.Fill(this.qlvtDS.CTPX);
+        }
         #endregion
-
-       
     }
 }

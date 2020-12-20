@@ -13,6 +13,7 @@ namespace QLVT_PT_DevExpressPJ
 {
     public partial class formTaoTaiKhoan : Form
     {
+        #region form loading
         public formTaoTaiKhoan()
         {
             InitializeComponent();
@@ -45,7 +46,9 @@ namespace QLVT_PT_DevExpressPJ
                 }
             }
         }
+        #endregion
 
+        #region additional events
         private void cbxTenCN_TTK_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -126,7 +129,9 @@ namespace QLVT_PT_DevExpressPJ
                 this.txtbPassWord.PasswordChar = '*';
             }
         }
+        #endregion
 
+        #region additional functions
         private bool checkConflictedMaNV(String userID, out string conflictErr)
         {
             try
@@ -177,7 +182,7 @@ namespace QLVT_PT_DevExpressPJ
             conflictErr = string.Empty;
             return false;
         }
-
-        
+        #endregion
     }
 }
+

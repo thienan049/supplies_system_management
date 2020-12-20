@@ -67,6 +67,8 @@
             this.sttLblHoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.sttLblNhom = new System.Windows.Forms.ToolStripStatusLabel();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnTHNX = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -90,10 +92,11 @@
             this.btnDdhChuaPN,
             this.btnNXThang,
             this.btnHDNV,
-            this.btnTaoTaiKhoan});
+            this.btnTaoTaiKhoan,
+            this.btnTHNX});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 37;
+            this.ribbonControl1.MaxItemId = 38;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 440;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -101,7 +104,7 @@
             this.rbPgDanhMuc,
             this.rbPgBaoCao});
             this.ribbonControl1.ShowQatLocationSelector = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(844, 158);
+            this.ribbonControl1.Size = new System.Drawing.Size(855, 158);
             this.ribbonControl1.TransparentEditorsMode = DevExpress.Utils.DefaultBoolean.False;
             // 
             // btnDangNhap
@@ -284,7 +287,8 @@
             this.ribbonPageGroup4,
             this.ribbonPageGroup5,
             this.ribbonPageGroup6,
-            this.ribbonPageGroup7});
+            this.ribbonPageGroup7,
+            this.ribbonPageGroup8});
             this.rbPgBaoCao.Name = "rbPgBaoCao";
             this.rbPgBaoCao.Text = "Báo cáo";
             // 
@@ -341,7 +345,7 @@
             this.sttLblNhom});
             this.statusStrip1.Location = new System.Drawing.Point(0, 459);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(844, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(855, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -368,12 +372,26 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnTHNX);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            this.ribbonPageGroup8.Text = "Báo cáo";
+            // 
+            // btnTHNX
+            // 
+            this.btnTHNX.Caption = "Tổng hợp nhập xuất theo tháng";
+            this.btnTHNX.Id = 37;
+            this.btnTHNX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnTHNX.Name = "btnTHNX";
+            this.btnTHNX.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTHNX_ItemClick);
+            // 
             // formMain
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 481);
+            this.ClientSize = new System.Drawing.Size(855, 481);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbonControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -432,6 +450,8 @@
         public DevExpress.XtraBars.Ribbon.RibbonPage rbPgDanhMuc;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbGrSignup;
         public DevExpress.XtraBars.BarButtonItem btnTaoTaiKhoan;
+        private DevExpress.XtraBars.BarButtonItem btnTHNX;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
     }
 }
 

@@ -14,6 +14,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
 {
     public partial class subFormPN : Form
     {
+        #region form loading
         public subFormPN()
         {
             InitializeComponent();
@@ -21,10 +22,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
             this.AcceptButton = this.btnThemPN;
             this.CancelButton = this.btnThoat;
         }
-
-        #region form's main processing
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Form's main processing  //////////////////////////////////////////////////////////////////////////////////
+       
         private void subFormPN_Load(object sender, EventArgs e)
         {        
             this.qlvtDS.EnforceConstraints = false;
@@ -62,9 +60,12 @@ namespace QLVT_PT_DevExpressPJ.subforms
         private void subFormPN_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.pnBDS.CancelEdit();
+            Program.formDDHPNPX.getFormDDHPNPX_qlvtDS().PhieuNhap.RejectChanges();
             Program.formDDHPNPX.Enabled = true;
         }
+        #endregion
 
+        #region additional events
         private void btnThemPN_Click(object sender, EventArgs e)
         {
             string conflictErr = string.Empty;
@@ -82,11 +83,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
                 this.Close();
             }
         }
-        #endregion
-
-        #region additional events
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional events  //////////////////////////////////////////////////////////////////////////////////
+       
         private void txtbMaPN_TextChanged(object sender, EventArgs e)
         {
             checkEmptyAndValid();
@@ -128,9 +125,7 @@ namespace QLVT_PT_DevExpressPJ.subforms
         }
         #endregion
 
-        #region additional funtions
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////  Additional functions  //////////////////////////////////////////////////////////////////////////////////
+        #region additional funtions       
         private bool checkConflictedMaPN(string maPNMoi, out string conflictErr)
         {
             try

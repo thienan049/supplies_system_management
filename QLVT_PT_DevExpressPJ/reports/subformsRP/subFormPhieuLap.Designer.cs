@@ -40,6 +40,7 @@
             this.cbxNam = new System.Windows.Forms.ComboBox();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelCN)).BeginInit();
             this.panelCN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).BeginInit();
@@ -52,7 +53,7 @@
             // 
             this.panelCN.Controls.Add(this.label2);
             this.panelCN.Controls.Add(this.cbxTenCN);
-            this.panelCN.Location = new System.Drawing.Point(75, 44);
+            this.panelCN.Location = new System.Drawing.Point(69, 73);
             this.panelCN.Name = "panelCN";
             this.panelCN.Size = new System.Drawing.Size(383, 28);
             this.panelCN.TabIndex = 5;
@@ -84,7 +85,7 @@
             // 
             this.stackPanel1.Controls.Add(this.label1);
             this.stackPanel1.Controls.Add(this.cbxLoaiPhieu);
-            this.stackPanel1.Location = new System.Drawing.Point(97, 94);
+            this.stackPanel1.Location = new System.Drawing.Point(91, 123);
             this.stackPanel1.Name = "stackPanel1";
             this.stackPanel1.Size = new System.Drawing.Size(361, 28);
             this.stackPanel1.TabIndex = 6;
@@ -118,7 +119,7 @@
             // 
             this.stackPanel2.Controls.Add(this.label3);
             this.stackPanel2.Controls.Add(this.cbxNam);
-            this.stackPanel2.Location = new System.Drawing.Point(133, 142);
+            this.stackPanel2.Location = new System.Drawing.Point(127, 171);
             this.stackPanel2.Name = "stackPanel2";
             this.stackPanel2.Size = new System.Drawing.Size(325, 28);
             this.stackPanel2.TabIndex = 6;
@@ -153,7 +154,7 @@
             // btnXem
             // 
             this.btnXem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXem.Location = new System.Drawing.Point(223, 197);
+            this.btnXem.Location = new System.Drawing.Point(217, 215);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 7;
@@ -164,7 +165,7 @@
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(345, 197);
+            this.btnThoat.Location = new System.Drawing.Point(339, 215);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 23);
             this.btnThoat.TabIndex = 8;
@@ -172,11 +173,22 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(117, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(320, 31);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "PHIẾU LẬP THEO LOẠI";
+            // 
             // subFormPhieuLap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 247);
+            this.ClientSize = new System.Drawing.Size(565, 255);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.stackPanel1);
@@ -197,6 +209,7 @@
             this.stackPanel2.ResumeLayout(false);
             this.stackPanel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -213,5 +226,6 @@
         private System.Windows.Forms.ComboBox cbxNam;
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Label label4;
     }
 }
