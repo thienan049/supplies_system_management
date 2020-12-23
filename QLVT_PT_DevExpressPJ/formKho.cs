@@ -152,22 +152,25 @@ namespace QLVT_PT_DevExpressPJ
             }
             else
             {
-                //storeDtTbState();
-                if (this.maKhoThem == null)
+                try
                 {
-                    this.maKhoThem = this.txtbMaKho.Text.Trim();
-                }
-                khoBDS.EndEdit();
-                this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.khoTableAdapter.Update(this.qlvtDS.Kho);
-                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                this.btnReloadKho.PerformClick();
-                this.maKhoThem = null;
-                if (editPosition != -1)
-                {
-                    this.khoBDS.Position = this.editPosition;
-                    this.editPosition = -1;
-                }
+                    //storeDtTbState();
+                    if (this.maKhoThem == null)
+                    {
+                        this.maKhoThem = this.txtbMaKho.Text.Trim();
+                    }
+                    khoBDS.EndEdit();
+                    this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.khoTableAdapter.Update(this.qlvtDS.Kho);
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    this.btnReloadKho.PerformClick();
+                    this.maKhoThem = null;
+                    if (editPosition != -1)
+                    {
+                        this.khoBDS.Position = this.editPosition;
+                        this.editPosition = -1;
+                    }
+                }catch(Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
 
